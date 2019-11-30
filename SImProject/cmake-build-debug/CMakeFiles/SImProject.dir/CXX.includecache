@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/RTC.h
+Time.h
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/Time.h
+
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/SimulationConfigurations.h
+
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/Time.h
+boolean.h
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/boolean.h
+
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/boolean.h
+
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/main.cpp
+cstdio
+-
+unistd.h
+-
+ctime
+-
+pthread.h
+-
+SimulationConfigurations.h
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/SimulationConfigurations.h
+Time.h
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/Time.h
+RTC.h
+C:/Users/97250/CLionProjects/SImProject/cmake-build-debug/RTC.h
+
