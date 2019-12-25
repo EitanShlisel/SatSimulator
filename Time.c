@@ -3,9 +3,9 @@
 #include "RTC.h"
 #include <time.h>
 
-Boolean timeStatred = FALSE;
-time_t sat_time = 0;
-time_t real_start_time = 0;
+Boolean timeStatred = FALSE;        // has the 'Time' module been started
+time_t sat_time = 0;                // unix time of start(given by user)
+//time_t real_start_time = 0;
 unsigned int sync_sec = 0;
 
 int UnixToTime(Time *_time){
@@ -38,7 +38,7 @@ int Time_start(Time *_time, unsigned int syncInterval){
     }else{
         return -2;
     }
-    real_start_time = TimeToUnix(_time);
+    sat_time = TimeToUnix(_time);
     timeStatred = TRUE;
     return 0;
 }
@@ -55,6 +55,7 @@ int Time_set(Time *_time){
 
 int Time_setUnixEpoch(unsigned int epochTime){
 
+    sat_time = epochTime;
     return 0;
 }
 

@@ -32,7 +32,7 @@ void* RtcThread(void* a){
         pthread_mutex_unlock(&lock);
         usleep(RTC_TICK_TIME_PERIOD);
 
-#if(1 == RTC_PRINT_RUNTIME)
+#if(1 == RTC_USE_PRINTS)
         printf("runtime = %f\n", ((double)(clock() - begin_time) / CLOCKS_PER_SEC));
         printf("clock_cycles42 = %llu\n",clock_cycles);
 #endif

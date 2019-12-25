@@ -24,4 +24,7 @@ int GPS_getSpeed(ECEF_velocity_t *vel);
 
 int GPS_getAtomicTime(atomic_time_t *tm);
 
+
+int GPS_Test(unsigned int num_of_lines_in_test_file);
+
 #endif //SIMPROJECT_GPS_MODULE_H
