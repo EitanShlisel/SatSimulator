@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="SImProject" targetName="SImProject" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="199f3f33-91f8-46a8-aadd-64543e930c7e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/SatSimulator" />
+  </component>
+  <component name="ProjectId" id="1UKJHqMDzYJZ805YF8u9LIr1bdS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles" />
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator" />
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\" />
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
+      <recent name="C:\Users\97250\CLionProjects\SImProject\cmake-build-debug" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="SImProject" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SImProject" TARGET_NAME="SImProject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SImProject" RUN_TARGET_NAME="SImProject">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="199f3f33-91f8-46a8-aadd-64543e930c7e" name="Default Changelist" comment="" />
+      <created>1575099268967</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575099268967</updated>
+      <workItem from="1575099270317" duration="521000" />
+      <workItem from="1575099807798" duration="5226000" />
+      <workItem from="1575122558072" duration="295000" />
+      <workItem from="1575123357613" duration="802000" />
+      <workItem from="1575124334692" duration="2348000" />
+      <workItem from="1575621262416" duration="328000" />
+      <workItem from="1575725245161" duration="242000" />
+      <workItem from="1575725512796" duration="178000" />
+      <workItem from="1575725745583" duration="64000" />
+      <workItem from="1575726339557" duration="722000" />
+      <workItem from="1575727289235" duration="5476000" />
+      <workItem from="1575734800103" duration="12000" />
+      <workItem from="1577261059397" duration="3345000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

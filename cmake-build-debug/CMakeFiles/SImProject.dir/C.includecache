@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/97250/Documents/GitHub/SatSimulator/RTC.h
+Time.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Time.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.c
+../RTC.h
+C:/Users/97250/Documents/GitHub/SatSimulator/RTC.h
+SimulationConfigurations.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
+GPS_Module.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.h
+stdbool.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/Time.h
+boolean.h
+C:/Users/97250/Documents/GitHub/SatSimulator/boolean.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/boolean.h
+
