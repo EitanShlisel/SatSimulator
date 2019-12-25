@@ -17,7 +17,6 @@ typedef struct {
     ECEF_location_t position;
     ECEF_velocity_t velocity;
 }gps_point_t;
-
 typedef enum {
     GPS_IO_ERR_FOPEN = 1,
     GPS_IO_ERR_FREAD,
@@ -32,6 +31,7 @@ bool gps_sim_input_data_error = false;      // were there an error while initiat
 bool gps_init_flag = false;                 // was the init successful
 FILE *fp_gps_data = NULL;                   // file pointer for the csv file where the data lies
 gps_point_t *gps_data_points = NULL;        // records all data points for the gps
+unsigned long gps_num_of_data_points = 0;
 
 int Gps_GetNumberOfItemsInFile(FILE *fp){
     if(NULL == fp) {
@@ -58,7 +58,7 @@ void Gps_AddAnomalies(gps_point_t *point)
     #endif
 }
 
-int monthToInt(char *month){
+static int monthToInt(char *month){
     char* month_arr[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
     for (int i = 0; i < (int)(sizeof(month_arr)/ sizeof(month_arr[0])); ++i) {
         if(0 == strcmp(month,month_arr[i])){
@@ -67,7 +67,7 @@ int monthToInt(char *month){
     }
     return -1;
 }
-double parseTime(char *line){
+static double parseTime(char *line){
     //18 Nov 2019 10:00:00.000
   double unix_time = 0;
   double milli_sec = 0;
@@ -138,10 +138,11 @@ int GPS_Init(){
     }
     int num_of_lines = Gps_GetNumberOfItemsInFile(fp_gps_data);
 
-    gps_data_points = malloc((num_of_lines-1) * sizeof(*gps_data_points));
+    gps_num_of_data_points = (num_of_lines - 1);
+    gps_data_points = malloc( gps_num_of_data_points * sizeof(*gps_data_points));
+
     char line[BUFFER_SIZE];
-    for (int i = 1; i < num_of_lines; ++i) {
-        //TODO: read the file line by line and parse into 'gpa_data_points'
+    for (int i = 1; i < num_of_lines; ++i) {    // first line is a header and will not be used
         Gps_ParseCsv(&gps_data_points[i], line);
         Gps_AddAnomalies(&gps_data_points[i]);
     }
@@ -153,14 +154,45 @@ int GPS_getLocation(ECEF_location_t *loc){
     if(!gps_init_flag){
         return GPS_NOT_INITIALISED;
     }
-    return 0;
+    int err = 0;
+    unsigned int current_time = 0;
+    err = Time_getUnixEpoch(&current_time);
+    if(0 != err){
+        return err;
+    }
+
+    for (unsigned int i = 0; i < gps_num_of_data_points; ++i) {
+        if(gps_data_points[i].sat_time > current_time){
+            if(NULL == memcpy(loc,&gps_data_points[i].position, sizeof(*loc))){
+                return -2;
+            }
+            break;
+        }
+    }
+    TRACE_ERROR(reached end of data points in 'GPS_getLocation' , -1);
+    return -1;
 }
 
 int GPS_getSpeed(ECEF_velocity_t *vel){
     if(!gps_init_flag){
         return GPS_NOT_INITIALISED;
     }
-    return 0;
+    int err = 0;
+    unsigned int current_time = 0;
+    err = Time_getUnixEpoch(&current_time);
+    if(0 != err){
+        return err;
+    }
+    for (unsigned int i = 0; i < gps_num_of_data_points; ++i) {
+        if(gps_data_points[i].sat_time > current_time){
+            if(NULL == memcpy(vel,&gps_data_points[i].velocity, sizeof(*vel))){
+                return -2;
+            }
+            break;
+        }
+    }
+    TRACE_ERROR(reached end of data points in 'GPS_getSpeed' , -1);
+    return -1;
 }
 
 int GPS_getAtomicTime(atomic_time_t *tm){
@@ -171,7 +203,7 @@ int GPS_getAtomicTime(atomic_time_t *tm){
 }
 
 
-int GPS_ParseLineTest(){
+static int GPS_ParseLineTest(){
     int err = 0;
     gps_point_t point, test_point;
     char line[BUFFER_SIZE] = "1 Jan 2000 0:00:00.456,-1894.182666,5879.877177,3982.272531,-7.648021,-1.420840,0.192274";
@@ -198,7 +230,7 @@ int GPS_ParseLineTest(){
     TRACE_ERROR(Gps_ParseCsv,err);
     return err;
 }
-int GPS_Lines_Test(unsigned int num_of_lines_in_test_file){
+static int GPS_Lines_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
     FILE *fp = fopen(GPS_DATA_CSV_PATH,"r");
     int num_of_lines = Gps_GetNumberOfItemsInFile(fp);
@@ -211,7 +243,6 @@ int GPS_Lines_Test(unsigned int num_of_lines_in_test_file){
     TRACE_ERROR(Gps_GetNumberOfItemsInFile, num_of_lines_in_test_file - num_of_lines);
     return err;
 }
-
 int GPS_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
     err += GPS_Lines_Test(num_of_lines_in_test_file);
