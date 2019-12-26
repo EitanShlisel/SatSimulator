@@ -176,6 +176,33 @@ SimFiles/GPS_Module.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.s
 .PHONY : SimFiles/GPS_Module.c.s
 
+SimFiles/SimSTK.obj: SimFiles/SimSTK.c.obj
+
+.PHONY : SimFiles/SimSTK.obj
+
+# target to build an object file
+SimFiles/SimSTK.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj
+.PHONY : SimFiles/SimSTK.c.obj
+
+SimFiles/SimSTK.i: SimFiles/SimSTK.c.i
+
+.PHONY : SimFiles/SimSTK.i
+
+# target to preprocess a source file
+SimFiles/SimSTK.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.i
+.PHONY : SimFiles/SimSTK.c.i
+
+SimFiles/SimSTK.s: SimFiles/SimSTK.c.s
+
+.PHONY : SimFiles/SimSTK.s
+
+# target to generate assembly for a file
+SimFiles/SimSTK.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.s
+.PHONY : SimFiles/SimSTK.c.s
+
 Time.obj: Time.c.obj
 
 .PHONY : Time.obj
@@ -245,6 +272,9 @@ help:
 	@echo ... SimFiles/GPS_Module.obj
 	@echo ... SimFiles/GPS_Module.i
 	@echo ... SimFiles/GPS_Module.s
+	@echo ... SimFiles/SimSTK.obj
+	@echo ... SimFiles/SimSTK.i
+	@echo ... SimFiles/SimSTK.s
 	@echo ... Time.obj
 	@echo ... Time.i
 	@echo ... Time.s

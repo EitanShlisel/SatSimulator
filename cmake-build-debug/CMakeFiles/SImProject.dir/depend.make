@@ -5,9 +5,18 @@
 CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../RTC.h
 CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../SimFiles/GPS_Module.c
 CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../SimFiles/GPS_Module.h
+CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../SimFiles/GPS_types.h
+CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../SimFiles/SimSTK.h
 CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../SimFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../Time.h
 CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj: ../boolean.h
+
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/GPS_types.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimSTK.c
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimSTK.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimulationConfigurations.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../Time.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../boolean.h
 
 
 

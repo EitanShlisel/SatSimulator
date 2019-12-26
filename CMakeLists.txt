@@ -22,4 +22,4 @@ add_executable(SImProject
         main.c
         RTC.c
         Time.c
-        SimFiles/GPS_Module.h SimFiles/GPS_Module.c)
+        SimFiles/GPS_Module.h SimFiles/GPS_Module.c SimFiles/SimSTK.c SimFiles/SimSTK.h SimFiles/GPS_types.h)

@@ -92,6 +92,15 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.h">
 			<Option target="SImProject"/>
 		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_types.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Time.c">
 			<Option target="SImProject"/>
 		</Unit>

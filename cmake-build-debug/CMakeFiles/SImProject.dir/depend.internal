@@ -6,6 +6,15 @@ CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/RTC.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_types.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/Time.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/boolean.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_types.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/Time.h
  C:/Users/97250/Documents/GitHub/SatSimulator/boolean.h

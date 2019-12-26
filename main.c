@@ -11,6 +11,6 @@
 
 int main() {
     int err = 0;
-    GPS_Test(1442);
+    SimSTK_Test(1442);
     return 0;
 }

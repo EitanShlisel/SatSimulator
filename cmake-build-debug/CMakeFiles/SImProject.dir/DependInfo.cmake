@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/97250/Documents/GitHub/SatSimulator/RTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/RTC.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Time.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Time.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/main.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj"
   )
