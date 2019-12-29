@@ -4,9 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/97250/Documents/GitHub/SatSimulator/RTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/RTC.c.obj"
-  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj"
-  "C:/Users/97250/Documents/GitHub/SatSimulator/Time.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Time.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/main.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

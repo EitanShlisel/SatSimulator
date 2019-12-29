@@ -122,86 +122,167 @@ SImProject/fast:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/build
 .PHONY : SImProject/fast
 
-RTC.obj: RTC.c.obj
+SimFiles/SimRTC.obj: SimFiles/SimRTC.c.obj
 
-.PHONY : RTC.obj
-
-# target to build an object file
-RTC.c.obj:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/RTC.c.obj
-.PHONY : RTC.c.obj
-
-RTC.i: RTC.c.i
-
-.PHONY : RTC.i
-
-# target to preprocess a source file
-RTC.c.i:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/RTC.c.i
-.PHONY : RTC.c.i
-
-RTC.s: RTC.c.s
-
-.PHONY : RTC.s
-
-# target to generate assembly for a file
-RTC.c.s:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/RTC.c.s
-.PHONY : RTC.c.s
-
-SimFiles/GPS_Module.obj: SimFiles/GPS_Module.c.obj
-
-.PHONY : SimFiles/GPS_Module.obj
+.PHONY : SimFiles/SimRTC.obj
 
 # target to build an object file
-SimFiles/GPS_Module.c.obj:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj
-.PHONY : SimFiles/GPS_Module.c.obj
+SimFiles/SimRTC.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj
+.PHONY : SimFiles/SimRTC.c.obj
 
-SimFiles/GPS_Module.i: SimFiles/GPS_Module.c.i
+SimFiles/SimRTC.i: SimFiles/SimRTC.c.i
 
-.PHONY : SimFiles/GPS_Module.i
+.PHONY : SimFiles/SimRTC.i
 
 # target to preprocess a source file
-SimFiles/GPS_Module.c.i:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.i
-.PHONY : SimFiles/GPS_Module.c.i
+SimFiles/SimRTC.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.i
+.PHONY : SimFiles/SimRTC.c.i
 
-SimFiles/GPS_Module.s: SimFiles/GPS_Module.c.s
+SimFiles/SimRTC.s: SimFiles/SimRTC.c.s
 
-.PHONY : SimFiles/GPS_Module.s
+.PHONY : SimFiles/SimRTC.s
 
 # target to generate assembly for a file
-SimFiles/GPS_Module.c.s:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.s
-.PHONY : SimFiles/GPS_Module.c.s
+SimFiles/SimRTC.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.s
+.PHONY : SimFiles/SimRTC.c.s
 
-Time.obj: Time.c.obj
+SimFiles/SimSTK.obj: SimFiles/SimSTK.c.obj
 
-.PHONY : Time.obj
+.PHONY : SimFiles/SimSTK.obj
 
 # target to build an object file
-Time.c.obj:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Time.c.obj
-.PHONY : Time.c.obj
+SimFiles/SimSTK.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj
+.PHONY : SimFiles/SimSTK.c.obj
 
-Time.i: Time.c.i
+SimFiles/SimSTK.i: SimFiles/SimSTK.c.i
 
-.PHONY : Time.i
+.PHONY : SimFiles/SimSTK.i
 
 # target to preprocess a source file
-Time.c.i:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Time.c.i
-.PHONY : Time.c.i
+SimFiles/SimSTK.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.i
+.PHONY : SimFiles/SimSTK.c.i
 
-Time.s: Time.c.s
+SimFiles/SimSTK.s: SimFiles/SimSTK.c.s
 
-.PHONY : Time.s
+.PHONY : SimFiles/SimSTK.s
 
 # target to generate assembly for a file
-Time.c.s:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Time.c.s
-.PHONY : Time.c.s
+SimFiles/SimSTK.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.s
+.PHONY : SimFiles/SimSTK.c.s
+
+SimFiles/TimeHelperFunctions.obj: SimFiles/TimeHelperFunctions.c.obj
+
+.PHONY : SimFiles/TimeHelperFunctions.obj
+
+# target to build an object file
+SimFiles/TimeHelperFunctions.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj
+.PHONY : SimFiles/TimeHelperFunctions.c.obj
+
+SimFiles/TimeHelperFunctions.i: SimFiles/TimeHelperFunctions.c.i
+
+.PHONY : SimFiles/TimeHelperFunctions.i
+
+# target to preprocess a source file
+SimFiles/TimeHelperFunctions.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.i
+.PHONY : SimFiles/TimeHelperFunctions.c.i
+
+SimFiles/TimeHelperFunctions.s: SimFiles/TimeHelperFunctions.c.s
+
+.PHONY : SimFiles/TimeHelperFunctions.s
+
+# target to generate assembly for a file
+SimFiles/TimeHelperFunctions.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.s
+.PHONY : SimFiles/TimeHelperFunctions.c.s
+
+SubsystemModules/GPS_Module.obj: SubsystemModules/GPS_Module.c.obj
+
+.PHONY : SubsystemModules/GPS_Module.obj
+
+# target to build an object file
+SubsystemModules/GPS_Module.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj
+.PHONY : SubsystemModules/GPS_Module.c.obj
+
+SubsystemModules/GPS_Module.i: SubsystemModules/GPS_Module.c.i
+
+.PHONY : SubsystemModules/GPS_Module.i
+
+# target to preprocess a source file
+SubsystemModules/GPS_Module.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.i
+.PHONY : SubsystemModules/GPS_Module.c.i
+
+SubsystemModules/GPS_Module.s: SubsystemModules/GPS_Module.c.s
+
+.PHONY : SubsystemModules/GPS_Module.s
+
+# target to generate assembly for a file
+SubsystemModules/GPS_Module.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.s
+.PHONY : SubsystemModules/GPS_Module.c.s
+
+SubsystemModules/RTC.obj: SubsystemModules/RTC.c.obj
+
+.PHONY : SubsystemModules/RTC.obj
+
+# target to build an object file
+SubsystemModules/RTC.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj
+.PHONY : SubsystemModules/RTC.c.obj
+
+SubsystemModules/RTC.i: SubsystemModules/RTC.c.i
+
+.PHONY : SubsystemModules/RTC.i
+
+# target to preprocess a source file
+SubsystemModules/RTC.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.i
+.PHONY : SubsystemModules/RTC.c.i
+
+SubsystemModules/RTC.s: SubsystemModules/RTC.c.s
+
+.PHONY : SubsystemModules/RTC.s
+
+# target to generate assembly for a file
+SubsystemModules/RTC.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.s
+.PHONY : SubsystemModules/RTC.c.s
+
+SubsystemModules/Time.obj: SubsystemModules/Time.c.obj
+
+.PHONY : SubsystemModules/Time.obj
+
+# target to build an object file
+SubsystemModules/Time.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj
+.PHONY : SubsystemModules/Time.c.obj
+
+SubsystemModules/Time.i: SubsystemModules/Time.c.i
+
+.PHONY : SubsystemModules/Time.i
+
+# target to preprocess a source file
+SubsystemModules/Time.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/Time.c.i
+.PHONY : SubsystemModules/Time.c.i
+
+SubsystemModules/Time.s: SubsystemModules/Time.c.s
+
+.PHONY : SubsystemModules/Time.s
+
+# target to generate assembly for a file
+SubsystemModules/Time.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/Time.c.s
+.PHONY : SubsystemModules/Time.c.s
 
 main.obj: main.c.obj
 
@@ -239,15 +320,24 @@ help:
 	@echo ... SImProject
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... RTC.obj
-	@echo ... RTC.i
-	@echo ... RTC.s
-	@echo ... SimFiles/GPS_Module.obj
-	@echo ... SimFiles/GPS_Module.i
-	@echo ... SimFiles/GPS_Module.s
-	@echo ... Time.obj
-	@echo ... Time.i
-	@echo ... Time.s
+	@echo ... SimFiles/SimRTC.obj
+	@echo ... SimFiles/SimRTC.i
+	@echo ... SimFiles/SimRTC.s
+	@echo ... SimFiles/SimSTK.obj
+	@echo ... SimFiles/SimSTK.i
+	@echo ... SimFiles/SimSTK.s
+	@echo ... SimFiles/TimeHelperFunctions.obj
+	@echo ... SimFiles/TimeHelperFunctions.i
+	@echo ... SimFiles/TimeHelperFunctions.s
+	@echo ... SubsystemModules/GPS_Module.obj
+	@echo ... SubsystemModules/GPS_Module.i
+	@echo ... SubsystemModules/GPS_Module.s
+	@echo ... SubsystemModules/RTC.obj
+	@echo ... SubsystemModules/RTC.i
+	@echo ... SubsystemModules/RTC.s
+	@echo ... SubsystemModules/Time.obj
+	@echo ... SubsystemModules/Time.i
+	@echo ... SubsystemModules/Time.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
