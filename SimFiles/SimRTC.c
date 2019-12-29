@@ -27,12 +27,12 @@ unsigned long long SimRTC_GetClockCycleCount(){
 
 // returns the real time of the simulation and not of the satellite
 atomic_time_t  SimRTC_GetSimulationTime(){
-    return (RTC_SIMULATION_START_TIME+ (atomic_time_t)(SimRTC_GetClockCycleCount())/RTC_TICK_TIME_PERIOD );
+    return (RTC_SIMULATION_START_TIME + (atomic_time_t)(SimRTC_GetClockCycleCount())/RTC_TICKS_PER_SECOND );
 }
 
 //returns the time the satellite thinks it is
 atomic_time_t SimRtc_GetSatTime(){
-    return (sat_time + (atomic_time_t)(SimRTC_GetClockCycleCount()) / RTC_TICK_TIME_PERIOD);
+    return (sat_time + (atomic_time_t)(SimRTC_GetClockCycleCount()) / RTC_TICKS_PER_SECOND);
 }
 
 void* SimRtcThread(void* a){
@@ -53,7 +53,7 @@ void* SimRtcThread(void* a){
 
 #if(1 == RTC_USE_PRINTS)
         printf("runtime = %f\n", ((double)(clock() - begin_time) / CLOCKS_PER_SEC));
-        printf("clock_cycles42 = %llu\n",clock_cycles);
+        printf("clock_cycle = %llu\n",clock_cycles);
 #endif
     }
     return NULL;
