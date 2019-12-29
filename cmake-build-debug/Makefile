@@ -122,6 +122,33 @@ SImProject/fast:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/build
 .PHONY : SImProject/fast
 
+SimFiles/SimI2C.obj: SimFiles/SimI2C.c.obj
+
+.PHONY : SimFiles/SimI2C.obj
+
+# target to build an object file
+SimFiles/SimI2C.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj
+.PHONY : SimFiles/SimI2C.c.obj
+
+SimFiles/SimI2C.i: SimFiles/SimI2C.c.i
+
+.PHONY : SimFiles/SimI2C.i
+
+# target to preprocess a source file
+SimFiles/SimI2C.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.i
+.PHONY : SimFiles/SimI2C.c.i
+
+SimFiles/SimI2C.s: SimFiles/SimI2C.c.s
+
+.PHONY : SimFiles/SimI2C.s
+
+# target to generate assembly for a file
+SimFiles/SimI2C.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.s
+.PHONY : SimFiles/SimI2C.c.s
+
 SimFiles/SimRTC.obj: SimFiles/SimRTC.c.obj
 
 .PHONY : SimFiles/SimRTC.obj
@@ -320,6 +347,9 @@ help:
 	@echo ... SImProject
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... SimFiles/SimI2C.obj
+	@echo ... SimFiles/SimI2C.i
+	@echo ... SimFiles/SimI2C.s
 	@echo ... SimFiles/SimRTC.obj
 	@echo ... SimFiles/SimRTC.i
 	@echo ... SimFiles/SimRTC.s

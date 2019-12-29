@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj"
