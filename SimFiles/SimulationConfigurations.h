@@ -13,10 +13,13 @@
 #endif
 
 //-------------------------------------------Real Time Clock
-#define RTC_USE_PRINTS   0               // print how long was the RTC running
+#define RTC_USE_PRINTS   0                            // print how long was the RTC running
 
-#define RTC_TICK_TIME_PERIOD  (1000000)  // Time measure for a single cycle[uSec]
+#define RTC_TICK_TIME_PERIOD  ((double)(1000000))   // Time measure for a single cycle[uSec]
 
+#define RTC_DEFAULT_START_TIME (1577836800.0)       // Default time after reset (1577836800 = 1/1/2020 00:00:00) for the satellite
+#define RTC_SIMULATION_START_TIME ((1577836800.0))  // Time at which the simulation starts-
+                                                    // THIS IS ALSO THE START TIME OF THE STK SIMULATION
 //-------------------------------------------GPS Propagator
 #define GPS_USE_PRINTS 0
 #define GPS_MIN_TIME_STEP   1   // [sec]

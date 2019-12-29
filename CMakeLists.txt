@@ -5,21 +5,21 @@ set(CMAKE_CXX_STANDARD 14)
 
 #set(SOURCE_FILES main.cpp RTC.c Time.c)
 set(HEADER_FILES
-        boolean.h
-        RTC.h
+        SubsystemModules/boolean.h
+        SubsystemModules/RTC.h
         SimFiles/SimulationConfigurations.h
-        Time.h
+        SubsystemModules/Time.h
         )
 
 
 set(SOURCE_FILES
         main.c
-        RTC.c
-        Time.c
+        SubsystemModules/RTC.c
+        SubsystemModules/Time.c
         )
 
 add_executable(SImProject
         main.c
-        RTC.c
-        Time.c
-        SimFiles/GPS_Module.h SimFiles/GPS_Module.c SimFiles/SimSTK.c SimFiles/SimSTK.h SimFiles/GPS_types.h)
+        SubsystemModules/RTC.c
+        SubsystemModules/Time.c
+        SubsystemModules/GPS_Module.h SubsystemModules/GPS_Module.c SimFiles/SimSTK.c SimFiles/SimSTK.h SubsystemModules/GPS_types.h SimFiles/SimRTC.c SimFiles/SimRTC.h SimFiles/TimeHelperFunctions.c SimFiles/TimeHelperFunctions.h)

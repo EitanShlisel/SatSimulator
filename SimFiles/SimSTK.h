@@ -1,9 +1,12 @@
 #ifndef SIMPROJECT_SIMSTK_H
 #define SIMPROJECT_SIMSTK_H
 
-#include "GPS_types.h"
+#include "../SubsystemModules/GPS_types.h"
 
 int SimSTK_initStkRecords();
+
+// returns an stk data record at index
+int SimSTK_GetStkDataRecordAtIndex(gps_record_t *record, unsigned long index);
 
 // returns the most updated record from the STK
 int SimSTK_GetCurrentStkDataRecord(gps_record_t *record);

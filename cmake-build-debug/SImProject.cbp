@@ -80,19 +80,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/RTC.c">
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c">
 			<Option target="SImProject"/>
 		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/RTC.h">
-			<Option target="SImProject"/>
-		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.c">
-			<Option target="SImProject"/>
-		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_Module.h">
-			<Option target="SImProject"/>
-		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GPS_types.h">
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h">
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c">
@@ -101,10 +92,31 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h">
 			<Option target="SImProject"/>
 		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Time.c">
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.c">
 			<Option target="SImProject"/>
 		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Time.h">
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h">
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/main.c">

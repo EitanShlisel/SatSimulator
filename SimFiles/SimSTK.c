@@ -1,17 +1,24 @@
 //
 // Created by Eitan on 26/12/2019.
 //
-#include "SimSTK.h"
-#include "SimulationConfigurations.h"
 
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <pthread.h>
+
+#include "SimSTK.h"
+#include "SimRTC.h"
+#include "SimulationConfigurations.h"
+#include "TimeHelperFunctions.h"
+
+
 #define BUFFER_SIZE 1024
 
-#include "../Time.h"
+pthread_mutex_t record_mutex_lock = NULL;
+
 FILE *fp_gps_data = NULL;                   // file pointer for the csv file where the data lies
 gps_record_t *stk_data_records = NULL;        // records all data points for the gps
 unsigned long stk_num_of_data_records = 0;   // amount of records in record array
@@ -33,47 +40,6 @@ static int SimSTK_GetNumberOfItemsInFile(FILE *fp){
     fseek(fp,0,SEEK_SET);
     return lines - 1;
 }
-static int monthToInt(char *month){
-    char* month_arr[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-    for (int i = 0; i < (int)(sizeof(month_arr)/ sizeof(month_arr[0])); ++i) {
-        if(0 == strcmp(month,month_arr[i])){
-            return i;
-        }
-    }
-    return -1;
-}
-static double parseTime(char *line){
-    //18 Nov 2019 10:00:00.000
-    double unix_time = 0;
-    double milli_sec = 0;
-    struct tm tim;
-    char split_char[] = " ,:.";
-
-    char *ptr = strtok(line, split_char); // day of the month(0-31)
-    tim.tm_mday = atoi(ptr);
-
-    ptr = strtok(NULL, split_char);   // month (0-11)
-    tim.tm_mon = monthToInt(ptr);
-
-    ptr = strtok(NULL, split_char);   // year
-    tim.tm_year = atoi(ptr) - 1900;
-
-    ptr = strtok(NULL, split_char);   // hour (0-23)
-    tim.tm_hour = atoi(ptr) + 2;
-
-    ptr = strtok(NULL, split_char);   // minute(0-59)
-    tim.tm_min = atoi(ptr);
-
-    ptr = strtok(NULL, split_char);   // sec(0-61)
-    tim.tm_sec = atoi(ptr);
-
-    ptr = strtok(NULL, split_char);   // millisec(0-999)
-    milli_sec = (double)(atoi(ptr))/1000.0;
-    //"1 Jan 2000 1:02:03.456,-1894.182666,5879.877177,3982.272531,-7.648021,-1.420840,0.192274";
-    tim.tm_isdst = -1;
-    unix_time = (double)mktime(&tim) + milli_sec;
-    return unix_time;
-}
 static int SimSTK_ParseCsv(gps_record_t *point, char *line)
 {
     char split_char[] = ",";
@@ -81,7 +47,7 @@ static int SimSTK_ParseCsv(gps_record_t *point, char *line)
     memcpy(temp,line,BUFFER_SIZE);
 
     char *ptr = strtok(temp, split_char);
-    point->sat_time = parseTime(temp);   //time
+    point->time = parseTime(temp);   //time
 
     ptr = strtok(line, split_char);
     ptr = strtok(NULL, split_char);
@@ -103,6 +69,8 @@ static int SimSTK_ParseCsv(gps_record_t *point, char *line)
 
 int SimSTK_initStkRecords(){
 
+    pthread_mutex_init(&record_mutex_lock, NULL);
+
     fp_gps_data = fopen(GPS_DATA_CSV_PATH,"r");
     TRACE_ERROR(fopen in GPS SIM,(NULL == fp_gps_data));
     if(NULL == fp_gps_data){
@@ -112,12 +80,32 @@ int SimSTK_initStkRecords(){
     int num_of_lines = SimSTK_GetNumberOfItemsInFile(fp_gps_data);
 
     stk_num_of_data_records = (num_of_lines - 1);
-    stk_data_records = malloc( stk_num_of_data_records * sizeof(*stk_data_records));
+    stk_data_records = (gps_record_t*)malloc( stk_num_of_data_records * sizeof(*stk_data_records));
 
     char line[BUFFER_SIZE];
     for (int i = 1; i < num_of_lines; ++i) {    // first line is a header and will not be used
         SimSTK_ParseCsv(&stk_data_records[i], line);
     }
+    return GPS_ERR_SUCCESS;
+}
+
+int SimSTK_GetStkDataRecordAtIndex(gps_record_t *record, unsigned long index){
+    if(NULL == stk_data_records){
+        return GPS_ERR_NOT_INITIALISED;
+    }
+    if(NULL == record){
+        return GPS_ERR_NULL_POINTER;
+    }
+    if(index > stk_num_of_data_records){
+        return GPS_ERR_PARAMETER_ERR;
+    }
+    pthread_mutex_lock(&record_mutex_lock);
+    if(NULL == memcpy((void*)record,(void*)&stk_data_records[index],sizeof(*record))){
+        pthread_mutex_unlock(&record_mutex_lock);
+        return GPS_ERR_MEM_ERROR;
+    }
+    pthread_mutex_unlock(&record_mutex_lock);
+    return GPS_ERR_SUCCESS;
 }
 
 // returns the most updated record from the STK
@@ -136,23 +124,27 @@ int SimSTK_GetStkDataRecordRange(gps_record_t *records, unsigned int num_of_reco
         return GPS_ERR_NULL_POINTER;
     }
     int err = 0;
-    unsigned int current_time = 0;
-    err = Time_getUnixEpoch(&current_time); // TODO: change to real time from SimRTC
+    atomic_time_t current_time = 0;
+    current_time = SimRTC_GetSimulationTime(); // TODO: change to real time from SimRTC
     if(0 != err){
         return err;
     }
     if(num_of_records - 1> stk_current_record_index){
         num_of_records = stk_current_record_index;
     }
+    pthread_mutex_lock(&record_mutex_lock);
     for (unsigned int i = stk_current_record_index; i < stk_num_of_data_records; ++i) {
-        if(stk_data_records[i].sat_time > current_time){
+        if(stk_data_records[i].time > current_time){
             stk_current_record_index = i;
             if(NULL == memcpy(records, &stk_data_records[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
-                return GPS_ERR_MEM_ERROR;
+
+                err =  GPS_ERR_MEM_ERROR;
             }
-            return GPS_ERR_SUCCESS;
+            err =  GPS_ERR_SUCCESS;
         }
     }
+    pthread_mutex_unlock(&record_mutex_lock);
+    return err;
 }
 
 // ------------------------------- TESTS
@@ -160,7 +152,7 @@ static int SimSTK_ParseLineTest(){
     int err = 0;
     gps_record_t point, test_point;
     char line[BUFFER_SIZE] = "1 Jan 2000 0:00:00.456,-1894.182666,5879.877177,3982.272531,-7.648021,-1.420840,0.192274";
-    point.sat_time = 946684800.456;
+    point.time = 946684800.456;
     point.position.posx = -1894.182666;
     point.position.posy = 5879.877177;
     point.position.posz = 3982.272531;

@@ -12,24 +12,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f3f33-91f8-46a8-aadd-64543e930c7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SimFiles/GPS_types.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimSTK.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimSTK.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimFiles/SimRTC.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimFiles/SimRTC.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimFiles/TimeHelperFunctions.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimFiles/TimeHelperFunctions.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/RTC.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/GPS_Module.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/GPS_Module.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/GPS_Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/GPS_Module.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/RTC.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTC.h" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/RTC.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/GPS_Module.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/GPS_Module.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/GPS_Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/GPS_Module.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/GPS_types.h" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/GPS_types.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimSTK.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSTK.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimSTK.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSTK.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimulationConfigurations.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimulationConfigurations.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Time.c" beforeDir="false" afterPath="$PROJECT_DIR$/Time.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/Time.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Time.h" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/Time.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boolean.h" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/boolean.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/GPS_Module.c.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects1.rsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
@@ -68,15 +79,15 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
-      <recent name="C:\Users\97250\CLionProjects\SImProject\cmake-build-debug" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -122,7 +133,8 @@
       <workItem from="1575734800103" duration="12000" />
       <workItem from="1577261059397" duration="3345000" />
       <workItem from="1577264661772" duration="15565000" />
-      <workItem from="1577363674105" duration="3695000" />
+      <workItem from="1577363674105" duration="12116000" />
+      <workItem from="1577602955337" duration="3245000" />
     </task>
     <servers />
   </component>
@@ -141,5 +153,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/SimFiles/SimRTC.c</url>
+          <line>76</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

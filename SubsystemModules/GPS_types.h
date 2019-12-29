@@ -16,7 +16,7 @@ typedef struct __attribute__ ((__packed__)){
 typedef double atomic_time_t;
 
 typedef struct {
-    atomic_time_t sat_time;
+    atomic_time_t time;
     ECEF_location_t position;
     ECEF_velocity_t velocity;
 }gps_record_t;
@@ -31,6 +31,7 @@ typedef enum {
     GPS_ERR_ALREDY_INITIALISED,
     GPS_ERR_MEM_ERROR,
     GPS_ERR_NULL_POINTER,
+    GPS_ERR_PARAMETER_ERR
 
 }GPS_ERR;
 
