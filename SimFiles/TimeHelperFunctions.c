@@ -1,5 +1,6 @@
-#include "TimeHelperFunctions.h"
 #include <string.h>
+#include <stdlib.h>
+#include "TimeHelperFunctions.h"
 
 int UnixToTime(Time *_time,time_t tim){
 

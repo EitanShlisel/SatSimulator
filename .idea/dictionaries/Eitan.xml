@@ -2,6 +2,8 @@
   <dictionary name="Eitan">
     <words>
       <w>nsec</w>
+      <w>opcode</w>
+      <w>subsys</w>
       <w>timestep</w>
     </words>
   </dictionary>

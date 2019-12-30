@@ -122,6 +122,33 @@ SImProject/fast:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/build
 .PHONY : SImProject/fast
 
+SimFiles/SimEPS.obj: SimFiles/SimEPS.c.obj
+
+.PHONY : SimFiles/SimEPS.obj
+
+# target to build an object file
+SimFiles/SimEPS.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj
+.PHONY : SimFiles/SimEPS.c.obj
+
+SimFiles/SimEPS.i: SimFiles/SimEPS.c.i
+
+.PHONY : SimFiles/SimEPS.i
+
+# target to preprocess a source file
+SimFiles/SimEPS.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.i
+.PHONY : SimFiles/SimEPS.c.i
+
+SimFiles/SimEPS.s: SimFiles/SimEPS.c.s
+
+.PHONY : SimFiles/SimEPS.s
+
+# target to generate assembly for a file
+SimFiles/SimEPS.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.s
+.PHONY : SimFiles/SimEPS.c.s
+
 SimFiles/SimI2C.obj: SimFiles/SimI2C.c.obj
 
 .PHONY : SimFiles/SimI2C.obj
@@ -347,6 +374,9 @@ help:
 	@echo ... SImProject
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... SimFiles/SimEPS.obj
+	@echo ... SimFiles/SimEPS.i
+	@echo ... SimFiles/SimEPS.s
 	@echo ... SimFiles/SimI2C.obj
 	@echo ... SimFiles/SimI2C.i
 	@echo ... SimFiles/SimI2C.s

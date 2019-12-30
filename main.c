@@ -16,7 +16,7 @@ int main() {
     prev = SimRTC_GetSimulationTime();
     while(1){
         curr = SimRTC_GetSimulationTime();
-        printf("Current Simulation Time = %lf\t dt = %lf\n",curr,curr-prev);
+        printf("Current Simulation Time = %lf\t dt = %lf\n",curr, curr - prev);
         prev = curr;
 
         sleep(1);
