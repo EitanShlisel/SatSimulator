@@ -11,15 +11,6 @@
 #include <pthread_time.h>
 #include <unistd.h>
 int main() {
-    SimRTC_Init();
-    atomic_time_t prev,curr;
-    prev = SimRTC_GetSimulationTime();
-    while(1){
-        curr = SimRTC_GetSimulationTime();
-        printf("Current Simulation Time = %lf\t dt = %lf\n",curr, curr - prev);
-        prev = curr;
-
-        sleep(1);
-    }
+    SimSTK_Test(1442);
     return 0;
 }

@@ -6,20 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c
-stdlib.h
--
-stdbool.h
--
-pthread.h
--
-SimI2C.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.h
-SimulationConfigurations.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
-
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.h
-
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c
 SimRTC.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
@@ -73,6 +59,8 @@ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
 stdio.h
 -
+unistd.h
+-
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.h
 time.h
@@ -80,29 +68,23 @@ time.h
 ../SubsystemModules/Time.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c
-RTC.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.h
-../SimFiles/SimulationConfigurations.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
-GPS_Module.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.h
-time.h
--
-stdbool.h
--
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c
 stdio.h
 -
-string.h
+pthread.h
 -
-../SimFiles/SimSTK.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
-
-C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.h
-GPS_types.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
-
-C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
+boolean.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
+Time.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
+RTC.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.h
+../SimFiles/SimRTC.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
+../SimFiles/TimeHelperFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.h
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.h
 Time.h

@@ -19,4 +19,6 @@ int SimRTC_StopRTC();//    pthread_mutex_destroy(&lock);
 
 int SimRTC_SetSatTime(atomic_time_t time);
 
+
+void SimRTC_Test();
 #endif //SIMPROJECT_SIMRTC_H
