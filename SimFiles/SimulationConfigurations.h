@@ -40,7 +40,12 @@ typedef enum {
 //-------------------------------------------GPS Propagator
 #define GPS_USE_PRINTS 0
 #define GPS_MIN_TIME_STEP   1   // [sec]
-#define GPS_DATA_CSV_PATH ("C:\\Users\\97250\\Downloads\\Satellite1_J2000_Position_Velocity.csv")
+
+#define GPS_SAT_POS_VEC_CSV_PATH   ("C:\\Users\\97250\\Downloads\\Satellite1_J2000_Position_Velocity.csv") // path of STK file- satellite position over time
+#define GPS_SAT_POS_CSV_FILE_LINE_OFFSET (1)
+
+#define GPS_SUN_VEC_PATH    ("C:\\Users\\97250\\Downloads\\Equl_Sun_Vector_J2000.txt")// path of STK file- sun position over time
+#define GPS_SUN_VEC_CSV_FILE_LINE_OFFSET (5)
 
 #define GPS_USE_ANOMALLIEY 0
 #define  GPS_USE_TIME_DIALATION 0

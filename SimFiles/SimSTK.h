@@ -9,10 +9,10 @@ int SimSTK_initStkRecords();
 int SimSTK_GetStkDataRecordAtIndex(gps_record_t *record, unsigned long index);
 
 // returns the most updated record from the STK
-int SimSTK_GetCurrentStkDataRecord(gps_record_t *record);
+int SimSTK_GetCurrentStkSatPosition(gps_record_t *record);
 
 // returns a range from the current time
-int SimSTK_GetStkDataRecordRange(gps_record_t *log, unsigned int num_of_records);
+int SimSTK_GetStkSatPositionRange(gps_record_t *records, unsigned int num_of_records);
 
 // -------------------------------------------------- TESTS
 int SimSTK_Test(unsigned int num_of_lines_in_test_file);

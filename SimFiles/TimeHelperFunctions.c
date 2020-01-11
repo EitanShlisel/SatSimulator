@@ -35,6 +35,9 @@ time_t TimeToUnix(Time *_time)
 }
 
 int monthToInt(char *month){
+    if(NULL == month){
+        return -2;
+    }
     char* month_arr[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
     for (int i = 0; i < (int)(sizeof(month_arr)/ sizeof(month_arr[0])); ++i) {
         if(0 == strcmp(month,month_arr[i])){

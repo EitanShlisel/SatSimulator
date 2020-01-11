@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"

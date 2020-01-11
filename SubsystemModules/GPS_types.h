@@ -21,6 +21,12 @@ typedef struct {
     ECEF_velocity_t velocity;
 }gps_record_t;
 
+typedef struct{
+    atomic_time_t time;
+    ECEF_location_t position;
+}sun_vec_t;
+
+
 typedef enum {
     GPS_ERR_SUCCESS = 0,
     GPS_ERR_IO_ERR_FOPEN = 1,

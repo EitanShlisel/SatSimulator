@@ -44,7 +44,7 @@ int GPS_getRecords(gps_record_t *record){
     if(NULL == record){
         return GPS_ERR_NULL_POINTER;
     }
-    int err = SimSTK_GetCurrentStkDataRecord(record);
+    int err = SimSTK_GetCurrentStkSatPosition(record);
     Gps_AddAnomalies(record);
     if(0 != err){
         return err;
@@ -61,7 +61,7 @@ int GPS_getLocation(ECEF_location_t *loc){
         return GPS_ERR_NULL_POINTER;
     }
     gps_record_t point;
-    int err = SimSTK_GetCurrentStkDataRecord(&point);
+    int err = SimSTK_GetCurrentStkSatPosition(&point);
     if(0 != err){
         return err;
     }
@@ -80,7 +80,7 @@ int GPS_getVelocity(ECEF_velocity_t *vel){
         return GPS_ERR_NULL_POINTER;
     }
     gps_record_t point;
-    int err = SimSTK_GetCurrentStkDataRecord(&point);
+    int err = SimSTK_GetCurrentStkSatPosition(&point);
     if(0 != err){
         return err;
     }
@@ -99,7 +99,7 @@ int GPS_getAtomicTime(atomic_time_t *tm){
         return GPS_ERR_NULL_POINTER;
     }
     gps_record_t point;
-    int err = SimSTK_GetCurrentStkDataRecord(&point);
+    int err = SimSTK_GetCurrentStkSatPosition(&point);
     if(0 != err){
         return err;
     }

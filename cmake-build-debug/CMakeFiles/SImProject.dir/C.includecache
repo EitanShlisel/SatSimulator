@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+stdio.h
+-
+
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c
 SimRTC.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
@@ -51,6 +55,8 @@ SimulationConfigurations.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
 TimeHelperFunctions.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.h
+GenericHelpFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
 ../SubsystemModules/GPS_types.h
@@ -67,6 +73,28 @@ time.h
 -
 ../SubsystemModules/Time.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c
+RTC.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.h
+../SimFiles/SimulationConfigurations.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
+GPS_Module.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.h
+time.h
+-
+stdbool.h
+-
+stdio.h
+-
+string.h
+-
+../SimFiles/SimSTK.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.h
+GPS_types.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 

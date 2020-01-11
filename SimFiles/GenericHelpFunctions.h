@@ -1,0 +1,8 @@
+#ifndef SIMPROJECT_GENERICHELPFUNCTIONS_H
+#define SIMPROJECT_GENERICHELPFUNCTIONS_H
+
+#include <stdio.h>
+
+int getLine(FILE *fp, char *line);
+
+#endif //SIMPROJECT_GENERICHELPFUNCTIONS_H

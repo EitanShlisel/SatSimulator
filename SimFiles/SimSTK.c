@@ -13,18 +13,34 @@
 #include "SimRTC.h"
 #include "SimulationConfigurations.h"
 #include "TimeHelperFunctions.h"
-
+#include "GenericHelpFunctions.h"
 
 #define BUFFER_SIZE 1024
 
-pthread_mutex_t record_mutex_lock = NULL;
+pthread_mutex_t mutex_sat_pos_data = NULL;
+pthread_mutex_t mutex_sun_vec_data = NULL;
 
+// GPS
 FILE *fp_gps_data = NULL;                   // file pointer for the csv file where the data lies
-gps_record_t *stk_data_records = NULL;        // records all data points for the gps
-unsigned long stk_num_of_data_records = 0;   // amount of records in record array
+gps_record_t *stk_gps_data_points = NULL;   // records all data points for the gps from STK
+
 unsigned long stk_current_record_index = 0; // index of the current element in the record array
+unsigned long stk_num_of_gps_points = 0;   // amount of records in gps record array
+
+// SUN VECTOR
+FILE *fp_sunvec = NULL;
+sun_vec_t *stk_sun_vectors = NULL;          // array of all sun vector data from STK
+unsigned long stk_num_of_sun_vec_points = 0;  // amount of records in sun_vec record array
+unsigned long stk_current_sun_vec_index = 0;  // index of the current element in the record array
+
 bool stk_sim_input_data_error = false;      // were there an error while initiating the simulation
 
+static void skipLinesInFile(unsigned int num,FILE *fp){
+    unsigned char buff;
+    for (unsigned int i = 0; i < num; ++i) {
+        while('\n' != (buff = getc(fp)));
+    }
+}
 static int SimSTK_GetNumberOfItemsInFile(FILE *fp){
     if(NULL == fp) {
         return -1;
@@ -49,6 +65,8 @@ static int SimSTK_ParseCsv(gps_record_t *point, char *line)
     char *ptr = strtok(temp, split_char);
     point->time = parseTime(temp);   //time
 
+
+    // parse position
     ptr = strtok(line, split_char);
     ptr = strtok(NULL, split_char);
     sscanf(ptr, "%lf", &point->position.posx);
@@ -57,6 +75,7 @@ static int SimSTK_ParseCsv(gps_record_t *point, char *line)
     ptr = strtok(NULL, split_char);
     sscanf(ptr, "%lf", &point->position.posz);
 
+    // parse velocity
     ptr = strtok(NULL, split_char);
     sscanf(ptr, "%lf", &point->velocity.velx);
     ptr = strtok(NULL, split_char);
@@ -66,57 +85,96 @@ static int SimSTK_ParseCsv(gps_record_t *point, char *line)
 
     return 0;
 }
+static int SimSTK_ParseSunVec(sun_vec_t *point, char *line){
+    char split_char[] = ",";
+    char temp[BUFFER_SIZE];
+    if(NULL == memcpy(temp,line,BUFFER_SIZE)){
+        TRACE_ERROR(memcpy,-666);
+        return -2;
+    }
+
+    char *ptr = strtok(temp, split_char);
+    point->time = parseTime(temp);   //time
+
+    ptr = strtok(line, split_char);
+    ptr = strtok(NULL, split_char);
+    sscanf(ptr, "%lf", &point->position.posx);
+    ptr = strtok(NULL, split_char);
+    sscanf(ptr, "%lf", &point->position.posy);
+    ptr = strtok(NULL, split_char);
+    sscanf(ptr, "%lf", &point->position.posz);
+
+    return 0;
+}
 
 int SimSTK_initStkRecords(){
+    pthread_mutex_init(&mutex_sat_pos_data, NULL);
+    pthread_mutex_init(&mutex_sun_vec_data,NULL);
 
-    pthread_mutex_init(&record_mutex_lock, NULL);
-
-    fp_gps_data = fopen(GPS_DATA_CSV_PATH,"r");
+    fp_gps_data = fopen(GPS_SAT_POS_VEC_CSV_PATH, "r");
     TRACE_ERROR(fopen in GPS SIM,(NULL == fp_gps_data));
-    if(NULL == fp_gps_data){
+
+    fp_sunvec = fopen(GPS_SUN_VEC_PATH,"r");
+    TRACE_ERROR(fopen in GPS SIM,(NULL == fp_sunvec));
+
+    if(NULL == fp_gps_data || NULL == fp_sunvec){
         stk_sim_input_data_error = true;
         return GPS_ERR_IO_ERR_FOPEN;
     }
-    int num_of_lines = SimSTK_GetNumberOfItemsInFile(fp_gps_data);
-
-    stk_num_of_data_records = (num_of_lines - 1);
-    stk_data_records = (gps_record_t*)malloc( stk_num_of_data_records * sizeof(*stk_data_records));
-
     char line[BUFFER_SIZE];
-    for (int i = 1; i < num_of_lines; ++i) {    // first line is a header and will not be used
-        SimSTK_ParseCsv(&stk_data_records[i], line);
+
+    int num_of_lines = SimSTK_GetNumberOfItemsInFile(fp_gps_data);
+    stk_num_of_gps_points = (num_of_lines - GPS_SAT_POS_CSV_FILE_LINE_OFFSET);
+    stk_gps_data_points = (gps_record_t*)malloc(stk_num_of_gps_points * sizeof(*stk_gps_data_points));
+    TRACE_ERROR(malloc,(NULL == stk_gps_data_points));
+
+    skipLinesInFile(GPS_SAT_POS_CSV_FILE_LINE_OFFSET,fp_gps_data);
+    for (unsigned int i = 0; i < stk_num_of_gps_points; ++i) {    // first line is a header and will not be used
+        getLine(fp_gps_data,line);
+        SimSTK_ParseCsv(&stk_gps_data_points[i], line);
+    }
+
+    num_of_lines = SimSTK_GetNumberOfItemsInFile(fp_sunvec);
+    stk_num_of_sun_vec_points = num_of_lines - GPS_SUN_VEC_CSV_FILE_LINE_OFFSET;
+    stk_sun_vectors = (sun_vec_t*)malloc(stk_num_of_sun_vec_points * sizeof(*stk_sun_vectors));
+    TRACE_ERROR(malloc,(NULL == stk_sun_vectors));
+
+    skipLinesInFile(GPS_SUN_VEC_CSV_FILE_LINE_OFFSET,fp_sunvec);
+    for (unsigned int j = 0; j < stk_num_of_sun_vec_points; ++j) {
+        getLine(fp_sunvec,line);
+        SimSTK_ParseSunVec(&stk_sun_vectors[j],line);
     }
     return GPS_ERR_SUCCESS;
 }
 
 int SimSTK_GetStkDataRecordAtIndex(gps_record_t *record, unsigned long index){
-    if(NULL == stk_data_records){
+    if(NULL == stk_gps_data_points){
         return GPS_ERR_NOT_INITIALISED;
     }
     if(NULL == record){
         return GPS_ERR_NULL_POINTER;
     }
-    if(index > stk_num_of_data_records){
+    if(index > stk_num_of_gps_points){
         return GPS_ERR_PARAMETER_ERR;
     }
-    pthread_mutex_lock(&record_mutex_lock);
-    if(NULL == memcpy((void*)record,(void*)&stk_data_records[index],sizeof(*record))){
-        pthread_mutex_unlock(&record_mutex_lock);
+    pthread_mutex_lock(&mutex_sat_pos_data);
+    if(NULL == memcpy((void*)record, (void*)&stk_gps_data_points[index], sizeof(*record))){
+        pthread_mutex_unlock(&mutex_sat_pos_data);
         return GPS_ERR_MEM_ERROR;
     }
-    pthread_mutex_unlock(&record_mutex_lock);
+    pthread_mutex_unlock(&mutex_sat_pos_data);
     return GPS_ERR_SUCCESS;
 }
 
 // returns the most updated record from the STK
-int SimSTK_GetCurrentStkDataRecord(gps_record_t *record){
-    int err = SimSTK_GetStkDataRecordRange(record,1);
-    TRACE_ERROR(reached end of data points in 'SimSTK_GetCurrentStkDataRecord' , -1);
+int SimSTK_GetCurrentStkSatPosition(gps_record_t *record){
+    int err = SimSTK_GetStkSatPositionRange(record, 1);
+    TRACE_ERROR(reached end of data points in 'SimSTK_GetCurrentStkSatPosition' , -1);
     return -1;
 }
 
 // returns a range from the current time
-int SimSTK_GetStkDataRecordRange(gps_record_t *records, unsigned int num_of_records){
+int SimSTK_GetStkSatPositionRange(gps_record_t *records, unsigned int num_of_records){
     if(0 == num_of_records){
         return 0;
     }
@@ -132,21 +190,57 @@ int SimSTK_GetStkDataRecordRange(gps_record_t *records, unsigned int num_of_reco
     if(num_of_records - 1> stk_current_record_index){
         num_of_records = stk_current_record_index;
     }
-    pthread_mutex_lock(&record_mutex_lock);
-    for (unsigned int i = stk_current_record_index; i < stk_num_of_data_records; ++i) {
-        if(stk_data_records[i].time > current_time){
+    pthread_mutex_lock(&mutex_sat_pos_data);
+    for (unsigned int i = stk_current_record_index; i < stk_num_of_gps_points; ++i) {
+        if(stk_gps_data_points[i].time > current_time){
             stk_current_record_index = i;
-            if(NULL == memcpy(records, &stk_data_records[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
+            if(NULL == memcpy(records, &stk_gps_data_points[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
 
                 err =  GPS_ERR_MEM_ERROR;
             }
             err =  GPS_ERR_SUCCESS;
         }
     }
-    pthread_mutex_unlock(&record_mutex_lock);
+    pthread_mutex_unlock(&mutex_sat_pos_data);
     return err;
 }
 
+int SimSTK_GetStkSunPosition(sun_vec_t *records, unsigned int num_of_records){
+    if(0 == num_of_records){
+        return 0;
+    }
+    if(NULL == records){
+        return GPS_ERR_NULL_POINTER;
+    }
+    int err = 0;
+    atomic_time_t current_time = 0;
+    current_time = SimRTC_GetSimulationTime();
+    if(0 != err){
+        return err;
+    }
+    if(num_of_records - 1> stk_current_sun_vec_index){
+        num_of_records = stk_current_sun_vec_index;
+    }
+    pthread_mutex_lock(&mutex_sun_vec_data);
+    for (unsigned int i = stk_current_sun_vec_index; i < stk_num_of_sun_vec_points; ++i) {
+        if(stk_sun_vectors[i].time > current_time){
+            stk_current_sun_vec_index = i;
+            if(NULL == memcpy(records, &stk_sun_vectors[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
+
+                err =  GPS_ERR_MEM_ERROR;
+            }
+            err =  GPS_ERR_SUCCESS;
+        }
+    }
+    pthread_mutex_unlock(&mutex_sun_vec_data);
+    return err;
+}
+
+int SimStk_GetCurrentStkSunVec(sun_vec_t *record){
+    int err = SimSTK_GetStkSunPosition(record, 1);
+    TRACE_ERROR(reached end of data points in 'SimStk_GetCurrentStkSunVec' , -1);
+    return -1;
+}
 // ------------------------------- TESTS
 static int SimSTK_ParseLineTest(){
     int err = 0;
@@ -177,7 +271,7 @@ static int SimSTK_ParseLineTest(){
 }
 static int SimSTK_Lines_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
-    FILE *fp = fopen(GPS_DATA_CSV_PATH,"r");
+    FILE *fp = fopen(GPS_SAT_POS_VEC_CSV_PATH, "r");
     int num_of_lines = SimSTK_GetNumberOfItemsInFile(fp);
     if(num_of_lines == 0){
         printf("Gps_Test: Empty test file\n");
@@ -190,6 +284,7 @@ static int SimSTK_Lines_Test(unsigned int num_of_lines_in_test_file){
 }
 int SimSTK_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
+    err += SimSTK_initStkRecords();
     err += SimSTK_Lines_Test(num_of_lines_in_test_file);
     err += SimSTK_ParseLineTest();
 

@@ -122,6 +122,33 @@ SImProject/fast:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/build
 .PHONY : SImProject/fast
 
+SimFiles/GenericHelpFunctions.obj: SimFiles/GenericHelpFunctions.c.obj
+
+.PHONY : SimFiles/GenericHelpFunctions.obj
+
+# target to build an object file
+SimFiles/GenericHelpFunctions.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj
+.PHONY : SimFiles/GenericHelpFunctions.c.obj
+
+SimFiles/GenericHelpFunctions.i: SimFiles/GenericHelpFunctions.c.i
+
+.PHONY : SimFiles/GenericHelpFunctions.i
+
+# target to preprocess a source file
+SimFiles/GenericHelpFunctions.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.i
+.PHONY : SimFiles/GenericHelpFunctions.c.i
+
+SimFiles/GenericHelpFunctions.s: SimFiles/GenericHelpFunctions.c.s
+
+.PHONY : SimFiles/GenericHelpFunctions.s
+
+# target to generate assembly for a file
+SimFiles/GenericHelpFunctions.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.s
+.PHONY : SimFiles/GenericHelpFunctions.c.s
+
 SimFiles/SimEPS.obj: SimFiles/SimEPS.c.obj
 
 .PHONY : SimFiles/SimEPS.obj
@@ -374,6 +401,9 @@ help:
 	@echo ... SImProject
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... SimFiles/GenericHelpFunctions.obj
+	@echo ... SimFiles/GenericHelpFunctions.i
+	@echo ... SimFiles/GenericHelpFunctions.s
 	@echo ... SimFiles/SimEPS.obj
 	@echo ... SimFiles/SimEPS.i
 	@echo ... SimFiles/SimEPS.s
