@@ -197,8 +197,10 @@ int SimSTK_GetStkSatPositionRange(gps_record_t *records, unsigned int num_of_rec
             if(NULL == memcpy(records, &stk_gps_data_points[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
 
                 err =  GPS_ERR_MEM_ERROR;
+                break;
             }
             err =  GPS_ERR_SUCCESS;
+            break;
         }
     }
     pthread_mutex_unlock(&mutex_sat_pos_data);
@@ -228,8 +230,10 @@ int SimSTK_GetStkSunPosition(sun_vec_t *records, unsigned int num_of_records){
             if(NULL == memcpy(records, &stk_sun_vectors[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
 
                 err =  GPS_ERR_MEM_ERROR;
+                break;
             }
             err =  GPS_ERR_SUCCESS;
+            break;
         }
     }
     pthread_mutex_unlock(&mutex_sun_vec_data);
@@ -238,8 +242,8 @@ int SimSTK_GetStkSunPosition(sun_vec_t *records, unsigned int num_of_records){
 
 int SimStk_GetCurrentStkSunVec(sun_vec_t *record){
     int err = SimSTK_GetStkSunPosition(record, 1);
-    TRACE_ERROR(reached end of data points in 'SimStk_GetCurrentStkSunVec' , -1);
-    return -1;
+    TRACE_ERROR(reached end of data points in 'SimStk_GetCurrentStkSunVec' , err);
+    return 0;
 }
 // ------------------------------- TESTS
 static int SimSTK_ParseLineTest(){
@@ -282,6 +286,18 @@ static int SimSTK_Lines_Test(unsigned int num_of_lines_in_test_file){
     TRACE_ERROR(SimSTK_GetNumberOfItemsInFile, num_of_lines_in_test_file - num_of_lines);
     return err;
 }
+
+int SimSTK_PrintSunVec(sun_vec_t *vec){
+    if(NULL == vec){
+        return -1;
+    }
+    printf("Sun vector:\n\n");
+    printf("time = %lf\n",vec->time);
+    printf("posx = %lf\n",vec->position.posx);
+    printf("posy = %lf\n",vec->position.posy);
+    printf("posz = %lf\n\n",vec->position.posz);
+}
+
 int SimSTK_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
     err += SimSTK_initStkRecords();
