@@ -169,8 +169,8 @@ int SimSTK_GetStkDataRecordAtIndex(gps_record_t *record, unsigned long index){
 // returns the most updated record from the STK
 int SimSTK_GetCurrentStkSatPosition(gps_record_t *record){
     int err = SimSTK_GetStkSatPositionRange(record, 1);
-    TRACE_ERROR(reached end of data points in 'SimSTK_GetCurrentStkSatPosition' , -1);
-    return -1;
+    TRACE_ERROR(reached end of data points in 'SimSTK_GetCurrentStkSatPosition' , err);
+    return 0;
 }
 
 // returns a range from the current time
@@ -192,7 +192,7 @@ int SimSTK_GetStkSatPositionRange(gps_record_t *records, unsigned int num_of_rec
     }
     pthread_mutex_lock(&mutex_sat_pos_data);
     for (unsigned int i = stk_current_record_index; i < stk_num_of_gps_points; ++i) {
-        if(stk_gps_data_points[i].time > current_time){
+        if(stk_gps_data_points[i].time + GPS_SAT_POS_SAMPLE_TIME >= current_time){
             stk_current_record_index = i;
             if(NULL == memcpy(records, &stk_gps_data_points[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
 
@@ -225,7 +225,7 @@ int SimSTK_GetStkSunPosition(sun_vec_t *records, unsigned int num_of_records){
     }
     pthread_mutex_lock(&mutex_sun_vec_data);
     for (unsigned int i = stk_current_sun_vec_index; i < stk_num_of_sun_vec_points; ++i) {
-        if(stk_sun_vectors[i].time > current_time){
+        if(stk_sun_vectors[i].time + GPS_SUN_VEC_SAMPLE_TIME >= current_time){
             stk_current_sun_vec_index = i;
             if(NULL == memcpy(records, &stk_sun_vectors[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
 
@@ -291,13 +291,25 @@ int SimSTK_PrintSunVec(sun_vec_t *vec){
     if(NULL == vec){
         return -1;
     }
-    printf("Sun vector:\n\n");
+    printf("Sun vector:\n");
     printf("time = %lf\n",vec->time);
     printf("posx = %lf\n",vec->position.posx);
     printf("posy = %lf\n",vec->position.posy);
     printf("posz = %lf\n\n",vec->position.posz);
 }
-
+int SimSTK_PrintfSatPos(gps_record_t *vec){
+    if(NULL == vec){
+        return -1;
+    }
+    printf("satellite position:\n");
+    printf("time = %lf\n",vec->time);
+    printf("posx = %lf\n",vec->position.posx);
+    printf("posy = %lf\n",vec->position.posy);
+    printf("posz = %lf\n",vec->position.posz);
+    printf("velx = %lf\n",vec->velocity.velx);
+    printf("vely = %lf\n",vec->velocity.vely);
+    printf("velz = %lf\n\n",vec->velocity.velz);
+}
 int SimSTK_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
     err += SimSTK_initStkRecords();

@@ -31,21 +31,25 @@ typedef enum {
 #define RTC_TICK_TIME_PERIOD  ((double)(1))             // Time measure for a single cycle[uSec]
 #define RTC_TICKS_PER_SECOND  (2500000)                 // How many ticks does the simulated RTC have in a simulated second
 
-#define RTC_DEFAULT_START_TIME (1577354400.0)//(1577836800.0)           // Default time after reset (1577836800 = 1/1/2020 00:00:00) for the satellite
+#define RTC_DEFAULT_START_TIME (1577836800.0)           // Default time after reset (1577836800 = 1/1/2020 00:00:00) for the satellite
 // Time at which the simulation starts
-#define RTC_SIMULATION_START_TIME ((1577354400.0))      // THIS IS ALSO THE START TIME OF THE STK SIMULATION
+#define RTC_SIMULATION_START_TIME ((1577836800.0))      // THIS IS ALSO THE START TIME OF THE STK SIMULATION
 
 //TODO: translate real usec to simulated usec
-#define SimThreadSleep(sim_time_us)  (usleep(sim_time_us))    // send thread to sleep for micro-seconds (simulation time)
+#define SimThreadSleep(sim_time_us)  (usleep(sim_time_us))    // send thread to sleep for micro-seconds (simulation time) //TODO: fix to be correct
 //-------------------------------------------GPS Propagator
 #define GPS_USE_PRINTS 0
 #define GPS_MIN_TIME_STEP   1   // [sec]
 
 #define GPS_SAT_POS_VEC_CSV_PATH   ("C:\\Users\\97250\\Downloads\\Satellite1_J2000_Position_Velocity.csv") // path of STK file- satellite position over time
 #define GPS_SAT_POS_CSV_FILE_LINE_OFFSET (1)
+#define GPS_SAT_POS_SAMPLE_TIME (60.0)    // sample time period between STK records [sec]
+
 
 #define GPS_SUN_VEC_PATH    ("C:\\Users\\97250\\Downloads\\Equl_Sun_Vector_J2000.txt")// path of STK file- sun position over time
 #define GPS_SUN_VEC_CSV_FILE_LINE_OFFSET (5)
+#define GPS_SUN_VEC_SAMPLE_TIME (10.0)    // sample time period between STK records [sec]
+
 
 #define GPS_USE_ANOMALLIEY 0
 #define  GPS_USE_TIME_DIALATION 0
