@@ -29,7 +29,7 @@ typedef enum {
 
 
 #define RTC_TICK_TIME_PERIOD  ((double)(1))             // Time measure for a single cycle[uSec]
-#define RTC_TICKS_PER_SECOND  (1400000)                 // How many ticks does the simulated RTC have in a simulated second
+#define RTC_TICKS_PER_SECOND  (2500000)                 // How many ticks does the simulated RTC have in a simulated second
 
 #define RTC_DEFAULT_START_TIME (1577836800.0)           // Default time after reset (1577836800 = 1/1/2020 00:00:00) for the satellite
 // Time at which the simulation starts
