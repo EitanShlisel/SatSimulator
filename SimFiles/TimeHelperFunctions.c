@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "TimeHelperFunctions.h"
 
@@ -26,12 +27,22 @@ time_t TimeToUnix(Time *_time)
     curr_date.tm_mon = _time->month - 1;
     curr_date.tm_mday = _time->date;
     curr_date.tm_wday = _time->day - 1;
-    curr_date.tm_hour = _time->hours + 2;
+    curr_date.tm_hour = _time->hours;
     curr_date.tm_min = _time->minutes;
     curr_date.tm_sec = _time->seconds;
     curr_date.tm_isdst = -1; // no dailight saving
 
     return mktime(&curr_date);
+}
+
+void PrintTime(Time *_time){
+    printf("seconds  = %d\n",_time->seconds);
+    printf("minutes  = %d\n",_time->minutes);
+    printf("hours  = %d\n",_time->hours);
+    printf("day  = %d\n",_time->day);
+    printf("date  = %d\n",_time->date);
+    printf("month  = %d\n",_time->month);
+    printf("year  = %d\n",_time->year);
 }
 
 int monthToInt(char *month){

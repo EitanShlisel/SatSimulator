@@ -4,6 +4,8 @@
 #include <time.h>
 #include "../SubsystemModules/Time.h"
 
+void PrintTime(Time *_time);
+
 int UnixToTime(Time *_time,time_t tim);
 
 time_t TimeToUnix(Time *_time);

@@ -16,7 +16,7 @@ int Time_start(Time *_time, unsigned int syncInterval){
         return -1;
     }
     RTC_start();
-    if(RTC_checkTimeValid(_time)){
+    if(!RTC_checkTimeValid(_time)){
         RTC_setTime(_time);
     }else{
         return -2;

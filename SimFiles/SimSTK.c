@@ -184,18 +184,15 @@ int SimSTK_GetStkSatPositionRange(gps_record_t *records, unsigned int num_of_rec
     int err = 0;
     atomic_time_t current_time = 0;
     current_time = SimRTC_GetSimulationTime(); // TODO: change to real time from SimRTC
-    if(0 != err){
-        return err;
-    }
+
     if(num_of_records - 1> stk_current_record_index){
         num_of_records = stk_current_record_index;
     }
     pthread_mutex_lock(&mutex_sat_pos_data);
     for (unsigned int i = stk_current_record_index; i < stk_num_of_gps_points; ++i) {
-        if(stk_gps_data_points[i].time + GPS_SAT_POS_SAMPLE_TIME >= current_time){
+        if(stk_gps_data_points[i].time  + GPS_SAT_POS_SAMPLE_TIME >= current_time){
             stk_current_record_index = i;
             if(NULL == memcpy(records, &stk_gps_data_points[i - (num_of_records - 1) ], sizeof(*records) * num_of_records)){
-
                 err =  GPS_ERR_MEM_ERROR;
                 break;
             }

@@ -32,7 +32,7 @@ int RTC_setTime(Time *time) {
     }
     if(NULL == time){
         return -1;
-    }
+    }//
     atomic_time_t tm;
     tm = (atomic_time_t)TimeToUnix(time);
     SimRTC_SetSatTime(tm);
