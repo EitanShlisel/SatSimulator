@@ -1,14 +1,13 @@
 #ifndef SIMPROJECT_SIMI2C_H
 #define SIMPROJECT_SIMI2C_H
 
+#include <stdbool.h>
 #include "SimulationConfigurations.h"
-// to add a subsystem to the simulation add an element to this enum!
-
 
 typedef  enum {
     I2C_ERR_SUCCESS,
-    I2C_ERR_SUBSYS_EXISTS,
-    I2C_ERR_MASTER_EXISTS,
+    I2C_ERR_SUBSYS_ALREADY_EXISTS,
+    I2C_ERR_MASTER_ALREADY_EXISTS,
     I2C_ERR_NULL_POINTER,
     I2C_ERR_INVALID_PARAM,
     I2C_ERR_FAIL
@@ -19,17 +18,24 @@ typedef enum{
     I2C_MASTER
 }SlaveMaster;
 
-
 // this function will handle further analysis of the message sent from the master internally
 typedef int(*i2c_subsys_func_t)(char opcode, char* buffer, unsigned int length);
 
-//returns buffer length of command with opcode 'opcode'
-typedef int(*i2c_buff_length_func_t)(char opcode, unsigned int *length);
+//returns buffer length for a command with opcode 'opcode'. Should be a deterministic function
+typedef int(*i2c_get_buff_length_func_t)(char opcode, unsigned int *length);
+
+typedef struct{
+    bool exists;                                            // notes if a subsystem has been added to the simulator
+    unsigned char i2c_addr;                                 // the unique I2C address to which this sub-system belong to
+    SlaveMaster status;                                     // declaring if this subsystem is a Mater or a Slave (there can be only one master)
+    i2c_subsys_func_t p_subsys_function;                    // the actual subsystem working function(should depend heavily on a ( switch(opcode) statement)
+    i2c_get_buff_length_func_t p_buffer_length_function;    // returns the expected buffer length for a command with a specific opcode
+    SatSubsystem sub_system;                                // which subsystem are we talking about
+}I2cSubsystemData_t;
 
 // to add a subsystem to the I2C simulation use this function
 // USE THIS BEFORE STARTING THE I2C SIMULATION TO ALL RELEVANT SUBSYSTEMS
-I2C_ERR SimI2C_AddSubSys(SatSubsystem subsys, SlaveMaster status, unsigned char subsys_addr,
-        i2c_subsys_func_t pfunc, i2c_buff_length_func_t buff_func);
+I2C_ERR SimI2C_AddSubSys(SatSubsystem subsys, I2cSubsystemData_t *i2c_subsys_data);
 
 
 // start the I2C communication module simulation
