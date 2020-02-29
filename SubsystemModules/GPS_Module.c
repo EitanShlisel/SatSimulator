@@ -2,25 +2,31 @@
 #define _GNU_SOURCE
 #include "RTC.h"
 #include "../SimFiles/SimulationConfigurations.h"
+#include "../SimFiles/GenericHelpFunctions.h"
+#include "../SimFiles/SimSTK.h"
 #include "GPS_Module.h"
 
 #include <time.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-#include "../SimFiles/SimSTK.h"
 
 
 bool gps_init_flag = false;                 // was the init successful
 
-static void Gps_AddAnomalies(gps_record_t *point)
-{
-#if(1 == GPS_USE_ANOMALLIEY)
-    #if(1 == GPS_USE_TIME_DIALATION)
-        //TODO: add time dialations...
-        #endif
-#endif
+static void Gps_AddAnomalies(gps_record_t *point){
+    int rnd = rand();
+    double dphi = GnrHelper_GenerateUniformInRange(0,360);
+    double dr = GnrHelper_GenerateGaussianNoise(GPS_RADIUS_DIST_MEAN, GPS_RADIUS_DIST_STD);
+    double dtan = GnrHelper_GenerateGaussianNoise(GPS_TANGENT_DIST_MEAN, GPS_TANGENT_DIST_STD);
+
+    point->time += GnrHelper_GenerateGaussianNoise(GPS_TIME_DIST_MEAN, GPS_TIME_DIST_STD);
+    //TODO: complete calculations...
+    point->position.posx = point->position.posx;
+    point->position.posy = point->position.posy;
+    point->position.posz = point->position.posz;
 }
 
 int GPS_Init(){

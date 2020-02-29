@@ -31,6 +31,7 @@ typedef struct{
     i2c_subsys_func_t p_subsys_function;                    // the actual subsystem working function(should depend heavily on a ( switch(opcode) statement)
     i2c_get_buff_length_func_t p_buffer_length_function;    // returns the expected buffer length for a command with a specific opcode
     SatSubsystem sub_system;                                // which subsystem are we talking about
+    char i2c_data_buffer[I2C_MAX_SDA_BUFFER_SIZE];          // holds data to be read from Slave by the Master
 }I2cSubsystemData_t;
 
 // to add a subsystem to the I2C simulation use this function

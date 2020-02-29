@@ -6,7 +6,10 @@ CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj: ../SimFiles/Gener
 
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.c
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimRTC.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimSolar.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimulationConfigurations.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SubsystemModules/GPS_types.h
 
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimI2C.c
@@ -28,11 +31,19 @@ CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SubsystemModules/Time.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SubsystemModules/boolean.h
 
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimRTC.h
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimSTK.h
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimSolar.c
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimSolar.h
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimulationConfigurations.h
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SubsystemModules/GPS_types.h
+
 CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj: ../SimFiles/TimeHelperFunctions.c
 CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj: ../SimFiles/TimeHelperFunctions.h
 CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj: ../SubsystemModules/Time.h
 CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj: ../SubsystemModules/boolean.h
 
+CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/GenericHelpFunctions.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimSTK.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SubsystemModules/GPS_Module.c

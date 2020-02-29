@@ -16,7 +16,9 @@ int SimSTK_GetStkSatPositionRange(gps_record_t *records, unsigned int num_of_rec
 
 int SimSTK_GetStkSunPosition(sun_vec_t *records, unsigned int num_of_records);
 
-int SimStk_GetCurrentStkSunVec(sun_vec_t *record);
+int SimSTK_GetCurrentStkSunVec(sun_vec_t *record);
+
+atomic_time_t SimSTK_GetOrbitTime();
 
 // -------------------------------------------------- TESTS
 int SimSTK_Test(unsigned int num_of_lines_in_test_file);

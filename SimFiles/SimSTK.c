@@ -237,10 +237,15 @@ int SimSTK_GetStkSunPosition(sun_vec_t *records, unsigned int num_of_records){
     return err;
 }
 
-int SimStk_GetCurrentStkSunVec(sun_vec_t *record){
+int SimSTK_GetCurrentStkSunVec(sun_vec_t *record){
     int err = SimSTK_GetStkSunPosition(record, 1);
     TRACE_ERROR(reached end of data points in 'SimStk_GetCurrentStkSunVec' , err);
     return 0;
+}
+
+atomic_time_t SimSTK_GetOrbitTime(){
+    //TODO: calculate orbit time form keplerian element, or from position and velocity
+    return 5400.0;
 }
 // ------------------------------- TESTS
 static int SimSTK_ParseLineTest(){

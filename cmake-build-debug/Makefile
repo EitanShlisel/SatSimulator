@@ -257,6 +257,33 @@ SimFiles/SimSTK.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.s
 .PHONY : SimFiles/SimSTK.c.s
 
+SimFiles/SimSolar.obj: SimFiles/SimSolar.c.obj
+
+.PHONY : SimFiles/SimSolar.obj
+
+# target to build an object file
+SimFiles/SimSolar.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj
+.PHONY : SimFiles/SimSolar.c.obj
+
+SimFiles/SimSolar.i: SimFiles/SimSolar.c.i
+
+.PHONY : SimFiles/SimSolar.i
+
+# target to preprocess a source file
+SimFiles/SimSolar.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.i
+.PHONY : SimFiles/SimSolar.c.i
+
+SimFiles/SimSolar.s: SimFiles/SimSolar.c.s
+
+.PHONY : SimFiles/SimSolar.s
+
+# target to generate assembly for a file
+SimFiles/SimSolar.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.s
+.PHONY : SimFiles/SimSolar.c.s
+
 SimFiles/TimeHelperFunctions.obj: SimFiles/TimeHelperFunctions.c.obj
 
 .PHONY : SimFiles/TimeHelperFunctions.obj
@@ -416,6 +443,9 @@ help:
 	@echo ... SimFiles/SimSTK.obj
 	@echo ... SimFiles/SimSTK.i
 	@echo ... SimFiles/SimSTK.s
+	@echo ... SimFiles/SimSolar.obj
+	@echo ... SimFiles/SimSolar.i
+	@echo ... SimFiles/SimSolar.s
 	@echo ... SimFiles/TimeHelperFunctions.obj
 	@echo ... SimFiles/TimeHelperFunctions.i
 	@echo ... SimFiles/TimeHelperFunctions.s
