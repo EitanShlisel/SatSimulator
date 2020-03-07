@@ -11,7 +11,7 @@ unsigned long long SimRTC_GetClockCycleCount();
 atomic_time_t  SimRTC_GetSimulationTime();
 
 //returns the time the satellite thinks it is
-atomic_time_t SimRtc_GetSatTime();
+atomic_time_t SimRTC_GetSatTime();
 
 int SimRTC_Init();
 

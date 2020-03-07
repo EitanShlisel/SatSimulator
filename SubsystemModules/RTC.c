@@ -46,7 +46,7 @@ int RTC_getTime(Time *time){
     if(NULL == time){
         return -1;
     }
-    atomic_time_t tm  = SimRtc_GetSatTime();
+    atomic_time_t tm  = SimRTC_GetSatTime();
     UnixToTime(time,tm);
     SimRTC_SetSatTime(tm);
     return 0;

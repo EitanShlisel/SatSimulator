@@ -5,38 +5,53 @@ CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.h
- C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.h
- C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
- C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
- C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.h
- C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.c
@@ -45,8 +60,11 @@ CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
- C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h

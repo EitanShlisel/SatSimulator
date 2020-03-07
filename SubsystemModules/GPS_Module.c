@@ -1,7 +1,7 @@
 #define _XOPEN_SOURCE
 #define _GNU_SOURCE
 #include "RTC.h"
-#include "../SimFiles/SimulationConfigurations.h"
+#include "../SimFiles/SimConfigFiles/SimulationConfigurations.h"
 #include "../SimFiles/GenericHelpFunctions.h"
 #include "../SimFiles/SimSTK.h"
 #include "GPS_Module.h"
@@ -17,6 +17,7 @@
 bool gps_init_flag = false;                 // was the init successful
 
 static void Gps_AddAnomalies(gps_record_t *point){
+#if(GPS_SPHERICAL_ANOMALY == 1)
     int rnd = rand();
     double dphi = GnrHelper_GenerateUniformInRange(0,360);
     double dr = GnrHelper_GenerateGaussianNoise(GPS_RADIUS_DIST_MEAN, GPS_RADIUS_DIST_STD);
@@ -24,9 +25,13 @@ static void Gps_AddAnomalies(gps_record_t *point){
 
     point->time += GnrHelper_GenerateGaussianNoise(GPS_TIME_DIST_MEAN, GPS_TIME_DIST_STD);
     //TODO: complete calculations...
-    point->position.posx = point->position.posx;
-    point->position.posy = point->position.posy;
-    point->position.posz = point->position.posz;
+
+#endif
+#if(GPS_CARTESIAN_ANOMALY == 1)
+    point->position.posx = point->position.posx + GnrHelper_GenerateGaussianNoise(GPS_X_DIST_MEAN,GPS_X_DIST_STD);
+    point->position.posy = point->position.posy + GnrHelper_GenerateGaussianNoise(GPS_Y_DIST_MEAN,GPS_Y_DIST_STD);
+    point->position.posz = point->position.posz + GnrHelper_GenerateGaussianNoise(GPS_Z_DIST_MEAN,GPS_Z_DIST_STD);
+#endif
 }
 
 int GPS_Init(){
