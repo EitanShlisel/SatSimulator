@@ -8,7 +8,7 @@
 
 #include "SimI2C.h"
 #include "SimEPS.h"
-#include "SimulationConfigurations.h"
+#include "SimConfigFiles/SimulationConfigurations.h"
 
 #define GET_7BIT_ADDR(addr) ((addr) & 0x7F)
 #define IsReadCommand(addr)   ((addr) & 0x80)

@@ -86,6 +86,15 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h">
 			<Option target="SImProject"/>
 		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.c">
 			<Option target="SImProject"/>
 		</Unit>

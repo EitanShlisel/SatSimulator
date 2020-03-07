@@ -6,37 +6,21 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.c
 stdbool.h
 -
-SimulationConfigurations.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
-
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c
+math.h
+-
+float.h
+-
 stdlib.h
 -
-pthread.h
+GenericHelpFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+stdlib.h
 -
-semaphore.h
--
-string.h
--
-SimI2C.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.h
-SimEPS.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.h
-SimulationConfigurations.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.h
-stdbool.h
--
-SimulationConfigurations.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
-
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimulationConfigurations.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
 stdio.h
--
-unistd.h
 -
 

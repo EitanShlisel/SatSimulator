@@ -2,7 +2,7 @@
 #define SIMPROJECT_SIMI2C_H
 
 #include <stdbool.h>
-#include "SimulationConfigurations.h"
+#include "SimConfigFiles/SimulationConfigurations.h"
 
 typedef  enum {
     I2C_ERR_SUCCESS,

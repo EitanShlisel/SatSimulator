@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include "../SimFiles/SimulationConfigurations.h"
+#include "SimConfigFiles/SimulationConfigurations.h"
 
 pthread_t rtc_thread_id;
 _sigset_t sig = SIG_DFL;
@@ -31,7 +31,7 @@ atomic_time_t  SimRTC_GetSimulationTime(){
 }
 
 //returns the time the satellite thinks it is
-atomic_time_t SimRtc_GetSatTime(){
+atomic_time_t SimRTC_GetSatTime(){
     return (sat_time + (atomic_time_t)(SimRTC_GetClockCycleCount()) / RTC_TICKS_PER_SECOND);
 }
 
