@@ -6,9 +6,18 @@
 
 // production of current with MPP @ 2.275[V] and 6 solar panels of 30.18[cm^2] with 26.8%
 double SimSolar_GetSolarCurrentProduction(){
-//    atomic_time_t curr_time = SimRTC_GetSimulationTime();
-//    double current = 6 *  SOLAR_AVERAGE_CURRENT_PRODUCTION_mA *
-//            (0.5 + 0.5 * sin(2 * M_PI * curr_time / SimSTK_GetOrbitTime()));   //mA
+    double current = 0;
+
+#if (SOLAR_USE_SINE_FLUX_ON_PANELS == 1)
+    current = (6 *  SOLAR_AVERAGE_CURRENT_PRODUCTION_mA) * sin(2*M_PI /5400.0);
+    if(current < 0){
+        current = 0;
+    }
+#if(SOLAR_USE_PRINTS  == 1)
+    printf("Solar Current Production = %lf\n",current);
+#endif
+    return current;
+#endif
     point sat_loc;
     point sun_loc;
     gps_record_t rec;
@@ -22,12 +31,15 @@ double SimSolar_GetSolarCurrentProduction(){
     TRACE_ERROR(SimSolar_GetSolarCurrentProduction,err)
     if(0!= err)
         return -2;
-    memcpy(&sat_loc ,&rec.position,sizeof(sat_loc));
-    memcpy(&sun_loc,&sun_vec.position,sizeof(sun_loc));
-    if(LineSphereIntersection(
+    memcpy(&sat_loc ,&rec.position,sizeof(sat_loc));        //satellite location
+    memcpy(&sun_loc,&sun_vec.position,sizeof(sun_loc));     //sun location
+    if(GnrHelper_LineSphereIntersection(
             sat_loc,
             sun_loc,
-            (point)STK_EARTH_COORDINATE_CARTESIAN,
-            STK_EARTH_RADIUS_km))
-    return 0;
+            (point) STK_EARTH_COORDINATE_CARTESIAN,
+            STK_EARTH_RADIUS_km)) {
+        return 0;
+    }
+    current = 6 *  SOLAR_AVERAGE_CURRENT_PRODUCTION_mA;
+    return current;
 }

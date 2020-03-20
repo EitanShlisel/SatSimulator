@@ -19,14 +19,37 @@
 #include <unistd.h>
 
 EpsConsumptionState_t fake_subsys_states[] = {
-        {true,5000,100},        //IDLE
-        {true,5000,1000},       // full on consumption
-        {true,3300,500}         // another state
-
+        {0,500, false},
+        {0,1000, false},
+        {1,1000, false}
 };
-void printPoint(point a){
-    printf("{x = %lf,y = %lf, z = %lf}\n",a.x,a.y,a.z);
-}
-int main(){
 
+int main(){
+    int err = 0;
+    err = SimRTC_Init();
+    TRACE_ERROR(SimRTC_Init,err);
+    err = SimEPS_AddConsumptionStates(SUBSYS_FAKE,fake_subsys_states,3);
+    TRACE_ERROR(SimEPS_AddConsumptionStates,err);
+    err = SimEPS_StartEps();
+    TRACE_ERROR(SimEPS_StartEps,err);
+    printStates(SUBSYS_FAKE);
+    double volt = 0;
+    int i=0;
+
+    while(true){
+        volt = SimEPS_GetBatteryVoltage();
+        sleep(1);
+        i++;
+        if(i ==3){
+            SimEPS_SetChannel(0,true);
+            SimEPS_SetSubsysState(SUBSYS_FAKE,0,true);
+        }
+        if(i == 6){
+            SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
+        }
+        if(i==9){
+            SimEPS_SetChannel(1,true);
+            SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
+        }
+    }
 }

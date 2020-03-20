@@ -13,5 +13,16 @@
 #define EPS_MAX_BATTERY_CHARGE_mAh (8500.0)
 #define EPS_INITIAL_BATTERY_CHARGE_mAh (8500.0)
 
+// to declare what voltage will be in a specific channel change this array
+#define EPS_CHANNEL_VOLTAGES {\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+    CHANNEL_VOLTAGE_5V,\
+};
 
 #endif //SIMPROJECT_SIMCONFIGEPS_H

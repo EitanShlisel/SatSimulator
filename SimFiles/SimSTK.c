@@ -111,7 +111,7 @@ int SimSTK_initStkRecords(){
     pthread_mutex_init(&mutex_sat_pos_data, NULL);
     pthread_mutex_init(&mutex_sun_vec_data,NULL);
 
-    fp_gps_data = fopen(TKS_SAT_POS_VEC_CSV_PATH, "r");
+    fp_gps_data = fopen(STK_SAT_POS_VEC_CSV_PATH, "r");
     TRACE_ERROR(fopen in GPS SIM,(NULL == fp_gps_data));
 
     fp_sunvec = fopen(STK_SUN_VEC_PATH, "r");
@@ -277,7 +277,7 @@ static int SimSTK_ParseLineTest(){
 }
 static int SimSTK_Lines_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;
-    FILE *fp = fopen(TKS_SAT_POS_VEC_CSV_PATH, "r");
+    FILE *fp = fopen(STK_SAT_POS_VEC_CSV_PATH, "r");
     int num_of_lines = SimSTK_GetNumberOfItemsInFile(fp);
     if(num_of_lines == 0){
         printf("Gps_Test: Empty test file\n");

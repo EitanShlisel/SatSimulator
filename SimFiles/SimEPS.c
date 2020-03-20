@@ -1,49 +1,79 @@
 #include "SimEPS.h"
 #include "SimRTC.h"
 #include "SimSolar.h"
+#include "GenericHelpFunctions.h"
+
 #include <stdlib.h>
 #include <math.h>
 #include <pthread.h>
+#include <semaphore.h>
 #include <stdbool.h>
-
-#define mAsec_to_mAh(mAsec) (double)(((double)(mAsec))/3600.0)
-
-
-
-typedef struct EpsMngr_t{
-    double *polynom_coeff;      // the interpolation polynomial of the batteries voltage vs discharge capacity [V] vs [mAh]
-    unsigned int pol_length;      // polynomial degree
-
-    double batt_temperature;         // temperature of batteries
-    double batt_discharge;             // how much charge in the battery [mAh]
-    double batt_volt;               // the batteroes voltage [Volt]
-
-    bool subsys_on[SUBSYS_NUM_OF_SUBSYSTEMS];       // flag of which subsystems are on and which are off
-    EpsConsumptionState_t *subsys_consumption_states[SUBSYS_NUM_OF_SUBSYSTEMS];
-    unsigned int num_of_states_per_subsys[SUBSYS_NUM_OF_SUBSYSTEMS];
-}EpsMngr_t;
-EpsMngr_t epsMngr;
 
 pthread_mutex_t mutex_eps_mngr = NULL;
 pthread_t eps_thread_id;
 
+typedef struct EpsMngr_t{
+    double *polynom_coeff;          // the interpolation polynomial of the batteries voltage vs discharge capacity [V] vs [mAh]
+    unsigned int pol_length;        // polynomial degree
+
+    double batt_discharge;          // how much charge in the battery [mAh]
+    double batt_temperature;        // temperature of batteries
+
+    bool subsys_on[SUBSYS_NUM_OF_SUBSYSTEMS];       // flag of which subsystems are on and which are off
+    sem_t channel_voltage_rise[EPS_CHANNEL_NUM_OF_CHANNELS]; // signal if a sub-system turned on
+
+    EpsConsumptionState_t *subsys_consumption_states[SUBSYS_NUM_OF_SUBSYSTEMS];
+    unsigned int num_of_states_per_subsys[SUBSYS_NUM_OF_SUBSYSTEMS];
+
+    bool is_channel_on[EPS_CHANNEL_NUM_OF_CHANNELS];        // if this channel is on or not; (true = on; false = off)
+    ChannelVoltage eps_channels[EPS_CHANNEL_NUM_OF_CHANNELS];
+
+}EpsMngr_t;
+
+EpsMngr_t epsMngr;
+
+double EpsMngr_GetChannelVoltageFromIndex(ChannelIndex chnl){
+    if(!epsMngr.is_channel_on[chnl]){//if channel is off -> output voltage = 0;
+        return 0;
+    }
+    switch(chnl){
+        case CHANNEL_VOLTAGE_3V3:
+            return 3300.0;
+        case CHANNEL_VOLTAGE_5V:
+            return 5000.0;
+        case CHANNEL_VOLTAGE_VBATT:
+            return SimEPS_GetBatteryVoltage();
+        default:
+            return 0;
+    }
+}
+
+bool EpsMngr_GetChannelState(ChannelIndex chnl){
+    return epsMngr.is_channel_on[chnl];
+}
+
+EpsConsumptionState_t EpsMngr_GetConsumptionState(SatSubsystem subsys, unsigned int state){
+    return epsMngr.subsys_consumption_states[subsys][state];
+}
+
+
 // ----------------------------------   API
 
-int SimEPS_AddCurrentConsumptionStates(SatSubsystem subsys,EpsConsumptionState_t *states, unsigned int length){
+int SimEPS_AddConsumptionStates(SatSubsystem subsys,EpsConsumptionState_t *states,unsigned int length){
    if(subsys >=SUBSYS_NUM_OF_SUBSYSTEMS || subsys < 0){
        return -1;
    }
    if(NULL == states){
        return -2;
    }
+    epsMngr.num_of_states_per_subsys[subsys] = length;
     epsMngr.subsys_consumption_states[subsys] = malloc(length * sizeof(EpsConsumptionState_t));
     memcpy(epsMngr.subsys_consumption_states[subsys],states,length * sizeof(EpsConsumptionState_t));
-    epsMngr.num_of_states_per_subsys[subsys] = length;
 
     // turn off all consumption states on init of EPS simulation
     for (unsigned int i = 0; i < SUBSYS_NUM_OF_SUBSYSTEMS; ++i) {
         for (unsigned int j = 0; j < epsMngr.num_of_states_per_subsys[i] ; ++j) {
-            epsMngr.subsys_consumption_states[i][j].is_channel_on = false;
+            epsMngr.subsys_consumption_states[i][j].is_state_on = false;
         }
     }
     return 0;
@@ -72,35 +102,48 @@ int SimEPS_SetSubsysOff(SatSubsystem subsys){
 
 int SimEPS_SetSubsysState(SatSubsystem subsys,unsigned int state_index, bool onOff){
     pthread_mutex_lock(&mutex_eps_mngr);
-        epsMngr.subsys_consumption_states[subsys][state_index].is_channel_on = onOff;
+        epsMngr.subsys_consumption_states[subsys][state_index].is_state_on = onOff;
     pthread_mutex_unlock(&mutex_eps_mngr);
     return 0;
 }
 
-// return positive values
-double SimEPS_GetCurrentConsumption(){
+int SimEPS_SetChannel(ChannelIndex chnl, bool onOff){
     pthread_mutex_lock(&mutex_eps_mngr);
+        epsMngr.is_channel_on[chnl] = onOff;
+    pthread_mutex_unlock(&mutex_eps_mngr);
+    return 0;
+}
 
-    double current_consumption = 0;
-    EpsConsumptionState_t temp;
+double SimEPS_GetCurrentThroughChannel(ChannelIndex chnl){
 
-    for (unsigned int subsys = 0; subsys < SUBSYS_NUM_OF_SUBSYSTEMS; ++subsys) {
-        if(epsMngr.subsys_on[subsys]){
-            for (unsigned int state = 0; state < epsMngr.num_of_states_per_subsys[subsys]; ++state) {
-                temp = epsMngr.subsys_consumption_states[subsys][state];
-                if(temp.is_channel_on){
-                    current_consumption += temp.avg_curr_consumption_mA;
-                }
+    double total_current = 0;
+    EpsConsumptionState_t state;
+    for (SatSubsystem subsys = 0; subsys < SUBSYS_NUM_OF_SUBSYSTEMS; ++subsys) {
+        for (unsigned int i = 0; i < epsMngr.num_of_states_per_subsys[subsys]; ++i) {
+            state = EpsMngr_GetConsumptionState(subsys,i);
+            if(state.is_state_on && (chnl == state.channel_index )){
+                total_current += GnrHelper_Ohms_PowerToCurrent_mA(
+                        state.avg_power_consumption_mW,
+                        EpsMngr_GetChannelVoltageFromIndex(state.channel_index));
             }
         }
+    }
+    return total_current;
+}
+
+double SimEPS_GetCurrentConsumption(){
+    pthread_mutex_lock(&mutex_eps_mngr);
+    double current_consumption = 0;
+
+    for (unsigned int  chnl = 0; chnl < EPS_CHANNEL_NUM_OF_CHANNELS; ++chnl) {
+        current_consumption += SimEPS_GetCurrentThroughChannel(chnl);
     }
     pthread_mutex_unlock(&mutex_eps_mngr);
     return current_consumption;
 }
 
 double SimEPS_GetBatteryVoltage(){
-    int err = 0;
-    err = pthread_mutex_lock(&mutex_eps_mngr);
+    pthread_mutex_lock(&mutex_eps_mngr);
     double batt_charge = epsMngr.batt_discharge;
     double volt = 0;
     for (unsigned int i = 0; i < epsMngr.pol_length; ++i) {
@@ -110,8 +153,7 @@ double SimEPS_GetBatteryVoltage(){
     printf("EPS battery voltage = %lf\n",volt);
     printf("EPS battery discharge = %lf\n",epsMngr.batt_discharge);
 #endif
-    epsMngr.batt_volt = volt;
-    err = pthread_mutex_unlock(&mutex_eps_mngr);
+    pthread_mutex_unlock(&mutex_eps_mngr);
     return volt;
 }
 
@@ -134,7 +176,8 @@ void* EpsThread(void *param){
             TRACE_ERROR(negative batt_charge in eps,-666);
             epsMngr.batt_discharge = 0;
         }
-        SimThreadSleep(1000);
+
+        SimThreadSleep(1000);//TODO: change this to somthing real
     }
 }
 
@@ -162,9 +205,13 @@ int SetBatteryChargeFunction(double range_start, double range_end,
 
 int SimEPS_StartEps(){
     int err = 0;
+    if(!SimRTC_RtcStarted()){
+        TRACE_ERROR(SimEPS_StartEps RTC has not been started, -1);
+        return -1;
+    }
+
     double pol[] = EPS_BATTERY_CHARGE_POLYNOMIAL;
     unsigned char length = sizeof(pol)/sizeof(*pol);
-
 
     err =  pthread_mutex_init(&mutex_eps_mngr,NULL);
     TRACE_ERROR(pthread_mutex_init in SimEPS_StartEps,err);
@@ -175,7 +222,14 @@ int SimEPS_StartEps(){
 
     epsMngr.batt_discharge = EPS_MAX_BATTERY_CHARGE_mAh -
                              EPS_INITIAL_BATTERY_CHARGE_mAh;
-    epsMngr.batt_volt = SimEPS_GetBatteryVoltage();
+
+    ChannelVoltage temp[EPS_CHANNEL_NUM_OF_CHANNELS] = EPS_CHANNEL_VOLTAGES;
+    memcpy(epsMngr.eps_channels,temp,sizeof(temp));
+
+    // set all channels off
+    for (unsigned int chnl = 0; chnl < EPS_CHANNEL_NUM_OF_CHANNELS ; ++chnl) {
+        epsMngr.is_channel_on[chnl] = false;
+    }
 
     err = pthread_create(&eps_thread_id,NULL,EpsThread,NULL);
     TRACE_ERROR(pthread_create in SimEPS_StartEps,err);
@@ -187,9 +241,10 @@ void printStates(SatSubsystem subsys){
 
     for (unsigned int i = 0; i < epsMngr.num_of_states_per_subsys[subsys]; ++i) {
         printf("{");
-        printf("channel on : %X\t",epsMngr.subsys_consumption_states[subsys][i].is_channel_on);
-        printf("current consumption : %.2lf\t",epsMngr.subsys_consumption_states[subsys][i].avg_curr_consumption_mA);
-        printf("channel voltage : %.2lf\t",epsMngr.subsys_consumption_states[subsys][i].channel_voltage_mV);
+        printf("channel on : %X\t",epsMngr.subsys_consumption_states[subsys][i].is_state_on);
+        printf("current consumption[mA] : %.2lf\t",epsMngr.subsys_consumption_states[subsys][i].avg_power_consumption_mW);
+        printf("channel voltage[mV] : %.2lf\t",
+               EpsMngr_GetChannelVoltageFromIndex(epsMngr.subsys_consumption_states[subsys]->channel_index));
         printf("}\n");
     }
 }

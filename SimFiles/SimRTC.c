@@ -12,6 +12,7 @@
 pthread_t rtc_thread_id;
 _sigset_t sig = SIG_DFL;
 pthread_mutex_t lock;   // for synchronisations on 'clock_cycles'
+bool rtc_started = false;
 #if(1 ==  RTC_USE_PRINTS)
     clock_t begin_time;  // time at start of RTC;
 #endif
@@ -68,6 +69,8 @@ int SimRTC_Init(){
         return -1;
     }
     pthread_create(&rtc_thread_id, NULL, SimRtcThread, NULL);
+    rtc_started = true;
+    return 0;
 }
 int SimRTC_StopRTC(){
     pthread_mutex_destroy(&lock);
@@ -76,6 +79,7 @@ int SimRTC_StopRTC(){
     err = pthread_kill(rtc_thread_id,SIGTERM);
     TRACE_ERROR(pthread_kill,err);
     sig = SIGTERM;
+    rtc_started = false;
     return err;
 
 }
@@ -85,7 +89,9 @@ int SimRTC_SetSatTime(atomic_time_t time){
     pthread_mutex_unlock(&lock);
 }
 
-
+bool SimRTC_RtcStarted(){
+    return rtc_started;
+}
 void SimRTC_Test(){
     SimRTC_Init();
     atomic_time_t prev,curr;

@@ -29,4 +29,4 @@ add_executable(SImProject
         SimFiles/TimeHelperFunctions.c SimFiles/TimeHelperFunctions.h
         SimFiles/SimI2C.c SimFiles/SimI2C.h
         SimFiles/SimEPS.c SimFiles/SimEPS.h
-        SimFiles/GenericHelpFunctions.c SimFiles/GenericHelpFunctions.h SimFiles/SimSolar.c SimFiles/SimSolar.h SimFiles/SimConfigFiles/SimConfigEPS.h SimFiles/SimConfigFiles/SimConfigGPS.h SimFiles/SimConfigFiles/SimConfigI2C.h)
+        SimFiles/GenericHelpFunctions.c SimFiles/GenericHelpFunctions.h SimFiles/SimSolar.c SimFiles/SimSolar.h SimFiles/SimConfigFiles/SimConfigEPS.h SimFiles/SimConfigFiles/SimConfigGPS.h SimFiles/SimConfigFiles/SimConfigI2C.h SimFiles/SimConfigFiles/SimConfigSolar.h)

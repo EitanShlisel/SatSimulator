@@ -12,10 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f3f33-91f8-46a8-aadd-64543e930c7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigEPS.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigGPS.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigI2C.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigSolar.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/SImProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SImProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Eitan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Eitan.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
@@ -24,18 +23,14 @@
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/GenericHelpFunctions.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/GenericHelpFunctions.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/GenericHelpFunctions.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/GenericHelpFunctions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigEPS.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigEPS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimEPS.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimEPS.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimEPS.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimEPS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimI2C.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimI2C.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimI2C.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimI2C.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimRTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimRTC.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimRTC.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimRTC.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimSTK.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSTK.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimSolar.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSolar.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimSolar.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSolar.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimulationConfigurations.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SubsystemModules/GPS_Module.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/GPS_Module.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SubsystemModules/RTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/RTC.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCCompiler.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CMakeCXXCompiler.cmake" afterDir="false" />
@@ -49,11 +44,8 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" afterDir="false" />
@@ -177,7 +169,10 @@
       <workItem from="1582966859600" duration="17640000" />
       <workItem from="1583398914016" duration="7743000" />
       <workItem from="1583419229572" duration="1658000" />
-      <workItem from="1583579400516" duration="12327000" />
+      <workItem from="1583579400516" duration="12548000" />
+      <workItem from="1584611461281" duration="2831000" />
+      <workItem from="1584621585526" duration="6818000" />
+      <workItem from="1584683904807" duration="8812000" />
     </task>
     <servers />
   </component>
@@ -202,7 +197,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/SimFiles/SimRTC.c</url>
-          <line>76</line>
+          <line>79</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -246,19 +241,19 @@
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimEPS.c</url>
-          <line>95</line>
-          <option name="timeStamp" value="74" />
+          <url>file://$PROJECT_DIR$/SimFiles/SimEPS.h</url>
+          <line>46</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/SimFiles/SimEPS.c</url>
-          <line>102</line>
-          <option name="timeStamp" value="77" />
+          <line>130</line>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/SimFiles/SimEPS.c</url>
-          <line>179</line>
-          <option name="timeStamp" value="82" />
+          <line>141</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -60,37 +60,37 @@ double GnrHelper_GenerateGaussianNoise(double mu, double sigma)
     return z0 * sigma + mu;
 }
 
-double CalcMagnitude(point vec){
+double Gnr_CalcMagnitude(point vec){
     return sqrt(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z);
 }
 
-point GetUnitVector(point l1,point l2){
+point GnrHelper_GetUnitVector(point l1, point l2){
     point unit;
     unit.x = l1.x-l2.x;
     unit.y = l1.y-l2.y;
     unit.z = l1.z-l2.z;
-    double mag = CalcMagnitude(unit);
+    double mag = Gnr_CalcMagnitude(unit);
     unit.x /= mag;
     unit.y /= mag;
     unit.z /= mag;
     return unit;
 }
 
- point VecMinus(point a,point b){
+point GnrHelper_VecMinus(point a, point b){
     return (point){a.x-b.x,a.y-b.y,a.z-b.z};
 }
- point VecPlus(point a,point b){
+point GnrHelper_VecPlus(point a, point b){
     return (point){a.x+b.x,a.y+b.y,a.z+b.z};
 }
- double VecMult(point a, point b){
+double GnrHelper_VecMult(point a, point b){
     return (a.x*b.x + a.y*b.y + a.z*b.z);
 }
-int LineSphereIntersection(point l1, point l2, point center, double radius){
+int GnrHelper_LineSphereIntersection(point l1, point l2, point center, double radius){
     double res = 0;
-    point unit = GetUnitVector(l1,l2);
+    point unit = GnrHelper_GetUnitVector(l1, l2);
     double temp = 0;
-    res = pow(VecMult(unit,VecMinus(l2,center)),2) -
-            (pow(CalcMagnitude(VecMinus(l2,center)),2)-pow(radius,2));
+    res = pow(GnrHelper_VecMult(unit, GnrHelper_VecMinus(l2, center)), 2) -
+          (pow(Gnr_CalcMagnitude(GnrHelper_VecMinus(l2, center)), 2) - pow(radius, 2));
     if(res > 0)
         return 2;
     if(res == 0)
