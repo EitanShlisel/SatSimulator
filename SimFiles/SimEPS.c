@@ -19,17 +19,16 @@ typedef struct EpsMngr_t{
     double batt_discharge;          // how much charge in the battery [mAh]
     double batt_temperature;        // temperature of batteries
 
-    bool subsys_on[SUBSYS_NUM_OF_SUBSYSTEMS];       // flag of which subsystems are on and which are off
-    sem_t channel_voltage_rise[EPS_CHANNEL_NUM_OF_CHANNELS]; // signal if a sub-system turned on
+    bool subsys_on[SUBSYS_NUM_OF_SUBSYSTEMS];                   // flag of which subsystems are on and which are off
+    sem_t sem_channel_voltage_rise[SUBSYS_NUM_OF_SUBSYSTEMS];   // signal if a sub-system turned on
 
     EpsConsumptionState_t *subsys_consumption_states[SUBSYS_NUM_OF_SUBSYSTEMS];
     unsigned int num_of_states_per_subsys[SUBSYS_NUM_OF_SUBSYSTEMS];
 
-    bool is_channel_on[EPS_CHANNEL_NUM_OF_CHANNELS];        // if this channel is on or not; (true = on; false = off)
+    bool is_channel_on[EPS_CHANNEL_NUM_OF_CHANNELS];            // if this channel is on or not; (true = on; false = off)
     ChannelVoltage eps_channels[EPS_CHANNEL_NUM_OF_CHANNELS];
 
 }EpsMngr_t;
-
 EpsMngr_t epsMngr;
 
 double EpsMngr_GetChannelVoltageFromIndex(ChannelIndex chnl){
@@ -58,7 +57,6 @@ EpsConsumptionState_t EpsMngr_GetConsumptionState(SatSubsystem subsys, unsigned 
 
 
 // ----------------------------------   API
-
 int SimEPS_AddConsumptionStates(SatSubsystem subsys,EpsConsumptionState_t *states,unsigned int length){
    if(subsys >=SUBSYS_NUM_OF_SUBSYSTEMS || subsys < 0){
        return -1;
@@ -86,18 +84,26 @@ bool SimEPS_IsSubSystemOn(SatSubsystem subsys){
     return is_on;
 }
 
-int SimEPS_SetSubsysOn(SatSubsystem subsys){
+int SimEPS_SetSubsysOnOff(SatSubsystem subsys,bool onOff){
+    int err = 0;
+    int val = 0;
     pthread_mutex_lock(&mutex_eps_mngr);
-        epsMngr.subsys_on[subsys]= true;
+        epsMngr.subsys_on[subsys]= onOff;
+        if(onOff && !epsMngr.subsys_on[subsys]){    // sub-system was OFF and turned ON
+            err = sem_post(&epsMngr.sem_channel_voltage_rise[subsys]);
+            TRACE_ERROR(SimEPS_SetSubsysOnOff -> sem_post,err);
+        }
+        if(!onOff && epsMngr.subsys_on[subsys]) {    // sub-system was ON and turned OFF
+            err = sem_trywait(&epsMngr.sem_channel_voltage_rise[subsys]);
+            TRACE_ERROR(SimEPS_SetSubsysOnOff->sem_trywait, err);
+            err = sem_getvalue(&epsMngr.sem_channel_voltage_rise[subsys], &val);
+            TRACE_ERROR(SimEPS_SetSubsysOnOff->sem_getvalue, err);
+            if (0 == val){
+                TRACE_ERROR(SimEPS_SetSubsysOnOff error in semaphores, -1);
+            }
+        }
     pthread_mutex_unlock(&mutex_eps_mngr);
     return true;
-}
-
-int SimEPS_SetSubsysOff(SatSubsystem subsys){
-    pthread_mutex_lock(&mutex_eps_mngr);
-        epsMngr.subsys_on[subsys]= false;
-    pthread_mutex_unlock(&mutex_eps_mngr);
-    return false;
 }
 
 int SimEPS_SetSubsysState(SatSubsystem subsys,unsigned int state_index, bool onOff){
@@ -158,7 +164,6 @@ double SimEPS_GetBatteryVoltage(){
 }
 
 // ----------------------------------   THREADS
-
 void* EpsThread(void *param){
     double current_consumption_mA = 0; // [mA]
     atomic_time_t dt = 0;               //[sec]
@@ -181,6 +186,7 @@ void* EpsThread(void *param){
     }
 }
 
+//----------------------------------    INIT
 int SetBatteryChargeFunction(double range_start, double range_end,
                              double *pol_coef, unsigned char length){
     if(range_start >= range_end ){
@@ -216,6 +222,10 @@ int SimEPS_StartEps(){
     err =  pthread_mutex_init(&mutex_eps_mngr,NULL);
     TRACE_ERROR(pthread_mutex_init in SimEPS_StartEps,err);
 
+    for (unsigned int i = 0; i < EPS_CHANNEL_NUM_OF_CHANNELS; ++i) {
+        err = sem_init(&(epsMngr.sem_channel_voltage_rise[i]),0,0);
+        TRACE_ERROR(SimEPS_StartEps sem_init,err);
+    }
     err = SetBatteryChargeFunction(EPS_BATTERY_CHARGE_RANGE_START
             ,EPS_BATTERY_CHARGE_RANGE_END_mV,pol,length);
     TRACE_ERROR(SetBatteryChargeFunction in SimEPS_StartEps,err);
@@ -236,6 +246,13 @@ int SimEPS_StartEps(){
     return 0;
 }
 
+//----------------------------------    EVENTS
+void SimEPS_WaitForSubsysWakeup(SatSubsystem subsys){
+    sem_wait(&epsMngr.sem_channel_voltage_rise[subsys]);
+    sem_post(&epsMngr.sem_channel_voltage_rise[subsys]);    //turnstile
+}
+
+//-------------- TESTS
 void printStates(SatSubsystem subsys){
     printf("subsys number : %d\n",subsys);
 

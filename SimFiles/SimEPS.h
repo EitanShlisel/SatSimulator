@@ -29,9 +29,7 @@ typedef struct {
     bool is_state_on;                       // states whether the consumption state os active or not (true = on; false = off)
 }EpsConsumptionState_t;
 
-int SimEPS_SetSubsysOn(SatSubsystem subsys);
-
-int SimEPS_SetSubsysOff(SatSubsystem subsys);
+int SimEPS_SetSubsysOnOff(SatSubsystem subsys, bool onOff);
 
 int SimEPS_SetSubsysState(SatSubsystem subsys, unsigned int state_index, bool onOff);
 
