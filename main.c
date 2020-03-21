@@ -18,13 +18,13 @@
 #include <pthread_time.h>
 #include <unistd.h>
 
-EpsConsumptionState_t fake_subsys_states[] = {
-        {0,500, false},
-        {0,1000, false},
-        {1,1000, false}
-};
+void EPS_Test(){
+    EpsConsumptionState_t fake_subsys_states[] = {
+            {0,5000, false},
+            {1,1000, false},
+            {2,420, false}
+    };
 
-int main(){
     int err = 0;
     err = SimRTC_Init();
     TRACE_ERROR(SimRTC_Init,err);
@@ -33,23 +33,33 @@ int main(){
     err = SimEPS_StartEps();
     TRACE_ERROR(SimEPS_StartEps,err);
     printStates(SUBSYS_FAKE);
-    double volt = 0;
-    int i=0;
-
+    int i = 0;
+    double volt = SimEPS_GetBatteryVoltage();
     while(true){
+
+        printf("vbatt = %.04lf\n",volt);
+        printChannels();
         volt = SimEPS_GetBatteryVoltage();
-        sleep(1);
-        i++;
         if(i ==3){
             SimEPS_SetChannel(0,true);
             SimEPS_SetSubsysState(SUBSYS_FAKE,0,true);
+            printStates(SUBSYS_FAKE);
         }
         if(i == 6){
+            SimEPS_SetChannel(1,true);
             SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
+            printStates(SUBSYS_FAKE);
         }
         if(i==9){
-            SimEPS_SetChannel(1,true);
+            SimEPS_SetChannel(2,true);
             SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
+            printStates(SUBSYS_FAKE);
         }
+        sleep(1);
+        i++;
     }
+}
+
+int main(){
+
 }
