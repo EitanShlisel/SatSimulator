@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< HEAD
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
 stdio.h
 -
@@ -62,6 +63,24 @@ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
 ../SubsystemModules/GPS_types.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 stdbool.h
+=======
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.c
+stdbool.h
+-
+math.h
+-
+float.h
+-
+stdlib.h
+-
+GenericHelpFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+stdlib.h
+-
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+stdio.h
+>>>>>>> develop
 -
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.h

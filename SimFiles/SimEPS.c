@@ -139,6 +139,7 @@ double SimEPS_GetCurrentThroughChannel(ChannelIndex chnl){
 
 double SimEPS_GetCurrentConsumption(){
     pthread_mutex_lock(&mutex_eps_mngr);
+
     double current_consumption = 0;
 
     for (unsigned int  chnl = 0; chnl < EPS_CHANNEL_NUM_OF_CHANNELS; ++chnl) {

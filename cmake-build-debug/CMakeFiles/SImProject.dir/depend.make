@@ -4,11 +4,17 @@
 CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj: ../SimFiles/GenericHelpFunctions.c
 CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj: ../SimFiles/GenericHelpFunctions.h
 
+<<<<<<< HEAD
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/GenericHelpFunctions.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+=======
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+>>>>>>> develop
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.c
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.h
@@ -19,7 +25,10 @@ CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+<<<<<<< HEAD
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+=======
+>>>>>>> develop
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimI2C.c
@@ -28,7 +37,10 @@ CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimI2C.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+<<<<<<< HEAD
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+=======
+>>>>>>> develop
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimRTC.c
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimRTC.h
@@ -38,7 +50,10 @@ CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/GenericHelpFunction
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+<<<<<<< HEAD
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+=======
+>>>>>>> develop
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimSTK.c
@@ -48,11 +63,17 @@ CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SubsystemModules/Time.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SubsystemModules/boolean.h
 
+<<<<<<< HEAD
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/GenericHelpFunctions.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+=======
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
+CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+>>>>>>> develop
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimSTK.h
@@ -69,7 +90,10 @@ CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/Generic
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+<<<<<<< HEAD
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+=======
+>>>>>>> develop
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SimFiles/SimSTK.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SubsystemModules/GPS_Module.c
