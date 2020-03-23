@@ -89,3 +89,15 @@ double parseTime(char *line){
     unix_time = (double)mktime(&tim) + milli_sec;
     return unix_time;
 }
+
+int AddTimeStamp(char *buffer,char *str){
+    time_t rawtime;
+    time (&rawtime);
+    sprintf(buffer,"%s_%s",str,ctime(&rawtime));
+    char *p = buffer;
+    for (; *p; ++p){
+        if (*p == ' '){
+            *p = '_';
+        }
+    }
+}

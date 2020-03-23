@@ -3,13 +3,15 @@
 #define SIMPROJECT_SIMULATIONCONFIGURATIONS_H
 
 #include <stdio.h>
+#include <math.h>
 #include <unistd.h>
 
+#include "SimConfigThermodynamics.h"
 #include "SimConfigGPS.h"
 #include "SimConfigEPS.h"
 #include "SimConfigSolar.h"
 #include "SimConfigI2C.h"
-
+#include "SimConfigTRX.h"
 //--------------------------------------------------------------------------------------
 //------------------------------------------- SATELLITE---------------------------------
 //--------------------------------------------------------------------------------------
@@ -17,12 +19,15 @@
 typedef enum { // to add a subsystem to the simulation add an element to this enum!
     SUBSYS_OBC = 0,
     SUBSYS_EPS ,
+    SUBSYS_TRX,
     SUBSYS_GPS,
     SUBSYS_PAYLOAD,
     SUBSYS_FAKE,
     SUBSYS_NUM_OF_SUBSYSTEMS
 }SatSubsystem;
 
+#define SPEED_OF_LIGHT_m_sec 299792458
+#define K_BOLTZMAN_CONSTANT_dB (10*log10(1.380649)-200)
 //--------------------------------------------------------------------------------------
 //------------------------------------------- MACROS------------------------------------
 //--------------------------------------------------------------------------------------
@@ -30,7 +35,7 @@ typedef enum { // to add a subsystem to the simulation add an element to this en
 
 #if(1 == TRACE_USE_TRACE)
     #define TRACE_ERROR(name,err)    if(0 != (err)){ printf(" %s ; error code =  %d\n",#name,(err));}
-#define TRACE_RETURN_ON_ERROR(msg, expected, err,retval) if((expected)!=(err)){printf("%s",#msg);return retval;}
+    #define TRACE_RETURN_ON_ERROR(msg, expected, err,retval) if((expected)!=(err)){printf("%s",#msg);return retval;}
 #else
     #define TRACE_ERROR(name,err) ()
     #define TRACE_RETURN_ON_ERROR(msg, expected, err,retval) ()

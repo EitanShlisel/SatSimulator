@@ -60,41 +60,58 @@ double GnrHelper_GenerateGaussianNoise(double mu, double sigma)
     return z0 * sigma + mu;
 }
 
-double Gnr_CalcMagnitude(point vec){
+double GnrHelper_CalcMagnitude(vector_t vec){
     return sqrt(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z);
 }
 
-point GnrHelper_GetUnitVector(point l1, point l2){
-    point unit;
+vector_t GnrHelper_GetUnitVectorFromPoints(point_t l1, point_t l2){
+    vector_t unit;
     unit.x = l1.x-l2.x;
     unit.y = l1.y-l2.y;
     unit.z = l1.z-l2.z;
-    double mag = Gnr_CalcMagnitude(unit);
+
+    return GnrHelper_GetUnitVector(unit);
+}
+
+vector_t GnrHelper_GetUnitVector(vector_t vec){
+    if(vec.x == 0 && vec.y == 0 && vec.z == 0 ){
+        return (vector_t){0,0,0};
+    }
+    vector_t unit = {.x=vec.x,.y=vec.y,.z=vec.z};
+    double mag = GnrHelper_CalcMagnitude(unit);
     unit.x /= mag;
     unit.y /= mag;
     unit.z /= mag;
     return unit;
 }
 
-point GnrHelper_VecMinus(point a, point b){
-    return (point){a.x-b.x,a.y-b.y,a.z-b.z};
+vector_t GnrHelper_VecMinus(vector_t a, vector_t b){
+    return (point_t){a.x - b.x, a.y - b.y, a.z - b.z};
 }
-point GnrHelper_VecPlus(point a, point b){
-    return (point){a.x+b.x,a.y+b.y,a.z+b.z};
+
+vector_t GnrHelper_VecPlus(vector_t a, vector_t b){
+    return (point_t){a.x + b.x, a.y + b.y, a.z + b.z};
 }
-double GnrHelper_VecMult(point a, point b){
+
+double GnrHelper_VecMult(vector_t a, vector_t b){
     return (a.x*b.x + a.y*b.y + a.z*b.z);
 }
-int GnrHelper_LineSphereIntersection(point l1, point l2, point center, double radius){
+
+int GnrHelper_LineSphereIntersection(point_t l1, point_t l2, point_t center, double radius){
     double res = 0;
-    point unit = GnrHelper_GetUnitVector(l1, l2);
+    point_t unit = GnrHelper_GetUnitVectorFromPoints(l1, l2);
     double temp = 0;
     res = pow(GnrHelper_VecMult(unit, GnrHelper_VecMinus(l2, center)), 2) -
-          (pow(Gnr_CalcMagnitude(GnrHelper_VecMinus(l2, center)), 2) - pow(radius, 2));
+          (pow(GnrHelper_CalcMagnitude(GnrHelper_VecMinus(l2, center)), 2) - pow(radius, 2));
     if(res > 0)
         return 2;
     if(res == 0)
         return 1;
     if(res < 0)
         return 0;
+}
+
+double GnrHelper_CalcDistance(point_t a, point_t b){
+    vector_t vec = GnrHelper_VecMinus(a,b);
+    return GnrHelper_CalcMagnitude(vec);
 }

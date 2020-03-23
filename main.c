@@ -4,7 +4,8 @@
 #include <time.h>
 #include <pthread.h>
 #include "SimFiles/SimConfigFiles/SimulationConfigurations.h"
-#include "SimFiles/TimeHelperFunctions.h"
+#include "Helper/TimeHelperFunctions.h"
+#include "Helper/List.h"
 #include "SubsystemModules/Time.h"
 #include "SubsystemModules/RTC.h"
 #include "SubsystemModules/GPS_Module.h"
@@ -13,11 +14,12 @@
 #include "SimFiles/SimSTK.h"
 #include "SimFiles/SimI2C.h"
 #include "SimFiles/SimEPS.h"
-#include "SimFiles/GenericHelpFunctions.h"
+#include "SimFiles/SimThermodynamics.h"
+#include "Helper/GenericHelpFunctions.h"
 #include <stdbool.h>
 #include <pthread_time.h>
 #include <unistd.h>
-
+#include <math.h>
 void EPS_Test(){
     EpsConsumptionState_t fake_subsys_states[] = {
             {0,5000, false},
@@ -59,7 +61,36 @@ void EPS_Test(){
         i++;
     }
 }
+void ListTest(){
+    unsigned char c1[] = {0};
+    unsigned char c2[] = {1,2};
+    unsigned char c3[] = {3,4,5};
+    unsigned char c4[] = {6,7,8,9};
+    unsigned char c5[] = {42};
 
+    list_t *ptr;
+    list_t *lst1 = ListHelper_CreateList(c1,sizeof(c1));
+    list_t *lst2 = ListHelper_CreateList(c2,sizeof(c2));
+    list_t *lst3 = ListHelper_CreateList(c3,sizeof(c3));
+    list_t *lst4 = ListHelper_CreateList(c4,sizeof(c4));
+    list_t *lst5 = ListHelper_CreateList(c5,sizeof(c5));
+    ListHelper_Add(lst1,lst2);
+    printf("added new item to list\n");
+    ListHelper_PrintList(lst1,NULL);
+    ListHelper_Add(lst1,lst3);
+    printf("added new item to list\n");
+    ListHelper_PrintList(lst1,NULL);
+    ListHelper_Add(lst1,lst4);
+    printf("added new item to list\n");
+    ListHelper_PrintList(lst1,NULL);
+    unsigned int index = 0;
+    printf("printing node at index %d:\n",index);
+    ListHelper_PrintNode(ListHelper_GetNodeAtIndex(lst1,index),NULL);
+    printf("remove item at top:\n");
+    ListHelper_Pop(&lst1);
+    ListHelper_PrintList(lst1,NULL);
+}
 int main(){
-
+    ListTest();
+    return 0;
 }

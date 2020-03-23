@@ -1,7 +1,7 @@
 #include "SimEPS.h"
 #include "SimRTC.h"
 #include "SimSolar.h"
-#include "GenericHelpFunctions.h"
+#include "../Helper/GenericHelpFunctions.h"
 
 #include <stdlib.h>
 #include <math.h>

@@ -4,13 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/GenericHelpFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/List.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj"
-  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/TimeHelperFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimTRX.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimThermodynamics.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj"

@@ -18,7 +18,7 @@
 #define STK_SUN_VEC_CSV_FILE_LINE_OFFSET (5)
 #define STK_SUN_VEC_SAMPLE_TIME (10.0)    // sample time period between STK records [sec]
 
-#define STK_EARTH_RADIUS_km (6371.0)
+#define STK_EARTH_RADIUS_km (6357.0)
 #define STK_EARTH_COORDINATE_CARTESIAN {0,0,0}
 
 

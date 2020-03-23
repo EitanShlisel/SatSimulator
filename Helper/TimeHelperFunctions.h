@@ -24,4 +24,6 @@ int monthToInt(char *month);
 // ss = seconds
 // lll = milliseconds
 double parseTime(char *line);
+
+int AddTimeStamp(char *buffer,char *str);
 #endif //SIMPROJECT_TIMEHELPERFUNCTIONS_H

@@ -10,27 +10,32 @@ int getLine(FILE *fp, char *line);
 double GnrHelper_GenerateUniformInRange(double start,double end);
 
 double GnrHelper_GenerateGaussianNoise(double mu, double sigma);
-
 // ------------------------------   Vector Calculus
+
 typedef struct{
     double x;
     double y;
     double z;
-}point;
+}point_t;
 
-double GnrHelper_CalcMagnitude(point vec);
+typedef point_t vector_t;
 
-point GnrHelper_GetUnitVector(point l1, point l2);
+double GnrHelper_CalcMagnitude(vector_t vec);
 
-point GnrHelper_VecMinus(point a, point b);
+vector_t GnrHelper_GetUnitVectorFromPoints(point_t l1, point_t l2);
 
-point GnrHelper_VecPlus(point a, point b);
+vector_t GnrHelper_GetUnitVector(vector_t vec);
 
-double GnrHelper_VecMult(point a, point b);
+vector_t GnrHelper_VecMinus(vector_t a, vector_t b);
+
+vector_t GnrHelper_VecPlus(vector_t a, vector_t b);
+
+double GnrHelper_VecMult(vector_t a, vector_t b);
 
 // ------------------------------   Geometry
-int GnrHelper_LineSphereIntersection(point l1, point l2, point center, double radius);
+int GnrHelper_LineSphereIntersection(point_t l1, point_t l2, point_t center, double radius);
 
+double GnrHelper_CalcDistance(point_t a, point_t b);
 // ------------------------------   Electronics
 
 #define GnrHelper_Ohms_PowerToCurrent_mA(pwr_mW,volt_mV) ((double)(1000*(pwr_mW)/(volt_mV)))

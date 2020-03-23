@@ -6,9 +6,31 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/GenericHelpFunctions.h
 stdio.h
 -
+
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.c
+List.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.h
+stdbool.h
+-
+stdio.h
+-
+
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.h
+time.h
+-
+../SubsystemModules/Time.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
 
@@ -18,11 +40,19 @@ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigSolar.h
 
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigTRX.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigThermodynamics.h
+
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
 stdio.h
 -
+math.h
+-
 unistd.h
 -
+SimConfigThermodynamics.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 SimConfigGPS.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
 SimConfigEPS.h
@@ -31,6 +61,8 @@ SimConfigSolar.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigSolar.h
 SimConfigI2C.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+SimConfigTRX.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigTRX.h
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
 ../SubsystemModules/GPS_types.h
@@ -42,21 +74,43 @@ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
 ../SubsystemModules/GPS_types.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.c
-SimSolar.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.h
-SimRTC.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimTRX.c
+SimConfigFiles/SimulationConfigurations.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
+SimTRX.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimTRX.h
 SimSTK.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSTK.h
-GenericHelpFunctions.h
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/GenericHelpFunctions.h
+SimThermodynamics.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimThermodynamics.h
+SimRTC.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
+../Helper/List.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.h
+../Helper/GenericHelpFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/GenericHelpFunctions.h
+../Helper/TimeHelperFunctions.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.h
+pthread.h
+-
+semaphore.h
+-
 math.h
 -
 
-C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimTRX.h
+stdbool.h
+-
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimThermodynamics.h
 SimConfigFiles/SimulationConfigurations.h
 C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
 
 C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
+boolean.h
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
+
+C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
 

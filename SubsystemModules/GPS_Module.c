@@ -2,7 +2,7 @@
 #define _GNU_SOURCE
 #include "RTC.h"
 #include "../SimFiles/SimConfigFiles/SimulationConfigurations.h"
-#include "../SimFiles/GenericHelpFunctions.h"
+#include "../Helper/GenericHelpFunctions.h"
 #include "../SimFiles/SimSTK.h"
 #include "GPS_Module.h"
 
@@ -23,7 +23,7 @@ static void Gps_AddAnomalies(gps_record_t *point){
     double dr = GnrHelper_GenerateGaussianNoise(GPS_RADIUS_DIST_MEAN, GPS_RADIUS_DIST_STD);
     double dtan = GnrHelper_GenerateGaussianNoise(GPS_TANGENT_DIST_MEAN, GPS_TANGENT_DIST_STD);
 
-    point->time += GnrHelper_GenerateGaussianNoise(GPS_TIME_DIST_MEAN, GPS_TIME_DIST_STD);
+    point_t->time += GnrHelper_GenerateGaussianNoise(GPS_TIME_DIST_MEAN, GPS_TIME_DIST_STD);
     //TODO: complete calculations...
 
 #endif

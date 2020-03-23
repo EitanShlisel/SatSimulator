@@ -12,8 +12,8 @@
 #include "SimSTK.h"
 #include "SimRTC.h"
 #include "SimConfigFiles/SimulationConfigurations.h"
-#include "TimeHelperFunctions.h"
-#include "GenericHelpFunctions.h"
+#include "../Helper/TimeHelperFunctions.h"
+#include "../Helper/GenericHelpFunctions.h"
 
 #define BUFFER_SIZE 1024
 

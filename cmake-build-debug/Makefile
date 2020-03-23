@@ -122,32 +122,86 @@ SImProject/fast:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/build
 .PHONY : SImProject/fast
 
-SimFiles/GenericHelpFunctions.obj: SimFiles/GenericHelpFunctions.c.obj
+Helper/GenericHelpFunctions.obj: Helper/GenericHelpFunctions.c.obj
 
-.PHONY : SimFiles/GenericHelpFunctions.obj
+.PHONY : Helper/GenericHelpFunctions.obj
 
 # target to build an object file
-SimFiles/GenericHelpFunctions.c.obj:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.obj
-.PHONY : SimFiles/GenericHelpFunctions.c.obj
+Helper/GenericHelpFunctions.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj
+.PHONY : Helper/GenericHelpFunctions.c.obj
 
-SimFiles/GenericHelpFunctions.i: SimFiles/GenericHelpFunctions.c.i
+Helper/GenericHelpFunctions.i: Helper/GenericHelpFunctions.c.i
 
-.PHONY : SimFiles/GenericHelpFunctions.i
+.PHONY : Helper/GenericHelpFunctions.i
 
 # target to preprocess a source file
-SimFiles/GenericHelpFunctions.c.i:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.i
-.PHONY : SimFiles/GenericHelpFunctions.c.i
+Helper/GenericHelpFunctions.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.i
+.PHONY : Helper/GenericHelpFunctions.c.i
 
-SimFiles/GenericHelpFunctions.s: SimFiles/GenericHelpFunctions.c.s
+Helper/GenericHelpFunctions.s: Helper/GenericHelpFunctions.c.s
 
-.PHONY : SimFiles/GenericHelpFunctions.s
+.PHONY : Helper/GenericHelpFunctions.s
 
 # target to generate assembly for a file
-SimFiles/GenericHelpFunctions.c.s:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/GenericHelpFunctions.c.s
-.PHONY : SimFiles/GenericHelpFunctions.c.s
+Helper/GenericHelpFunctions.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.s
+.PHONY : Helper/GenericHelpFunctions.c.s
+
+Helper/List.obj: Helper/List.c.obj
+
+.PHONY : Helper/List.obj
+
+# target to build an object file
+Helper/List.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/List.c.obj
+.PHONY : Helper/List.c.obj
+
+Helper/List.i: Helper/List.c.i
+
+.PHONY : Helper/List.i
+
+# target to preprocess a source file
+Helper/List.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/List.c.i
+.PHONY : Helper/List.c.i
+
+Helper/List.s: Helper/List.c.s
+
+.PHONY : Helper/List.s
+
+# target to generate assembly for a file
+Helper/List.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/List.c.s
+.PHONY : Helper/List.c.s
+
+Helper/TimeHelperFunctions.obj: Helper/TimeHelperFunctions.c.obj
+
+.PHONY : Helper/TimeHelperFunctions.obj
+
+# target to build an object file
+Helper/TimeHelperFunctions.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj
+.PHONY : Helper/TimeHelperFunctions.c.obj
+
+Helper/TimeHelperFunctions.i: Helper/TimeHelperFunctions.c.i
+
+.PHONY : Helper/TimeHelperFunctions.i
+
+# target to preprocess a source file
+Helper/TimeHelperFunctions.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.i
+.PHONY : Helper/TimeHelperFunctions.c.i
+
+Helper/TimeHelperFunctions.s: Helper/TimeHelperFunctions.c.s
+
+.PHONY : Helper/TimeHelperFunctions.s
+
+# target to generate assembly for a file
+Helper/TimeHelperFunctions.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.s
+.PHONY : Helper/TimeHelperFunctions.c.s
 
 SimFiles/SimEPS.obj: SimFiles/SimEPS.c.obj
 
@@ -284,32 +338,59 @@ SimFiles/SimSolar.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.s
 .PHONY : SimFiles/SimSolar.c.s
 
-SimFiles/TimeHelperFunctions.obj: SimFiles/TimeHelperFunctions.c.obj
+SimFiles/SimTRX.obj: SimFiles/SimTRX.c.obj
 
-.PHONY : SimFiles/TimeHelperFunctions.obj
+.PHONY : SimFiles/SimTRX.obj
 
 # target to build an object file
-SimFiles/TimeHelperFunctions.c.obj:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.obj
-.PHONY : SimFiles/TimeHelperFunctions.c.obj
+SimFiles/SimTRX.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj
+.PHONY : SimFiles/SimTRX.c.obj
 
-SimFiles/TimeHelperFunctions.i: SimFiles/TimeHelperFunctions.c.i
+SimFiles/SimTRX.i: SimFiles/SimTRX.c.i
 
-.PHONY : SimFiles/TimeHelperFunctions.i
+.PHONY : SimFiles/SimTRX.i
 
 # target to preprocess a source file
-SimFiles/TimeHelperFunctions.c.i:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.i
-.PHONY : SimFiles/TimeHelperFunctions.c.i
+SimFiles/SimTRX.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.i
+.PHONY : SimFiles/SimTRX.c.i
 
-SimFiles/TimeHelperFunctions.s: SimFiles/TimeHelperFunctions.c.s
+SimFiles/SimTRX.s: SimFiles/SimTRX.c.s
 
-.PHONY : SimFiles/TimeHelperFunctions.s
+.PHONY : SimFiles/SimTRX.s
 
 # target to generate assembly for a file
-SimFiles/TimeHelperFunctions.c.s:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/TimeHelperFunctions.c.s
-.PHONY : SimFiles/TimeHelperFunctions.c.s
+SimFiles/SimTRX.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.s
+.PHONY : SimFiles/SimTRX.c.s
+
+SimFiles/SimThermodynamics.obj: SimFiles/SimThermodynamics.c.obj
+
+.PHONY : SimFiles/SimThermodynamics.obj
+
+# target to build an object file
+SimFiles/SimThermodynamics.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj
+.PHONY : SimFiles/SimThermodynamics.c.obj
+
+SimFiles/SimThermodynamics.i: SimFiles/SimThermodynamics.c.i
+
+.PHONY : SimFiles/SimThermodynamics.i
+
+# target to preprocess a source file
+SimFiles/SimThermodynamics.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.i
+.PHONY : SimFiles/SimThermodynamics.c.i
+
+SimFiles/SimThermodynamics.s: SimFiles/SimThermodynamics.c.s
+
+.PHONY : SimFiles/SimThermodynamics.s
+
+# target to generate assembly for a file
+SimFiles/SimThermodynamics.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.s
+.PHONY : SimFiles/SimThermodynamics.c.s
 
 SubsystemModules/GPS_Module.obj: SubsystemModules/GPS_Module.c.obj
 
@@ -428,9 +509,15 @@ help:
 	@echo ... SImProject
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... SimFiles/GenericHelpFunctions.obj
-	@echo ... SimFiles/GenericHelpFunctions.i
-	@echo ... SimFiles/GenericHelpFunctions.s
+	@echo ... Helper/GenericHelpFunctions.obj
+	@echo ... Helper/GenericHelpFunctions.i
+	@echo ... Helper/GenericHelpFunctions.s
+	@echo ... Helper/List.obj
+	@echo ... Helper/List.i
+	@echo ... Helper/List.s
+	@echo ... Helper/TimeHelperFunctions.obj
+	@echo ... Helper/TimeHelperFunctions.i
+	@echo ... Helper/TimeHelperFunctions.s
 	@echo ... SimFiles/SimEPS.obj
 	@echo ... SimFiles/SimEPS.i
 	@echo ... SimFiles/SimEPS.s
@@ -446,9 +533,12 @@ help:
 	@echo ... SimFiles/SimSolar.obj
 	@echo ... SimFiles/SimSolar.i
 	@echo ... SimFiles/SimSolar.s
-	@echo ... SimFiles/TimeHelperFunctions.obj
-	@echo ... SimFiles/TimeHelperFunctions.i
-	@echo ... SimFiles/TimeHelperFunctions.s
+	@echo ... SimFiles/SimTRX.obj
+	@echo ... SimFiles/SimTRX.i
+	@echo ... SimFiles/SimTRX.s
+	@echo ... SimFiles/SimThermodynamics.obj
+	@echo ... SimFiles/SimThermodynamics.i
+	@echo ... SimFiles/SimThermodynamics.s
 	@echo ... SubsystemModules/GPS_Module.obj
 	@echo ... SubsystemModules/GPS_Module.i
 	@echo ... SubsystemModules/GPS_Module.s

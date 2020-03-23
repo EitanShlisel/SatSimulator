@@ -1,7 +1,7 @@
 #include "SimSolar.h"
 #include "SimRTC.h"
 #include "SimSTK.h"
-#include "GenericHelpFunctions.h"
+#include "../Helper/GenericHelpFunctions.h"
 #include <math.h>
 
 // production of current with MPP @ 2.275[V] and 6 solar panels of 30.18[cm^2] with 26.8%
@@ -19,8 +19,8 @@ double SimSolar_GetSolarCurrentProduction(){
         current = 0;
     }
 #else
-    point sat_loc;
-    point sun_loc;
+    point_t sat_loc;
+    point_t sun_loc;
     gps_record_t rec;
     sun_vec_t sun_vec;
     int err = 0;
@@ -38,7 +38,7 @@ double SimSolar_GetSolarCurrentProduction(){
     if(GnrHelper_LineSphereIntersection(
             sat_loc,
             sun_loc,
-            (point) STK_EARTH_COORDINATE_CARTESIAN,
+            (point_t) STK_EARTH_COORDINATE_CARTESIAN,
             STK_EARTH_RADIUS_km)) {
         return 0;
     }

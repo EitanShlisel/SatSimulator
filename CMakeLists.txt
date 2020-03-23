@@ -26,7 +26,7 @@ add_executable(SImProject
         SimFiles/SimSTK.c SimFiles/SimSTK.h
         SubsystemModules/GPS_types.h
         SimFiles/SimRTC.c SimFiles/SimRTC.h
-        SimFiles/TimeHelperFunctions.c SimFiles/TimeHelperFunctions.h
+        Helper/TimeHelperFunctions.c Helper/TimeHelperFunctions.h
         SimFiles/SimI2C.c SimFiles/SimI2C.h
         SimFiles/SimEPS.c SimFiles/SimEPS.h
-        SimFiles/GenericHelpFunctions.c SimFiles/GenericHelpFunctions.h SimFiles/SimSolar.c SimFiles/SimSolar.h SimFiles/SimConfigFiles/SimConfigEPS.h SimFiles/SimConfigFiles/SimConfigGPS.h SimFiles/SimConfigFiles/SimConfigI2C.h SimFiles/SimConfigFiles/SimConfigSolar.h)
+        Helper/GenericHelpFunctions.c Helper/GenericHelpFunctions.h SimFiles/SimSolar.c SimFiles/SimSolar.h SimFiles/SimConfigFiles/SimConfigEPS.h SimFiles/SimConfigFiles/SimConfigGPS.h SimFiles/SimConfigFiles/SimConfigI2C.h SimFiles/SimConfigFiles/SimConfigSolar.h SimFiles/SimConfigFiles/SimConfigTRX.h SimFiles/SimTRX.c SimFiles/SimTRX.h SimFiles/SimConfigFiles/SimConfigThermodynamics.h SimFiles/SimThermodynamics.c SimFiles/SimThermodynamics.h Helper/List.c Helper/List.h)

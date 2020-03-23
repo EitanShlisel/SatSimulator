@@ -6,7 +6,7 @@
 
 #include "RTC.h"
 #include "../SimFiles/SimRTC.h"
-#include "../SimFiles/TimeHelperFunctions.h"
+#include "../Helper/TimeHelperFunctions.h"
 
 Boolean  rtc_on = FALSE;
 

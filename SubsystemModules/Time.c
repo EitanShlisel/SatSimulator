@@ -5,7 +5,7 @@
 #include "Time.h"
 #include "boolean.h"
 #include "RTC.h"
-#include "../SimFiles/TimeHelperFunctions.h"
+#include "../Helper/TimeHelperFunctions.h"
 Boolean timeStarted = FALSE;        // has the 'Time' module been started
 
 unsigned int sync_sec = 0;
