@@ -20,7 +20,7 @@ int SimTRX_AddPacketToUplinkBuffer(unsigned char *data, unsigned int length);
 int SimTRX_TransmitFromBuffer();
 
 // reads a packet from the uplink buffer
-int SimTRX_ReadFromBuffer(unsigned char *data, unsigned int *length)
+int SimTRX_ReadFromBuffer(unsigned char *data, unsigned int *length);
 // ------------------------------- CHANNEL PROPERTIES
 //delay between sending packet from the ground sation to the satellite and vice versa
 double SimTRX_CalcTransmissionDelay(unsigned int gs_index);

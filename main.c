@@ -90,7 +90,7 @@ void ListTest(){
     ListHelper_Pop(&lst1);
     ListHelper_PrintList(lst1,NULL);
 }
+
 int main(){
-    ListTest();
     return 0;
 }

@@ -1,5 +1,6 @@
-//
-// Created by Eitan on 22/03/2020.
-//
 
 #include "SimThermodynamics.h"
+
+double SimTherm_GetSubsysTemperature(SatSubsystem subsys){
+    return 25;//room temperature
+}
