@@ -7,6 +7,16 @@ CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj: ../Helper/GenericHe
 CMakeFiles/SImProject.dir/Helper/List.c.obj: ../Helper/List.c
 CMakeFiles/SImProject.dir/Helper/List.c.obj: ../Helper/List.h
 
+CMakeFiles/SImProject.dir/Helper/RunPython.c.obj: ../Helper/RunPython.c
+CMakeFiles/SImProject.dir/Helper/RunPython.c.obj: ../Helper/RunPython.h
+
+CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/TcpHandler.c
+CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/TcpHandler.h
+
+CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: ../Helper/TcpHandler.h
+CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: ../Helper/TcpPlotter.c
+CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: ../Helper/TcpPlotter.h
+
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../Helper/TimeHelperFunctions.c
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../Helper/TimeHelperFunctions.h
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../SubsystemModules/Time.h
@@ -123,6 +133,19 @@ CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SubsystemModules
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SubsystemModules/Time.h
 CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj: ../SubsystemModules/boolean.h
 
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigSolar.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimEPS.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SimFiles/SimI2C.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SubsystemModules/I2C.c
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SubsystemModules/I2C.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SubsystemModules/OBC_ConsumptionStates.h
+
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../Helper/TimeHelperFunctions.h
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../SubsystemModules/GPS_types.h
@@ -136,5 +159,10 @@ CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj: ../SubsystemModules/RTC.h
 CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj: ../SubsystemModules/Time.c
 CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj: ../SubsystemModules/Time.h
 CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj: ../SubsystemModules/boolean.h
+
+CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj: ../SubsystemModules/I2C.h
+CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj: ../SubsystemModules/hal/errors.h
+CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj: ../SubsystemModules/isisTRXVU.c
+CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj: ../SubsystemModules/isisTRXVU.h
 
 

@@ -1,25 +1,81 @@
-
-#include <stdio.h>
-#include <unistd.h>
-#include <time.h>
-#include <pthread.h>
-#include "SimFiles/SimConfigFiles/SimulationConfigurations.h"
 #include "Helper/TimeHelperFunctions.h"
+#include "Helper/GenericHelpFunctions.h"
+#include "Helper/TcpHandler.h"
+#include "Helper/TcpPlotter.h"
+#include "Helper/RunPython.h"
 #include "Helper/List.h"
+
+#include "SubsystemModules/GPS_Module.h"
 #include "SubsystemModules/Time.h"
 #include "SubsystemModules/RTC.h"
-#include "SubsystemModules/GPS_Module.h"
+
+#include "SimFiles/SimConfigFiles/SimulationConfigurations.h"
+#include "SimFiles/SimThermodynamics.h"
 #include "SimFiles/SimSTK.h"
 #include "SimFiles/SimRTC.h"
 #include "SimFiles/SimSTK.h"
 #include "SimFiles/SimI2C.h"
 #include "SimFiles/SimEPS.h"
-#include "SimFiles/SimThermodynamics.h"
-#include "Helper/GenericHelpFunctions.h"
-#include <stdbool.h>
-#include <pthread_time.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
+#include <string.h>
+#include <pthread.h>
+#include <pthread_time.h>
+#include <stdbool.h>
 #include <math.h>
+
+int test_python_tcp(){
+    thread_id tid = StartTcp();
+    int i = 0;
+    unsigned char buff[DEFAULT_BUFLEN]={0};
+    while(1){
+        sleep(1);
+        if(i % 5 == 0){
+            printf("sending data\n");
+            AddDataToSendQueue(tid, buff);
+        }
+
+        i++;
+    }
+}
+
+double costume_func(double x){
+    double r = ((double) rand() / (RAND_MAX));
+    return sin(0.1*x)+exp(x/100) + r/5.0;
+}
+
+#define NUM_OF_POINTS 100
+void testPlotFigureOverTCP(){
+    unsigned int i = 0;
+    double start = 0;
+    double end = 2.0 * M_PI;
+    data_point_t points[NUM_OF_POINTS];
+
+    figure_t fig = {.x_label = "Xlabel",
+            .y_label="Ylabel",
+            .title="I'm the best",
+            .figure_id = 42,
+            .dataPoints = points,
+            .num_of_data_points = NUM_OF_POINTS};
+
+    thread_id tid = StartTcp();
+    char *script_path = PLOTTER_PATH_PY;
+    char buff[10] = {0};
+    itoa(GetClientPortFromThreadId(tid) ,buff,10);
+    RunPythonScript(script_path,buff);
+    while(1) {
+        ApplyFunctionToRange(points, NUM_OF_POINTS,start,end, costume_func);
+        memcpy(fig.dataPoints,points, sizeof(points));
+        SendFigureToPlotter(tid, &fig);
+        usleep(1000);
+        start = end;
+        end += 2 * M_PI;
+    }
+}
+
 void EPS_Test(){
     EpsConsumptionState_t fake_subsys_states[] = {
             {0,5000, false},
@@ -61,6 +117,7 @@ void EPS_Test(){
         i++;
     }
 }
+
 void ListTest(){
     unsigned char c1[] = {0};
     unsigned char c2[] = {1,2};
@@ -92,5 +149,6 @@ void ListTest(){
 }
 
 int main(){
+    testPlotFigureOverTCP();
     return 0;
 }

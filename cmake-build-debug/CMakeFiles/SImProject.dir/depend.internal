@@ -7,6 +7,16 @@ CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj
 CMakeFiles/SImProject.dir/Helper/List.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.c
  C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.h
+CMakeFiles/SImProject.dir/Helper/RunPython.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.c
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.h
+CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.c
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.h
+CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpPlotter.c
+ C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpPlotter.h
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.c
  C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.h
@@ -123,6 +133,19 @@ CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
+CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigGPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigSolar.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigTRX.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigThermodynamics.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimulationConfigurations.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.c
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/OBC_ConsumptionStates.h
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.h
@@ -137,4 +160,9 @@ CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.c
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h
  C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/boolean.h
+CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/hal/errors.h
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/isisTRXVU.c
+ C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/isisTRXVU.h
 CMakeFiles/SImProject.dir/main.c.obj

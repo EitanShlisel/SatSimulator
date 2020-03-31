@@ -92,6 +92,24 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.h">
 			<Option target="SImProject"/>
 		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpPlotter.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpPlotter.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.c">
 			<Option target="SImProject"/>
 		</Unit>
@@ -167,6 +185,15 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_types.h">
 			<Option target="SImProject"/>
 		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/OBC_ConsumptionStates.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c">
 			<Option target="SImProject"/>
 		</Unit>
@@ -177,6 +204,15 @@
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/hal/errors.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/isisTRXVU.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/isisTRXVU.h">
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/main.c">

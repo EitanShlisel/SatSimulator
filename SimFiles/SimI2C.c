@@ -1,5 +1,4 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "hicpp-signed-bitwise"
 #include <stdlib.h>
 
 #include <pthread.h>
@@ -12,6 +11,8 @@
 
 #define GET_7BIT_ADDR(addr) ((addr) & 0x7F)
 #define IsReadCommand(addr)   ((addr) & 0x80)
+
+bool i2c_bus_initialised = false;   // states whether the bus is initialised or not
 
 pthread_t slave_threads_id[SUBSYS_NUM_OF_SUBSYSTEMS];
 
@@ -207,7 +208,47 @@ I2C_ERR SimI2C_StartI2C(){
             TRACE_ERROR(pthread_create,err)
         }
     }
+    i2c_bus_initialised = true;
     return err;
 }
 
+I2C_ERR SimI2C_StopI2C(){
+    int err = 0;
+    err = pthread_mutex_destroy(&mutex_sda_taken);
+    TRACE_ERROR(pthread_mutex_destroy mutex_sda_taken,err);
+
+    err = sem_destroy(&sem_scl);
+    TRACE_ERROR(sem_destroy sem_scl,err);
+
+    err = sem_destroy(&sem_ack);
+    TRACE_ERROR(sem_destroy sem_ack,err)
+
+    err = pthread_mutex_destroy(&mutex_operation_running);
+    TRACE_ERROR(pthread_mutex_destroy mutex_operation_running,err)
+
+    err = pthread_mutex_destroy(&mutex_handshake);
+    TRACE_ERROR(pthread_mutex_destroy mutex_handshake,err)
+
+    for (int i = 0; i < SUBSYS_NUM_OF_SUBSYSTEMS; ++i) {
+        if(i2cSubsystems[i].exists && I2C_SLAVE == i2cSubsystems[i].status){
+            err = pthread_cancel(slave_threads_id[i]);
+            TRACE_ERROR(pthread_cancel,err)
+        }
+    }
+    i2c_bus_initialised = false;
+    return err;
+}
+
+bool SimI2C_GetBusInitialised(){
+    return i2c_bus_initialised;
+}
+
+SatSubsystem SimI2C_GetSubsystemFromAddress(unsigned char addr){
+    for (unsigned int i = 0; i < SUBSYS_NUM_OF_SUBSYSTEMS; ++i) {
+        if(addr == i2cSubsystems[i].i2c_addr){
+            return (SatSubsystem)i;
+        }
+    }
+    return SUBSYS_VOID;
+}
 #pragma clang diagnostic pop

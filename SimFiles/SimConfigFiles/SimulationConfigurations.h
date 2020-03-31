@@ -23,7 +23,10 @@ typedef enum { // to add a subsystem to the simulation add an element to this en
     SUBSYS_GPS,
     SUBSYS_PAYLOAD,
     SUBSYS_FAKE,
-    SUBSYS_NUM_OF_SUBSYSTEMS
+
+
+    SUBSYS_NUM_OF_SUBSYSTEMS,
+    SUBSYS_VOID         // this subsystem does not exit it's here for internal reasons
 }SatSubsystem;
 
 #define SPEED_OF_LIGHT_m_sec 299792458

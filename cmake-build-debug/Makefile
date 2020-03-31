@@ -176,6 +176,87 @@ Helper/List.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/List.c.s
 .PHONY : Helper/List.c.s
 
+Helper/RunPython.obj: Helper/RunPython.c.obj
+
+.PHONY : Helper/RunPython.obj
+
+# target to build an object file
+Helper/RunPython.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/RunPython.c.obj
+.PHONY : Helper/RunPython.c.obj
+
+Helper/RunPython.i: Helper/RunPython.c.i
+
+.PHONY : Helper/RunPython.i
+
+# target to preprocess a source file
+Helper/RunPython.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/RunPython.c.i
+.PHONY : Helper/RunPython.c.i
+
+Helper/RunPython.s: Helper/RunPython.c.s
+
+.PHONY : Helper/RunPython.s
+
+# target to generate assembly for a file
+Helper/RunPython.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/RunPython.c.s
+.PHONY : Helper/RunPython.c.s
+
+Helper/TcpHandler.obj: Helper/TcpHandler.c.obj
+
+.PHONY : Helper/TcpHandler.obj
+
+# target to build an object file
+Helper/TcpHandler.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj
+.PHONY : Helper/TcpHandler.c.obj
+
+Helper/TcpHandler.i: Helper/TcpHandler.c.i
+
+.PHONY : Helper/TcpHandler.i
+
+# target to preprocess a source file
+Helper/TcpHandler.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TcpHandler.c.i
+.PHONY : Helper/TcpHandler.c.i
+
+Helper/TcpHandler.s: Helper/TcpHandler.c.s
+
+.PHONY : Helper/TcpHandler.s
+
+# target to generate assembly for a file
+Helper/TcpHandler.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TcpHandler.c.s
+.PHONY : Helper/TcpHandler.c.s
+
+Helper/TcpPlotter.obj: Helper/TcpPlotter.c.obj
+
+.PHONY : Helper/TcpPlotter.obj
+
+# target to build an object file
+Helper/TcpPlotter.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj
+.PHONY : Helper/TcpPlotter.c.obj
+
+Helper/TcpPlotter.i: Helper/TcpPlotter.c.i
+
+.PHONY : Helper/TcpPlotter.i
+
+# target to preprocess a source file
+Helper/TcpPlotter.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.i
+.PHONY : Helper/TcpPlotter.c.i
+
+Helper/TcpPlotter.s: Helper/TcpPlotter.c.s
+
+.PHONY : Helper/TcpPlotter.s
+
+# target to generate assembly for a file
+Helper/TcpPlotter.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.s
+.PHONY : Helper/TcpPlotter.c.s
+
 Helper/TimeHelperFunctions.obj: Helper/TimeHelperFunctions.c.obj
 
 .PHONY : Helper/TimeHelperFunctions.obj
@@ -419,6 +500,33 @@ SubsystemModules/GPS_Module.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.s
 .PHONY : SubsystemModules/GPS_Module.c.s
 
+SubsystemModules/I2C.obj: SubsystemModules/I2C.c.obj
+
+.PHONY : SubsystemModules/I2C.obj
+
+# target to build an object file
+SubsystemModules/I2C.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj
+.PHONY : SubsystemModules/I2C.c.obj
+
+SubsystemModules/I2C.i: SubsystemModules/I2C.c.i
+
+.PHONY : SubsystemModules/I2C.i
+
+# target to preprocess a source file
+SubsystemModules/I2C.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.i
+.PHONY : SubsystemModules/I2C.c.i
+
+SubsystemModules/I2C.s: SubsystemModules/I2C.c.s
+
+.PHONY : SubsystemModules/I2C.s
+
+# target to generate assembly for a file
+SubsystemModules/I2C.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.s
+.PHONY : SubsystemModules/I2C.c.s
+
 SubsystemModules/RTC.obj: SubsystemModules/RTC.c.obj
 
 .PHONY : SubsystemModules/RTC.obj
@@ -473,6 +581,33 @@ SubsystemModules/Time.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/Time.c.s
 .PHONY : SubsystemModules/Time.c.s
 
+SubsystemModules/isisTRXVU.obj: SubsystemModules/isisTRXVU.c.obj
+
+.PHONY : SubsystemModules/isisTRXVU.obj
+
+# target to build an object file
+SubsystemModules/isisTRXVU.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj
+.PHONY : SubsystemModules/isisTRXVU.c.obj
+
+SubsystemModules/isisTRXVU.i: SubsystemModules/isisTRXVU.c.i
+
+.PHONY : SubsystemModules/isisTRXVU.i
+
+# target to preprocess a source file
+SubsystemModules/isisTRXVU.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.i
+.PHONY : SubsystemModules/isisTRXVU.c.i
+
+SubsystemModules/isisTRXVU.s: SubsystemModules/isisTRXVU.c.s
+
+.PHONY : SubsystemModules/isisTRXVU.s
+
+# target to generate assembly for a file
+SubsystemModules/isisTRXVU.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.s
+.PHONY : SubsystemModules/isisTRXVU.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -515,6 +650,15 @@ help:
 	@echo ... Helper/List.obj
 	@echo ... Helper/List.i
 	@echo ... Helper/List.s
+	@echo ... Helper/RunPython.obj
+	@echo ... Helper/RunPython.i
+	@echo ... Helper/RunPython.s
+	@echo ... Helper/TcpHandler.obj
+	@echo ... Helper/TcpHandler.i
+	@echo ... Helper/TcpHandler.s
+	@echo ... Helper/TcpPlotter.obj
+	@echo ... Helper/TcpPlotter.i
+	@echo ... Helper/TcpPlotter.s
 	@echo ... Helper/TimeHelperFunctions.obj
 	@echo ... Helper/TimeHelperFunctions.i
 	@echo ... Helper/TimeHelperFunctions.s
@@ -542,12 +686,18 @@ help:
 	@echo ... SubsystemModules/GPS_Module.obj
 	@echo ... SubsystemModules/GPS_Module.i
 	@echo ... SubsystemModules/GPS_Module.s
+	@echo ... SubsystemModules/I2C.obj
+	@echo ... SubsystemModules/I2C.i
+	@echo ... SubsystemModules/I2C.s
 	@echo ... SubsystemModules/RTC.obj
 	@echo ... SubsystemModules/RTC.i
 	@echo ... SubsystemModules/RTC.s
 	@echo ... SubsystemModules/Time.obj
 	@echo ... SubsystemModules/Time.i
 	@echo ... SubsystemModules/Time.s
+	@echo ... SubsystemModules/isisTRXVU.obj
+	@echo ... SubsystemModules/isisTRXVU.i
+	@echo ... SubsystemModules/isisTRXVU.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -42,6 +42,13 @@ I2C_ERR SimI2C_AddSubSys(SatSubsystem subsys, I2cSubsystemData_t *i2c_subsys_dat
 // start the I2C communication module simulation
 I2C_ERR SimI2C_StartI2C();
 
+// stops the I2C communication module simulation
+I2C_ERR SimI2C_StopI2C();
+
+bool SimI2C_GetBusInitialised();
+
+SatSubsystem SimI2C_GetSubsystemFromAddress(unsigned char addr);
+
 // sends read request to 'subsys_dest'
 // expects to read 'length' bytes into 'msg' buffer
 // returns 0 on success, -1 on fail, -2 on line taken

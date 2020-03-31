@@ -6,6 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/GenericHelpFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/List.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/RunPython.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpPlotter.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
@@ -15,8 +18,10 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimTRX.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimThermodynamics.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/Time.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/isisTRXVU.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/main.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

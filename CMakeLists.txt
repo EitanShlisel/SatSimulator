@@ -29,4 +29,36 @@ add_executable(SImProject
         Helper/TimeHelperFunctions.c Helper/TimeHelperFunctions.h
         SimFiles/SimI2C.c SimFiles/SimI2C.h
         SimFiles/SimEPS.c SimFiles/SimEPS.h
-        Helper/GenericHelpFunctions.c Helper/GenericHelpFunctions.h SimFiles/SimSolar.c SimFiles/SimSolar.h SimFiles/SimConfigFiles/SimConfigEPS.h SimFiles/SimConfigFiles/SimConfigGPS.h SimFiles/SimConfigFiles/SimConfigI2C.h SimFiles/SimConfigFiles/SimConfigSolar.h SimFiles/SimConfigFiles/SimConfigTRX.h SimFiles/SimTRX.c SimFiles/SimTRX.h SimFiles/SimConfigFiles/SimConfigThermodynamics.h SimFiles/SimThermodynamics.c SimFiles/SimThermodynamics.h Helper/List.c Helper/List.h)
+        Helper/GenericHelpFunctions.c
+        Helper/GenericHelpFunctions.h
+        SimFiles/SimSolar.c
+        SimFiles/SimSolar.h
+        SimFiles/SimConfigFiles/SimConfigEPS.h
+        SimFiles/SimConfigFiles/SimConfigGPS.h
+        SimFiles/SimConfigFiles/SimConfigI2C.h
+        SimFiles/SimConfigFiles/SimConfigSolar.h
+        SimFiles/SimConfigFiles/SimConfigTRX.h
+        SimFiles/SimTRX.c
+        SimFiles/SimTRX.h
+        SimFiles/SimConfigFiles/SimConfigThermodynamics.h
+        SimFiles/SimThermodynamics.c
+        SimFiles/SimThermodynamics.h
+        Helper/List.c
+        Helper/List.h
+        SubsystemModules/isisTRXVU.c
+        SubsystemModules/isisTRXVU.h
+        SubsystemModules/I2C.c
+        SubsystemModules/I2C.h
+        SubsystemModules/OBC_ConsumptionStates.h
+        SubsystemModules/hal/errors.h
+        Helper/RunPython.c
+        Helper/RunPython.h
+        Helper/TcpHandler.c
+        Helper/TcpHandler.h
+        Helper/TcpPlotter.c
+        Helper/TcpPlotter.h
+        )
+
+if(MINGW)
+    target_link_libraries(SImProject ws2_32)
+endif()
