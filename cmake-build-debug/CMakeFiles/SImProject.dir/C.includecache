@@ -6,25 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.c
-windows.h
--
-winsock2.h
--
-ws2tcpip.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.c
+RunPython.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.h
+string.h
 -
 stdlib.h
 -
 stdio.h
 -
-unistd.h
--
-pthread.h
--
-semaphore.h
--
-TcpHandler.h
-C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.h
 
-C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.h
+C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.h
 
