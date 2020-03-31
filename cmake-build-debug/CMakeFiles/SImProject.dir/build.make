@@ -108,9 +108,22 @@ CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.s"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules\GPS_Module.c -o CMakeFiles\SImProject.dir\SubsystemModules\GPS_Module.c.s
 
+CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: CMakeFiles/SImProject.dir/flags.make
+CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SubsystemModules/FRAM.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SubsystemModules\FRAM.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules\FRAM.c
+
+CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.i"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules\FRAM.c > CMakeFiles\SImProject.dir\SubsystemModules\FRAM.c.i
+
+CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.s"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules\FRAM.c -o CMakeFiles\SImProject.dir\SubsystemModules\FRAM.c.s
+
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimSTK.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimSTK.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimSTK.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.i: cmake_force
@@ -123,7 +136,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimRTC.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimRTC.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimRTC.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.i: cmake_force
@@ -136,7 +149,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../Helper/TimeHelperFunctions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\TimeHelperFunctions.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\TimeHelperFunctions.c
 
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.i: cmake_force
@@ -149,7 +162,7 @@ CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimI2C.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimI2C.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimI2C.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.i: cmake_force
@@ -162,7 +175,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimEPS.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimEPS.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.i: cmake_force
@@ -175,7 +188,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj: ../Helper/GenericHelpFunctions.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\GenericHelpFunctions.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\GenericHelpFunctions.c
 
 CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.i: cmake_force
@@ -188,7 +201,7 @@ CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SimFiles/SimSolar.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimSolar.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimSolar.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.i: cmake_force
@@ -201,7 +214,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimTRX.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimTRX.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimTRX.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.i: cmake_force
@@ -214,7 +227,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj: ../SimFiles/SimThermodynamics.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimThermodynamics.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimThermodynamics.c
 
 CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.i: cmake_force
@@ -227,7 +240,7 @@ CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/Helper/List.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/Helper/List.c.obj: ../Helper/List.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/SImProject.dir/Helper/List.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/SImProject.dir/Helper/List.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\List.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\List.c
 
 CMakeFiles/SImProject.dir/Helper/List.c.i: cmake_force
@@ -240,7 +253,7 @@ CMakeFiles/SImProject.dir/Helper/List.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj: ../SubsystemModules/isisTRXVU.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SubsystemModules\isisTRXVU.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules\isisTRXVU.c
 
 CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.i: cmake_force
@@ -253,7 +266,7 @@ CMakeFiles/SImProject.dir/SubsystemModules/isisTRXVU.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SubsystemModules/I2C.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SubsystemModules\I2C.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules\I2C.c
 
 CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.i: cmake_force
@@ -266,7 +279,7 @@ CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/Helper/RunPython.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/Helper/RunPython.c.obj: ../Helper/RunPython.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/SImProject.dir/Helper/RunPython.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/SImProject.dir/Helper/RunPython.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\RunPython.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\RunPython.c
 
 CMakeFiles/SImProject.dir/Helper/RunPython.c.i: cmake_force
@@ -279,7 +292,7 @@ CMakeFiles/SImProject.dir/Helper/RunPython.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/TcpHandler.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\TcpHandler.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\TcpHandler.c
 
 CMakeFiles/SImProject.dir/Helper/TcpHandler.c.i: cmake_force
@@ -292,7 +305,7 @@ CMakeFiles/SImProject.dir/Helper/TcpHandler.c.s: cmake_force
 
 CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: CMakeFiles/SImProject.dir/flags.make
 CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: ../Helper/TcpPlotter.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\TcpPlotter.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\TcpPlotter.c
 
 CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.i: cmake_force
@@ -303,12 +316,26 @@ CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.s"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\Helper\TcpPlotter.c -o CMakeFiles\SImProject.dir\Helper\TcpPlotter.c.s
 
+CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj: CMakeFiles/SImProject.dir/flags.make
+CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj: ../ConsumptionStates/ConsumptionStates.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\ConsumptionStates\ConsumptionStates.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\ConsumptionStates\ConsumptionStates.c
+
+CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.i"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\97250\Documents\GitHub\SatSimulator\ConsumptionStates\ConsumptionStates.c > CMakeFiles\SImProject.dir\ConsumptionStates\ConsumptionStates.c.i
+
+CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.s"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\ConsumptionStates\ConsumptionStates.c -o CMakeFiles\SImProject.dir\ConsumptionStates\ConsumptionStates.c.s
+
 # Object files for target SImProject
 SImProject_OBJECTS = \
 "CMakeFiles/SImProject.dir/main.c.obj" \
 "CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj" \
 "CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj" \
 "CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj" \
+"CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj" \
 "CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" \
 "CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" \
 "CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj" \
@@ -323,7 +350,8 @@ SImProject_OBJECTS = \
 "CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj" \
 "CMakeFiles/SImProject.dir/Helper/RunPython.c.obj" \
 "CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj" \
-"CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj"
+"CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj" \
+"CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj"
 
 # External object files for target SImProject
 SImProject_EXTERNAL_OBJECTS =
@@ -332,6 +360,7 @@ SImProject.exe: CMakeFiles/SImProject.dir/main.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SubsystemModules/Time.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj
+SImProject.exe: CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj
@@ -347,11 +376,12 @@ SImProject.exe: CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/Helper/RunPython.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj
+SImProject.exe: CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/build.make
 SImProject.exe: CMakeFiles/SImProject.dir/linklibs.rsp
 SImProject.exe: CMakeFiles/SImProject.dir/objects1.rsp
 SImProject.exe: CMakeFiles/SImProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking C executable SImProject.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking C executable SImProject.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\SImProject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

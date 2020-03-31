@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/ConsumptionStates/ConsumptionStates.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/ConsumptionStates/ConsumptionStates.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/GenericHelpFunctions.c">
 			<Option target="SImProject"/>
 		</Unit>
@@ -176,6 +182,12 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimThermodynamics.h">
 			<Option target="SImProject"/>
 		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/FRAM.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/FRAM.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c">
 			<Option target="SImProject"/>
 		</Unit>
@@ -189,9 +201,6 @@
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.h">
-			<Option target="SImProject"/>
-		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/OBC_ConsumptionStates.h">
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c">

@@ -8,6 +8,7 @@
 #include "SubsystemModules/GPS_Module.h"
 #include "SubsystemModules/Time.h"
 #include "SubsystemModules/RTC.h"
+#include "SubsystemModules/FRAM.h"
 
 #include "SimFiles/SimConfigFiles/SimulationConfigurations.h"
 #include "SimFiles/SimThermodynamics.h"
@@ -16,6 +17,8 @@
 #include "SimFiles/SimSTK.h"
 #include "SimFiles/SimI2C.h"
 #include "SimFiles/SimEPS.h"
+
+#include "ConsumptionStates/ConsumptionStates.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +30,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-int test_python_tcp(){
+int python_tcp_Test(){
     thread_id tid = StartTcp();
     int i = 0;
     unsigned char buff[DEFAULT_BUFLEN]={0};
@@ -48,7 +51,7 @@ double costume_func(double x){
 }
 
 #define NUM_OF_POINTS 100
-void testPlotFigureOverTCP(){
+void PlotFigureOverTCP_Test(){
     unsigned int i = 0;
     double start = 0;
     double end = 2.0 * M_PI;
@@ -148,7 +151,52 @@ void ListTest(){
     ListHelper_PrintList(lst1,NULL);
 }
 
+void FRAM_Test(){
+    int err = 0;
+    err = SimRTC_Init();
+    TRACE_ERROR(SimRTC_Init,err);
+    if(0 == err){
+        while(!SimRTC_RtcStarted());
+    }
+    err = SimEPS_StartEps();
+    TRACE_ERROR(SimEPS_StartEps,err);
+    ConsumptionStates_Init();
+    EpsConsumptionState_t *temp = GetConsumptionStates(SUBSYS_OBC);
+    err = SimEPS_AddConsumptionStates(SUBSYS_OBC,temp,OBC_CONSMP_NUM_OF_CONSUMPTION_STATES);
+    TRACE_ERROR(SimEPS_AddConsumptionStates, err);
+    err = FRAM_start();
+    TRACE_ERROR(FRAM_start,err);
+
+    printf("main: starting FRAM test\n\n");
+    unsigned char buff[100] = {0};
+    for(unsigned int i = 0; i < 10; i++) {
+        err = FRAM_read(buff,i* sizeof(buff),sizeof(buff));
+        TRACE_ERROR(FRAM_start, err);
+        printf(buff);
+    }
+    for (unsigned int j = 0; j < sizeof(buff); ++j) {
+        buff[j] = (j % 256);
+    }
+    err = FRAM_write(buff,0,sizeof(buff));
+    TRACE_ERROR(FRAM_write,err);
+
+    printf("main: print data\n");
+    for (unsigned int k = 0; k < sizeof(buff); ++k) {
+        printf("%02X-",buff[k]);
+    }
+    printf("\n");
+    memset(buff,0,sizeof(buff));
+
+    err = FRAM_read(buff,0,sizeof(buff));
+    TRACE_ERROR(FRAM_read,err);
+
+    printf("main: print written data from FRAM\n");
+    for (unsigned int k = 0; k < sizeof(buff); ++k) {
+        printf("%02X-",buff[k]);
+    }
+}
+
 int main(){
-    testPlotFigureOverTCP();
+
     return 0;
 }

@@ -1,11 +1,11 @@
 #include "I2C.h"
 #include "../SimFiles/SimI2C.h"
 #include "../SimFiles/SimEPS.h"
-#include "OBC_ConsumptionStates.h"
+#include "../ConsumptionStates/ConsumptionStates.h"
 
 int I2C_start(unsigned int i2cBusSpeed_Hz, unsigned int i2cTransferTimeout){
     SimI2C_StartI2C();
-    SimEPS_SetSubsysState(SUBSYS_OBC,OBC_CONSP_I2C_BUS,true);
+    SimEPS_SetSubsysState(SUBSYS_OBC, OBC_CONSMP_I2C_BUS, true);
     return 0;
 }
 void I2C_setTransferTimeout(unsigned int i2cTransferTimeout){
@@ -13,7 +13,7 @@ void I2C_setTransferTimeout(unsigned int i2cTransferTimeout){
 }
 void I2C_stop(void){
     SimI2C_StopI2C();
-    SimEPS_SetSubsysState(SUBSYS_OBC,OBC_CONSP_I2C_BUS,false);
+    SimEPS_SetSubsysState(SUBSYS_OBC, OBC_CONSMP_I2C_BUS, false);
 
 }
 //int I2C_blockBus(portTickType timeout);

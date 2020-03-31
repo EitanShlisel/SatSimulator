@@ -122,6 +122,33 @@ SImProject/fast:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/build
 .PHONY : SImProject/fast
 
+ConsumptionStates/ConsumptionStates.obj: ConsumptionStates/ConsumptionStates.c.obj
+
+.PHONY : ConsumptionStates/ConsumptionStates.obj
+
+# target to build an object file
+ConsumptionStates/ConsumptionStates.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj
+.PHONY : ConsumptionStates/ConsumptionStates.c.obj
+
+ConsumptionStates/ConsumptionStates.i: ConsumptionStates/ConsumptionStates.c.i
+
+.PHONY : ConsumptionStates/ConsumptionStates.i
+
+# target to preprocess a source file
+ConsumptionStates/ConsumptionStates.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.i
+.PHONY : ConsumptionStates/ConsumptionStates.c.i
+
+ConsumptionStates/ConsumptionStates.s: ConsumptionStates/ConsumptionStates.c.s
+
+.PHONY : ConsumptionStates/ConsumptionStates.s
+
+# target to generate assembly for a file
+ConsumptionStates/ConsumptionStates.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.s
+.PHONY : ConsumptionStates/ConsumptionStates.c.s
+
 Helper/GenericHelpFunctions.obj: Helper/GenericHelpFunctions.c.obj
 
 .PHONY : Helper/GenericHelpFunctions.obj
@@ -473,6 +500,33 @@ SimFiles/SimThermodynamics.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.s
 .PHONY : SimFiles/SimThermodynamics.c.s
 
+SubsystemModules/FRAM.obj: SubsystemModules/FRAM.c.obj
+
+.PHONY : SubsystemModules/FRAM.obj
+
+# target to build an object file
+SubsystemModules/FRAM.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj
+.PHONY : SubsystemModules/FRAM.c.obj
+
+SubsystemModules/FRAM.i: SubsystemModules/FRAM.c.i
+
+.PHONY : SubsystemModules/FRAM.i
+
+# target to preprocess a source file
+SubsystemModules/FRAM.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.i
+.PHONY : SubsystemModules/FRAM.c.i
+
+SubsystemModules/FRAM.s: SubsystemModules/FRAM.c.s
+
+.PHONY : SubsystemModules/FRAM.s
+
+# target to generate assembly for a file
+SubsystemModules/FRAM.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.s
+.PHONY : SubsystemModules/FRAM.c.s
+
 SubsystemModules/GPS_Module.obj: SubsystemModules/GPS_Module.c.obj
 
 .PHONY : SubsystemModules/GPS_Module.obj
@@ -644,6 +698,9 @@ help:
 	@echo ... SImProject
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... ConsumptionStates/ConsumptionStates.obj
+	@echo ... ConsumptionStates/ConsumptionStates.i
+	@echo ... ConsumptionStates/ConsumptionStates.s
 	@echo ... Helper/GenericHelpFunctions.obj
 	@echo ... Helper/GenericHelpFunctions.i
 	@echo ... Helper/GenericHelpFunctions.s
@@ -683,6 +740,9 @@ help:
 	@echo ... SimFiles/SimThermodynamics.obj
 	@echo ... SimFiles/SimThermodynamics.i
 	@echo ... SimFiles/SimThermodynamics.s
+	@echo ... SubsystemModules/FRAM.obj
+	@echo ... SubsystemModules/FRAM.i
+	@echo ... SubsystemModules/FRAM.s
 	@echo ... SubsystemModules/GPS_Module.obj
 	@echo ... SubsystemModules/GPS_Module.i
 	@echo ... SubsystemModules/GPS_Module.s

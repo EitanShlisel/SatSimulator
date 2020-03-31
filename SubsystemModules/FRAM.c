@@ -1,5 +1,5 @@
+#include "../ConsumptionStates/ConsumptionStates.h"
 #include "FRAM.h"
-#include "OBC_ConsumptionStates.h"
 
 #include "../SimFiles/SimConfigFiles/SimulationConfigurations.h"
 #include "../SimFiles/SimEPS.h"

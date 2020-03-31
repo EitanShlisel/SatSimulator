@@ -40,8 +40,9 @@ void* SimRtcThread(void* a){
 #if(1 == RTC_USE_PRINTS)
     begin_time = clock();
 #endif
+    printf("RTC: started thread\n");
     int err = 0;
-
+    rtc_started = true;
     while(1){
     if(SIGTERM == sig){
         pthread_exit((void*)(1));
@@ -68,8 +69,9 @@ int SimRTC_Init(){
     if(0 != pthread_mutex_init(&lock,NULL)){
         return -1;
     }
-    pthread_create(&rtc_thread_id, NULL, SimRtcThread, NULL);
-    rtc_started = true;
+    if(0 != pthread_create(&rtc_thread_id, NULL, SimRtcThread, NULL)){
+        return -2;
+    }
     return 0;
 }
 int SimRTC_StopRTC(){

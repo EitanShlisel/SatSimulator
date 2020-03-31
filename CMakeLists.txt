@@ -22,7 +22,10 @@ add_executable(SImProject
         main.c
         SubsystemModules/RTC.c
         SubsystemModules/Time.c
-        SubsystemModules/GPS_Module.h SubsystemModules/GPS_Module.c
+        SubsystemModules/GPS_Module.h
+        SubsystemModules/GPS_Module.c
+        SubsystemModules/FRAM.c
+        SubsystemModules/FRAM.h
         SimFiles/SimSTK.c SimFiles/SimSTK.h
         SubsystemModules/GPS_types.h
         SimFiles/SimRTC.c SimFiles/SimRTC.h
@@ -49,7 +52,6 @@ add_executable(SImProject
         SubsystemModules/isisTRXVU.h
         SubsystemModules/I2C.c
         SubsystemModules/I2C.h
-        SubsystemModules/OBC_ConsumptionStates.h
         SubsystemModules/hal/errors.h
         Helper/RunPython.c
         Helper/RunPython.h
@@ -57,7 +59,7 @@ add_executable(SImProject
         Helper/TcpHandler.h
         Helper/TcpPlotter.c
         Helper/TcpPlotter.h
-        )
+        ConsumptionStates/ConsumptionStates.h ConsumptionStates/ConsumptionStates.c)
 
 if(MINGW)
     target_link_libraries(SImProject ws2_32)

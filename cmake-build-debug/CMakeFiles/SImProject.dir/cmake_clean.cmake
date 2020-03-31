@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj"
   "CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj"
   "CMakeFiles/SImProject.dir/Helper/List.c.obj"
   "CMakeFiles/SImProject.dir/Helper/RunPython.c.obj"
@@ -12,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj"
+  "CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj"
   "CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj"
   "CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj"
   "CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj"

@@ -78,7 +78,9 @@ int IsisTrxvu_componentSoftReset(unsigned char index, ISIStrxvuComponent compone
         default:
             return 0;
     }
-    int err = I2C_write(addr,0xAA,1);//TODO: not corrent data
+    char data[] = {0xAA};
+    int err = I2C_write(addr,data,1);//TODO: not corrent data
+
     return err;
 }
 //done
@@ -99,7 +101,8 @@ int IsisTrxvu_componentHardReset(unsigned char index, ISIStrxvuComponent compone
         default:
             return 0;
     }
-    int err = I2C_write(addr,0xAB,1);//TODO: not corrent data
+    char data[] = {0xAB};
+    int err = I2C_write(addr,data,1);//TODO: not corrent data
     return err;
 }
 //done
@@ -111,12 +114,14 @@ int IsisTrxvu_softReset(unsigned char index){
     }
     int err = 0;
     unsigned char addr = trxvu_addresses[index].addressVu_rc;
-    err = I2C_write(addr,0xAA,1);
+    char data[] = {0xAA};
+    err = I2C_write(addr,data,1);
     if(0 != err){
         return err;
     }
     addr = trxvu_addresses[index].addressVu_tc;
-    err = I2C_write(addr,0xAA,1);
+    char data2[] = {0xAA};
+    err = I2C_write(addr,data2,1);
     if(0 != err){
         return err;
     }
@@ -130,7 +135,8 @@ int IsisTrxvu_hardReset(unsigned char index){
         }
     }
     unsigned char addr = trxvu_addresses[index].addressVu_rc;
-    int err = I2C_write(addr,0xAB,1);   // make sure that in simulated reset both RX and TX will reset
+    char data[] = {0xAB};
+    int err = I2C_write(addr,data,1);// make sure that in simulated reset both RX and TX will reset
     return err;
 }
 //done
@@ -246,11 +252,12 @@ int IsisTrxvu_rcGetFrameCount(unsigned char index, unsigned short *frameCount){
         }
     }
     unsigned char addr = trxvu_addresses[index].addressVu_rc;
-    int err = I2C_write(addr,0x21,1);
+    char data[] ={0x21};
+    int err = I2C_write(addr,data,1);
     if(0 != err){
         return err;
     }
-    err = I2C_read(addr,frameCount,2);
+    err = I2C_read(addr,(unsigned char*)frameCount,2);
     return 0;
 }
 int IsisTrxvu_rcGetCommandFrame(unsigned char index, ISIStrxvuRxFrame *rx_frame){
@@ -263,7 +270,8 @@ int IsisTrxvu_rcGetCommandFrame(unsigned char index, ISIStrxvuRxFrame *rx_frame)
         }
     }
     unsigned char addr = trxvu_addresses[index].addressVu_rc;
-    int err = I2C_write(addr,0x22,1);
+    char data[]= {0x22};
+    int err = I2C_write(addr,data,1);
     if(0 != err){
         return err;
     }
@@ -287,7 +295,8 @@ int IsisTrxvu_rcGetTelemetryAll_revC(unsigned char index, ISIStrxvuRxTelemetry_r
         }
     }
     unsigned char addr = trxvu_addresses[index].addressVu_rc;
-    int err = I2C_write(addr,0x1A,1);
+    char data[] = {0x40};
+    int err = I2C_write(addr,data,1);
     if(0 != err){
         return err;
     }
@@ -308,7 +317,8 @@ int IsisTrxvu_rcGetUptime(unsigned char index, unsigned int *uptime){
         }
     }
     unsigned char addr = trxvu_addresses[index].addressVu_rc;
-    int err = I2C_write(addr,0x40,1);
+    char data[] = {0x40};
+    int err = I2C_write(addr,data,1);
     if(0 != err){
         return err;
     }

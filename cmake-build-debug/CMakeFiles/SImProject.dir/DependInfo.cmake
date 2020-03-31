@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/97250/Documents/GitHub/SatSimulator/ConsumptionStates/ConsumptionStates.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/GenericHelpFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/List.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/List.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/RunPython.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/RunPython.c.obj"
@@ -17,6 +18,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimSolar.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimTRX.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimThermodynamics.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/FRAM.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/GPS_Module.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/GPS_Module.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/I2C.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SubsystemModules/RTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj"

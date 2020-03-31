@@ -54,7 +54,6 @@ EpsConsumptionState_t EpsMngr_GetConsumptionState(SatSubsystem subsys, unsigned 
     return epsMngr.subsys_consumption_states[subsys][state];
 }
 
-
 // ----------------------------------   API
 int SimEPS_AddConsumptionStates(SatSubsystem subsys,EpsConsumptionState_t *states,unsigned int length){
    if(subsys >=SUBSYS_NUM_OF_SUBSYSTEMS || subsys < 0){

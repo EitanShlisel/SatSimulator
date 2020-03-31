@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include "SimConfigFiles/SimulationConfigurations.h"
+
 typedef enum{
     EPS_CHANNEL_0,
     EPS_CHANNEL_1,
@@ -21,7 +22,6 @@ typedef enum{       // this enum contains the possibilities of supply voltages f
     CHANNEL_VOLTAGE_3V3,
     CHANNEL_VOLTAGE_VBATT
 }ChannelVoltage;
-
 
 typedef struct {
     ChannelIndex channel_index;             // the channel through which the subsystem consumes the current.
