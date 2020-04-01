@@ -56,7 +56,7 @@ unsigned int FormatData(figure_t *fig, xml_msg_t *xml){
     xml->xml_file = calloc(num_of_packets * DEFAULT_BUFLEN, 1);
     unsigned int num_of_char_written = 0;
     num_of_char_written += sprintf(xml->xml_file + num_of_char_written, "<figure id = \"%u\" title = \"%s\" Xaxis = \"%s\" Yaxis = \"%s\">", fig->figure_id, fig->title, fig->x_label, fig->y_label);
-    num_of_char_written += sprintf(xml->xml_file + num_of_char_written, "<data>");
+    num_of_char_written += sprintf(xml->xml_file + num_of_char_written, "<data sub_id = \"%u\">",fig->sub_figure_id);
     for (unsigned int i = 0; i < fig->num_of_data_points; ++i) {
         num_of_char_written += sprintf(xml->xml_file + num_of_char_written, "<point X=\"%lf\" Y=\"%lf\"/>", fig->dataPoints[i].x, fig->dataPoints[i].y);
     }
@@ -73,7 +73,6 @@ unsigned int SendFigureToPlotter(thread_id tid, figure_t *fig){
     xml_msg_t msg;
 
     num_of_bytes = FormatData(fig, &msg);
-
     for (unsigned int j = 0; j < msg.num_of_packets_in_msg; ++j) {
         memcpy(buff, &msg.num_of_packets_in_msg, sizeof(msg.num_of_packets_in_msg));
         memcpy(buff + sizeof(msg.num_of_packets_in_msg),

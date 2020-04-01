@@ -61,6 +61,7 @@ void PlotFigureOverTCP_Test(){
             .y_label="Ylabel",
             .title="I'm the best",
             .figure_id = 42,
+            .sub_figure_id = 0,
             .dataPoints = points,
             .num_of_data_points = NUM_OF_POINTS};
 
@@ -69,11 +70,12 @@ void PlotFigureOverTCP_Test(){
     char buff[10] = {0};
     itoa(GetClientPortFromThreadId(tid) ,buff,10);
     RunPythonScript(script_path,buff);
+    sleep(3);
     while(1) {
         ApplyFunctionToRange(points, NUM_OF_POINTS,start,end, costume_func);
         memcpy(fig.dataPoints,points, sizeof(points));
         SendFigureToPlotter(tid, &fig);
-        usleep(1000);
+        usleep(10000);
         start = end;
         end += 2 * M_PI;
     }
@@ -197,6 +199,6 @@ void FRAM_Test(){
 }
 
 int main(){
-
+    PlotFigureOverTCP_Test();
     return 0;
 }

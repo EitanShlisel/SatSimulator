@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define EXEC_PY_PATH "..\\ExecPython\\ExecPython\\obj\\Debug\\ExecPython.exe"
+#define EXEC_PY_PATH "C:\\Users\\97250\\Documents\\GitHub\\SatSimulator\\ExecPython\\ExecPython\\bin\\Debug\\ExecPython.exe"
 void RunPythonScript(char script_path[MAX_FILE_PATH], char *args){
 
     unsigned int length = 0;

@@ -12,6 +12,7 @@ typedef struct{
 #define MAX_ATTR_LENGTH 20
 typedef struct{
     unsigned int figure_id;
+    unsigned int sub_figure_id;
     char title[MAX_ATTR_LENGTH];
     char x_label[MAX_ATTR_LENGTH];
     char y_label[MAX_ATTR_LENGTH];

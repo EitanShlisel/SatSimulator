@@ -5,6 +5,7 @@ from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement, Comment
 from xml.dom import minidom
 import datetime
+
 plt.style.use('ggplot')
 
 #   <figure id = "42" title = "first figure" Yaxis = "Ytitle" Xaxis = "Xtitle">
@@ -24,39 +25,48 @@ import numpy as np
 plt.style.use('ggplot')
 matplotlib.use('TkAgg')
 
+
 def live_plotter(figment, line1, identifier='', pause_time=0.1):
-    figment :FigureData
-    if line1 == []:
-        # this is the call to matplotlib that allows dynamic plotting
-        plt.ion()
+    figment: FigureData
+    if line1 is None:
+        line1 = {}
+        plt.ion()  # this is the call to matplotlib that allows dynamic plotting
         fig = plt.figure(figsize=(6, 3))
         ax = fig.add_subplot(111)
-        # create a variable for the line so we can later update it
-        line1, = ax.plot(figment.x_data, figment.y_data, alpha=0.8)
-        # update plot label/title
+
+        # line1, = ax.plot(figment.x_data, figment.y_data, alpha=0.8)
+        for keyx, keyy in zip(figment.x_data, figment.y_data):
+            line1[keyx] = ax.plot(figment.x_data[keyx], figment.y_data[keyy], alpha=0.8)  # keyx always equals to keyy
+
         plt.xlabel(figment.x_label)
         plt.ylabel(figment.y_label)
         plt.title(figment.title.format(identifier))
         plt.show()
-
     # after the figure, axis, and line are created, we only need to update the y-data
-    line1.set_ydata(figment.y_data)
-    line1.set_xdata(figment.x_data)
-    # adjust limits if new data goes beyond bounds
-    if np.min(figment.y_data) <= line1.axes.get_ylim()[0] or np.max(figment.y_data) >= line1.axes.get_ylim()[1]:
-        plt.ylim([np.min(figment.y_data) - np.std(figment.y_data), np.max(figment.y_data) + np.std(figment.y_data)])
+    for keyx, keyy in zip(figment.x_data, figment.y_data):
+        line1[keyx][0].set_ydata(figment.y_data[keyy])
+        line1[keyx][0].set_xdata(figment.x_data[keyx])
 
-    if np.min(figment.x_data) <= line1.axes.get_xlim()[0] or np.max(figment.x_data) >= line1.axes.get_xlim()[1]:
-        plt.xlim([np.min(figment.x_data) - np.std(figment.x_data), np.max(figment.x_data) + np.std(figment.x_data)])
-    # this pauses the data so the figure/axis can catch up - the amount of pause can be altered above
-    plt.pause(pause_time)
+        xl_lim = np.min(figment.x_data[keyx]) - np.std(figment.x_data[keyx])
+        xr_lim = np.max(figment.x_data[keyx]) + np.std(figment.x_data[keyx])
+        yl_lim = np.min(figment.x_data[keyx]) - np.std(figment.x_data[keyx])
+        yr_lim = np.max(figment.x_data[keyx]) + np.std(figment.x_data[keyx])
 
-    # return line so we can update it again in the next iteration
+        # adjust limits if new data goes beyond bounds
+        if np.min(figment.y_data[keyy]) <= line1[keyx][0].axes.get_ylim()[0] \
+                or np.max(figment.y_data[keyy]) >= line1[keyx][0].axes.get_ylim()[1]:
+            plt.ylim([yl_lim, yr_lim])
+
+        if np.min(figment.x_data[keyx]) <= line1[keyx][0].axes.get_xlim()[0] \
+                or np.max(figment.x_data[keyx]) >= line1[keyx][0].axes.get_xlim()[1]:
+            plt.xlim([xl_lim, xr_lim])
+        # this pauses the data so the figure/axis can catch up - the amount of pause can be altered above
+        plt.pause(pause_time)
+
     return line1
 
+
 def __prettify__(elem):
-    """Return a pretty-printed XML string for the Element.
-    """
     rough_string = ElementTree.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
@@ -69,9 +79,9 @@ class FigureData:
         self.title = ""
         self.x_label = ""
         self.y_label = ""
-        self.dataPoints = []
-        self.x_data = []
-        self.y_data = []
+        self.dataPoints = {}
+        self.x_data = {}
+        self.y_data = {}
         self.figment = []
 
     def __init__(self, xml_string):
@@ -83,22 +93,30 @@ class FigureData:
         x_label = itemlist[0].attributes['Xaxis'].value
         y_label = itemlist[0].attributes['Yaxis'].value
 
-        itemlist = xmldoc.getElementsByTagName('point')
-
-        data = []
-        for s in itemlist:
-            x = s.attributes['X'].value
-            y = s.attributes['Y'].value
-            data.append((x, y))
-
         self.figure_id = figure_id
         self.title = title
         self.y_label = y_label
         self.x_label = x_label
-        self.dataPoints = [(float(i[0]), float(i[1])) for i in data]
-        x, y = map(list, zip(*self.dataPoints))
-        self.x_data = list(np.asfarray(x))
-        self.y_data = list(np.asfarray(y))
+        self.dataPoints = {}
+        self.x_data = {}
+        self.y_data = {}
+        graphs = xmldoc.getElementsByTagName('data')
+
+        for graph in graphs:
+            sub_id = graph.attributes['sub_id'].value
+            graph_points = graph.getElementsByTagName('point')
+            self.dataPoints[sub_id] = []
+            self.x_data[sub_id] = []
+            self.y_data[sub_id] = []
+            for point in graph_points:
+                x = point.attributes['X'].value
+                y = point.attributes['Y'].value
+                self.x_data[sub_id].append(float(x))
+                self.y_data[sub_id].append(float(y))
+                self.dataPoints[sub_id].append((float(x), float(y)))
+            # x, y = map(list, zip(*self.dataPoints))
+            # self.x_data[sub_id] = (list(np.asfarray(x)))
+            # self.y_data[sub_id] = (list(np.asfarray(y)))
 
     def add_data_to_figure(self, fig_dat):
         fig_dat: FigureData
@@ -110,10 +128,12 @@ class FigureData:
             if not self.title:
                 self.title = fig_dat.title
 
-            self.dataPoints = self.dataPoints + fig_dat.dataPoints
+            for keyx, keyy in zip(fig_dat.x_data, fig_dat.y_data):
+                self.x_data[keyx] = self.x_data[keyx] + fig_dat.x_data[keyx]
+                self.y_data[keyy] = self.y_data[keyy] + fig_dat.y_data[keyy]
+            for key in fig_dat.dataPoints:
+                self.dataPoints[key] = self.dataPoints[key] + fig_dat.dataPoints[key]
 
-            self.x_data = self.x_data + fig_dat.x_data
-            self.y_data = self.y_data + fig_dat.y_data
 
     def write_data_to_file(self, filepath=''):
         if not filepath:
@@ -141,10 +161,11 @@ class FigureData:
         self.figment.set_xlabel(self.x_label)
         self.figment.set_ylabel(self.y_label)
         self.figment.set_title(self.title)
-        self.figment.plot(self.x_data, self.y_data)
+        for keyx, keyy in zip(self.x_data, self.y_data):
+            self.figment.plot(self.x_data[keyx], self.y_data[keyy])
         plt.show()
         return line
 
     def live_plot(self, line, identifier='', pause_time=0.1):
-        line = live_plotter(self.x_data, self.y_data, identifier, pause_time)
+        line = live_plotter(self, line, identifier, pause_time)
         return line
