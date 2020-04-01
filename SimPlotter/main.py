@@ -65,7 +65,7 @@ def main_test():
     </figure>"""
     fig = FigureData(st)
     line = {}
-    line = fig.live_plot(line)
+    line = fig.live_plotter(line)
     time.sleep(10)
 
 
@@ -90,7 +90,7 @@ def plot_main(port):
                 fig = FigureData(data)
             else:
                 fig.add_data_to_figure(complete_fig)
-            line1 = fig.live_plot(line1)
+            line1 = fig.live_plotter(line1)
             data = ''
             num_of_received_packets = 0
         else:
@@ -100,5 +100,5 @@ def plot_main(port):
 
 if __name__ == "__main__":
     port = 40000
-    # port = int(sys.argv[1])
+    port = int(sys.argv[1])
     plot_main(port)

@@ -45,11 +45,18 @@ int python_tcp_Test(){
     }
 }
 
-double costume_func(double x){
+double costume_func0(double x){
     double r = ((double) rand() / (RAND_MAX));
     return sin(0.1*x)+exp(x/100) + r/5.0;
 }
-
+double costume_func1(double x){
+    double r = ((double) rand() / (RAND_MAX));
+    return sin(0.01*x) * sin(90*x);
+}
+double costume_func2(double x){
+    double r = ((double) rand() / (RAND_MAX));
+    return cos(0.1*x) * x + r/5.0;
+}
 #define NUM_OF_POINTS 100
 void PlotFigureOverTCP_Test(){
     unsigned int i = 0;
@@ -65,17 +72,29 @@ void PlotFigureOverTCP_Test(){
             .dataPoints = points,
             .num_of_data_points = NUM_OF_POINTS};
 
+
     thread_id tid = StartTcp();
     char *script_path = PLOTTER_PATH_PY;
     char buff[10] = {0};
     itoa(GetClientPortFromThreadId(tid) ,buff,10);
     RunPythonScript(script_path,buff);
-    sleep(3);
+
     while(1) {
-        ApplyFunctionToRange(points, NUM_OF_POINTS,start,end, costume_func);
+        fig.sub_figure_id = 0;
+        ApplyFunctionToRange(points, NUM_OF_POINTS, start, end, costume_func0);
         memcpy(fig.dataPoints,points, sizeof(points));
         SendFigureToPlotter(tid, &fig);
-        usleep(10000);
+
+        fig.sub_figure_id = 1;
+        ApplyFunctionToRange(points, NUM_OF_POINTS,start,end, costume_func1);
+        memcpy(fig.dataPoints,points, sizeof(points));
+        SendFigureToPlotter(tid, &fig);
+
+        fig.sub_figure_id = 2;
+        ApplyFunctionToRange(points, NUM_OF_POINTS,start,end, costume_func2);
+        memcpy(fig.dataPoints,points, sizeof(points));
+        SendFigureToPlotter(tid, &fig);
+        usleep(1000);
         start = end;
         end += 2 * M_PI;
     }

@@ -26,52 +26,6 @@ plt.style.use('ggplot')
 matplotlib.use('TkAgg')
 
 
-def live_plotter(figment, line1, identifier='', pause_time=0.1):
-    figment: FigureData
-    if line1 is None:
-        line1 = {}
-        plt.ion()  # this is the call to matplotlib that allows dynamic plotting
-        fig = plt.figure(figsize=(6, 3))
-        ax = fig.add_subplot(111)
-
-        # line1, = ax.plot(figment.x_data, figment.y_data, alpha=0.8)
-        for keyx, keyy in zip(figment.x_data, figment.y_data):
-            line1[keyx] = ax.plot(figment.x_data[keyx], figment.y_data[keyy], alpha=0.8)  # keyx always equals to keyy
-
-        plt.xlabel(figment.x_label)
-        plt.ylabel(figment.y_label)
-        plt.title(figment.title.format(identifier))
-        plt.show()
-    # after the figure, axis, and line are created, we only need to update the y-data
-    for keyx, keyy in zip(figment.x_data, figment.y_data):
-        line1[keyx][0].set_ydata(figment.y_data[keyy])
-        line1[keyx][0].set_xdata(figment.x_data[keyx])
-
-        xl_lim = np.min(figment.x_data[keyx]) - np.std(figment.x_data[keyx])
-        xr_lim = np.max(figment.x_data[keyx]) + np.std(figment.x_data[keyx])
-        yl_lim = np.min(figment.x_data[keyx]) - np.std(figment.x_data[keyx])
-        yr_lim = np.max(figment.x_data[keyx]) + np.std(figment.x_data[keyx])
-
-        # adjust limits if new data goes beyond bounds
-        if np.min(figment.y_data[keyy]) <= line1[keyx][0].axes.get_ylim()[0] \
-                or np.max(figment.y_data[keyy]) >= line1[keyx][0].axes.get_ylim()[1]:
-            plt.ylim([yl_lim, yr_lim])
-
-        if np.min(figment.x_data[keyx]) <= line1[keyx][0].axes.get_xlim()[0] \
-                or np.max(figment.x_data[keyx]) >= line1[keyx][0].axes.get_xlim()[1]:
-            plt.xlim([xl_lim, xr_lim])
-        # this pauses the data so the figure/axis can catch up - the amount of pause can be altered above
-        plt.pause(pause_time)
-
-    return line1
-
-
-def __prettify__(elem):
-    rough_string = ElementTree.tostring(elem, 'utf-8')
-    reparsed = minidom.parseString(rough_string)
-    return reparsed.toprettyxml(indent="  ")
-
-
 class FigureData:
 
     def __init__(self):
@@ -83,6 +37,8 @@ class FigureData:
         self.x_data = {}
         self.y_data = {}
         self.figment = []
+
+        self.__ax = []
 
     def __init__(self, xml_string):
         xmldoc = minidom.parseString(xml_string)
@@ -100,6 +56,7 @@ class FigureData:
         self.dataPoints = {}
         self.x_data = {}
         self.y_data = {}
+        self.__ax = []
         graphs = xmldoc.getElementsByTagName('data')
 
         for graph in graphs:
@@ -118,6 +75,11 @@ class FigureData:
             # self.x_data[sub_id] = (list(np.asfarray(x)))
             # self.y_data[sub_id] = (list(np.asfarray(y)))
 
+    def __prettify__(elem):
+        rough_string = ElementTree.tostring(elem, 'utf-8')
+        re_parsed = minidom.parseString(rough_string)
+        return re_parsed.toprettyxml(indent="  ")
+
     def add_data_to_figure(self, fig_dat):
         fig_dat: FigureData
         if fig_dat.figure_id == self.figure_id:
@@ -129,11 +91,16 @@ class FigureData:
                 self.title = fig_dat.title
 
             for keyx, keyy in zip(fig_dat.x_data, fig_dat.y_data):
+                if keyx not in self.x_data:
+                    self.x_data[keyx] = []
+                if keyx not in self.y_data:
+                    self.y_data[keyy] = []
                 self.x_data[keyx] = self.x_data[keyx] + fig_dat.x_data[keyx]
                 self.y_data[keyy] = self.y_data[keyy] + fig_dat.y_data[keyy]
             for key in fig_dat.dataPoints:
+                if key not in self.dataPoints:
+                    self.dataPoints[key] = []
                 self.dataPoints[key] = self.dataPoints[key] + fig_dat.dataPoints[key]
-
 
     def write_data_to_file(self, filepath=''):
         if not filepath:
@@ -166,6 +133,44 @@ class FigureData:
         plt.show()
         return line
 
-    def live_plot(self, line, identifier='', pause_time=0.1):
-        line = live_plotter(self, line, identifier, pause_time)
-        return line
+    def live_plotter(self, line1, identifier='', pause_time=0.1):
+        self: FigureData
+        if line1 is None:
+            line1 = {}
+            plt.ion()  # this is the call to matplotlib that allows dynamic plotting
+            fig = plt.figure(figsize=(6, 3))
+            self.__ax = fig.add_subplot(111)
+
+            # line1, = ax.plot(figment.x_data, figment.y_data, alpha=0.8)
+            # for keyx, keyy in zip(figment.x_data, figment.y_data):
+            #     line1[keyx] = ax.plot(figment.x_data[keyx], figment.y_data[keyy], alpha=0.8)  # keyx always equals to keyy
+
+            plt.xlabel(self.x_label)
+            plt.ylabel(self.y_label)
+            plt.title(self.title.format(identifier))
+            plt.show()
+        # after the figure, axis, and line are created, we only need to update the y-data
+        for keyx, keyy in zip(self.x_data, self.y_data):
+            if keyx not in line1:
+                line1[keyx] = self.__ax.plot(self.x_data[keyx], self.y_data[keyy],
+                                      alpha=0.8)  # keyx always equals to keyy
+            line1[keyx][0].set_ydata(self.y_data[keyy])
+            line1[keyx][0].set_xdata(self.x_data[keyx])
+
+            xl_lim = np.min(self.x_data[keyx]) - np.std(self.x_data[keyx])
+            xr_lim = np.max(self.x_data[keyx]) + np.std(self.x_data[keyx])
+            yl_lim = np.min(self.x_data[keyx]) - np.std(self.x_data[keyx])
+            yr_lim = np.max(self.x_data[keyx]) + np.std(self.x_data[keyx])
+
+            # adjust limits if new data goes beyond bounds
+            if np.min(self.y_data[keyy]) <= line1[keyx][0].axes.get_ylim()[0] \
+                    or np.max(self.y_data[keyy]) >= line1[keyx][0].axes.get_ylim()[1]:
+                plt.ylim([yl_lim, yr_lim])
+
+            if np.min(self.x_data[keyx]) <= line1[keyx][0].axes.get_xlim()[0] \
+                    or np.max(self.x_data[keyx]) >= line1[keyx][0].axes.get_xlim()[1]:
+                plt.xlim([xl_lim, xr_lim])
+            # this pauses the data so the figure/axis can catch up - the amount of pause can be altered above
+            plt.pause(pause_time)
+
+        return line1
