@@ -1,10 +1,11 @@
 #ifndef SIMPROJECT_TCPHANDLER_H
 #define SIMPROJECT_TCPHANDLER_H
 
+#define TCP_USE_PRINTS 0
+
 #define DEFAULT_BUFLEN (1024)
 
 typedef unsigned char thread_id;
-
 
 int  GetClientPortFromThreadId(thread_id tid);
 

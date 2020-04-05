@@ -20,6 +20,8 @@
 
 #include "ConsumptionStates/ConsumptionStates.h"
 
+#include "SimulatorCommandLine/SimCmdLine.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -29,7 +31,8 @@
 #include <pthread_time.h>
 #include <stdbool.h>
 #include <math.h>
-
+#include <ctype.h>
+#include <limits.h>
 int python_tcp_Test(){
     thread_id tid = StartTcp();
     int i = 0;
@@ -51,7 +54,7 @@ double costume_func0(double x){
 }
 double costume_func1(double x){
     double r = ((double) rand() / (RAND_MAX));
-    return sin(0.01*x) * sin(90*x);
+    return x/10*sin(0.1*x) * sin(90*x);
 }
 double costume_func2(double x){
     double r = ((double) rand() / (RAND_MAX));
@@ -78,7 +81,7 @@ void PlotFigureOverTCP_Test(){
     char buff[10] = {0};
     itoa(GetClientPortFromThreadId(tid) ,buff,10);
     RunPythonScript(script_path,buff);
-
+    sleep(3);
     while(1) {
         fig.sub_figure_id = 0;
         ApplyFunctionToRange(points, NUM_OF_POINTS, start, end, costume_func0);
@@ -102,7 +105,7 @@ void PlotFigureOverTCP_Test(){
 
 void EPS_Test(){
     EpsConsumptionState_t fake_subsys_states[] = {
-            {0,5000, false},
+            {0,10000, false},
             {1,1000, false},
             {2,420, false}
     };
@@ -132,7 +135,7 @@ void EPS_Test(){
             SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
             printStates(SUBSYS_FAKE);
         }
-        if(i==9){
+        if(i==20){
             SimEPS_SetChannel(2,true);
             SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
             printStates(SUBSYS_FAKE);
@@ -217,7 +220,63 @@ void FRAM_Test(){
     }
 }
 
+void Plot_EPS_Vbatt_Test(){
+    unsigned int i = 0;
+    data_point_t points[1];
+
+    figure_t fig = {.x_label = "Xlabel",
+            .y_label="Ylabel",
+            .title="I'm the best",
+            .figure_id = 42,
+            .sub_figure_id = 0,
+            .dataPoints = points,
+            .num_of_data_points = 1};
+
+
+    thread_id tid = StartTcp();
+    char *script_path = PLOTTER_PATH_PY;
+    char buff[10] = {0};
+    itoa(GetClientPortFromThreadId(tid) ,buff,10);
+    RunPythonScript(script_path,buff);
+    sleep(5);
+    EpsConsumptionState_t fake_subsys_states[] = {
+            {0,10000, false},
+            {1,1000, false},
+            {2,420, false}
+    };
+
+    int err = 0;
+    err = SimRTC_Init();
+    TRACE_ERROR(SimRTC_Init,err);
+    err = SimEPS_AddConsumptionStates(SUBSYS_FAKE,fake_subsys_states,3);
+    TRACE_ERROR(SimEPS_AddConsumptionStates,err);
+    err = SimEPS_StartEps();
+    TRACE_ERROR(SimEPS_StartEps,err);
+    SimEPS_SetChannel(0,true);
+    SimEPS_SetSubsysState(SUBSYS_FAKE,0,true);
+
+    SimEPS_SetChannel(1,true);
+    SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
+
+    SimEPS_SetChannel(2,true);
+    SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
+
+    while(1) {
+
+        fig.sub_figure_id = 0;
+
+        points->x = SimRTC_GetSimulationTime();
+        points->y = SimEPS_GetBatteryVoltage();
+        memcpy(fig.dataPoints,points, sizeof(points));
+        SendFigureToPlotter(tid, &fig);
+        if(points->y  < 3000){
+            printf("SIM: DoD = %f%%\n",SimEPS_GetDOD());
+        }
+        usleep(1000);
+    }
+}
+
 int main(){
-    PlotFigureOverTCP_Test();
+    CmdTest();
     return 0;
 }

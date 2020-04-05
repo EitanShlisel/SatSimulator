@@ -6,7 +6,7 @@ from Figure import FigureData
 import numpy as np
 from operator import add
 import time
-
+import winsound
 
 def plot_from_simulator():
     s, s_ack = InitSockets(40000)
@@ -70,7 +70,12 @@ def main_test():
 
 
 def plot_main(port):
-    s, s_ack = InitSockets(port)
+    try:
+        s, s_ack = InitSockets(port)
+    except Exception as e:
+        print("PY: failed initialising socket")
+        print(str(e))
+        exit(-666)
     print("PY: starting with port = " + str(port))
     data = ''
     fig = []
@@ -78,7 +83,6 @@ def plot_main(port):
     num_of_received_packets = 0
     while True:
         port_data = GetDataFromPort(s)
-        print("PY: got data " + str(len(port_data)))
         num_of_packets = int.from_bytes(port_data[0:4], "little")
         num_of_received_packets = num_of_received_packets + 1
         if num_of_received_packets == num_of_packets:
@@ -99,6 +103,9 @@ def plot_main(port):
 
 
 if __name__ == "__main__":
+    # if len(sys.argv) == 1:
+    #     print("PY: Wrong number of system arguments")
+    #     exit(-42)
     port = 40000
-    port = int(sys.argv[1])
+    # port = int(sys.argv[1])
     plot_main(port)

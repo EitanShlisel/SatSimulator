@@ -128,6 +128,13 @@ CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj: ../SimFiles/SimConfi
 CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj: ../SimFiles/SimThermodynamics.c
 CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.obj: ../SimFiles/SimThermodynamics.h
 
+CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj: ../SimulatorCommandLine/CommandDictionary.c
+CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj: ../SimulatorCommandLine/CommandDictionary.h
+
+CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimulatorCommandLine/CmdTypes.h
+CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimulatorCommandLine/SimCmdLine.c
+CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimulatorCommandLine/SimCmdLine.h
+
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../ConsumptionStates/ConsumptionStates.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h

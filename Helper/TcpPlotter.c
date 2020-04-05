@@ -71,7 +71,6 @@ unsigned int SendFigureToPlotter(thread_id tid, figure_t *fig){
     unsigned int num_of_bytes;
     char buff[DEFAULT_BUFLEN] = {0};
     xml_msg_t msg;
-
     num_of_bytes = FormatData(fig, &msg);
     for (unsigned int j = 0; j < msg.num_of_packets_in_msg; ++j) {
         memcpy(buff, &msg.num_of_packets_in_msg, sizeof(msg.num_of_packets_in_msg));

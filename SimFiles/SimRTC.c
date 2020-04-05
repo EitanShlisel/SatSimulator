@@ -72,6 +72,7 @@ int SimRTC_Init(){
     if(0 != pthread_create(&rtc_thread_id, NULL, SimRtcThread, NULL)){
         return -2;
     }
+    rtc_started = true;
     return 0;
 }
 int SimRTC_StopRTC(){

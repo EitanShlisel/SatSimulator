@@ -12,16 +12,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f3f33-91f8-46a8-aadd-64543e930c7e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/SimulatorCommandLine/CmdTypes.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimulatorCommandLine/CommandDictionary.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimulatorCommandLine/CommandDictionary.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimulatorCommandLine/SimCmdLine.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimulatorCommandLine/SimCmdLine.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/.vs/ExecPython/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/.vs/ExecPython/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/.vs/ExecPython/v15/Server/sqlite3/storage.ide-shm" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/.vs/ExecPython/v15/Server/sqlite3/storage.ide-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/.vs/ExecPython/v15/Server/sqlite3/storage.ide-wal" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/.vs/ExecPython/v15/Server/sqlite3/storage.ide-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/ExecPython/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/ExecPython/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/ExecPython/bin/Debug/ExecPython.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/ExecPython/bin/Debug/ExecPython.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/ExecPython/bin/Debug/ExecPython.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/ExecPython/bin/Debug/ExecPython.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/ExecPython/obj/Debug/ExecPython.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/ExecPython/obj/Debug/ExecPython.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/ExecPython/obj/Debug/ExecPython.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/ExecPython/obj/Debug/ExecPython.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExecPython/ExecPython/obj/Debug/ExecPython.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ExecPython/ExecPython/obj/Debug/ExecPython.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/RunPython.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/RunPython.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/TcpHandler.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/TcpHandler.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/TcpHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/TcpHandler.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/TcpPlotter.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/TcpPlotter.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigEPS.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigEPS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigTRX.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigTRX.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimEPS.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimEPS.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimEPS.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimEPS.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimRTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimRTC.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimTRX.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimTRX.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimPlotter/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SimPlotter/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimPlotter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SimPlotter/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimPlotter/Figure.py" beforeDir="false" afterPath="$PROJECT_DIR$/SimPlotter/Figure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimPlotter/TcpPipe.py" beforeDir="false" afterPath="$PROJECT_DIR$/SimPlotter/TcpPipe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimPlotter/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SimPlotter/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SubsystemModules/GPS_Module.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/GPS_Module.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SubsystemModules/GPS_Module.h" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/GPS_Module.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/RunPython.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/RunPython.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects1.rsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
@@ -52,10 +92,16 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
@@ -144,7 +190,13 @@
       <workItem from="1585655593433" duration="963000" />
       <workItem from="1585656633306" duration="1036000" />
       <workItem from="1585743681526" duration="339000" />
-      <workItem from="1585744042337" duration="2164000" />
+      <workItem from="1585744042337" duration="4808000" />
+      <workItem from="1585761838738" duration="24000" />
+      <workItem from="1585911748600" duration="6037000" />
+      <workItem from="1585932037955" duration="7064000" />
+      <workItem from="1585987483836" duration="6633000" />
+      <workItem from="1586020167077" duration="311000" />
+      <workItem from="1586063754725" duration="23211000" />
     </task>
     <servers />
   </component>
@@ -168,49 +220,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimRTC.c</url>
-          <line>81</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/SimulatorCommandLine/SimCmdLine.c</url>
+          <line>235</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimSTK.c</url>
-          <line>321</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimSTK.c</url>
-          <line>317</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimSTK.c</url>
-          <line>292</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimI2C.c</url>
-          <line>145</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimI2C.c</url>
-          <line>133</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimI2C.c</url>
-          <line>117</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimEPS.c</url>
-          <line>42</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SimFiles/SimEPS.c</url>
-          <line>111</line>
-          <option name="timeStamp" value="102" />
+          <url>file://$PROJECT_DIR$/SimulatorCommandLine/SimCmdLine.c</url>
+          <line>229</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

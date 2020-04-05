@@ -10,9 +10,9 @@
 #define TRX_DOWNLINK_FILE_PATH  ("\\Users\\97250\\Desktop\\downlink_transmissions")
 
 
-#define TRX_UPLINK_CENTER_FREQUANCY_Hz      500000
-#define TRX_RX_ANTENNA_BANDWIDTH_Hz         50000
-#define TRX_MIN_SAT_LINK_POWER_dBm          -100.0
+#define TRX_UPLINK_CENTER_FREQUANCY_Hz      (500000)
+#define TRX_RX_ANTENNA_BANDWIDTH_Hz         (50000)
+#define TRX_MIN_SAT_LINK_POWER_dBm          (-100.0)
 
 #define TRX_NUMBER_OF_GROUND_STATIONS   2
 #define TRX_GROUND_STATION_LOCATION_ECEF    {\

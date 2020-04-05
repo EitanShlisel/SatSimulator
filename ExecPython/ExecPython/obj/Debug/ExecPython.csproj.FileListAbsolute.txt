@@ -12,3 +12,10 @@ C:\Users\97250\CLionProjects\GccMsgToPython\ExecPython\ExecPython\obj\Debug\Exec
 C:\Users\97250\CLionProjects\GccMsgToPython\ExecPython\ExecPython\obj\Debug\ExecPython.csproj.CoreCompileInputs.cache
 C:\Users\97250\CLionProjects\GccMsgToPython\ExecPython\ExecPython\obj\Debug\ExecPython.exe
 C:\Users\97250\CLionProjects\GccMsgToPython\ExecPython\ExecPython\obj\Debug\ExecPython.pdb
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\bin\Debug\ExecPython.exe.config
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\bin\Debug\ExecPython.exe
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\bin\Debug\ExecPython.pdb
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\obj\Debug\ExecPython.csprojAssemblyReference.cache
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\obj\Debug\ExecPython.csproj.CoreCompileInputs.cache
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\obj\Debug\ExecPython.exe
+C:\Users\97250\Documents\GitHub\SatSimulator\ExecPython\ExecPython\obj\Debug\ExecPython.pdb

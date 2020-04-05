@@ -268,7 +268,7 @@ bool SimTRX_CheckIfLinkExists(unsigned int ground_station_index, double gs_trans
         geometric_condition = true;
     }
     bool link_condition = false;
-    double rssi = SimTRX_CalcRSSI(ground_station_index,gs_transmit_power_dBm);
+    double rssi = SimTRX_CalcRSSI(ground_station_index, gs_transmit_power_dBm);
     if(rssi < TRX_MIN_SAT_LINK_POWER_dBm){
         link_condition = false;
     }

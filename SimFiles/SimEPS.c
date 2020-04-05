@@ -16,6 +16,7 @@ typedef struct EpsMngr_t{
     double *polynom_coeff;          // the interpolation polynomial of the batteries voltage vs discharge capacity [V] vs [mAh]
     unsigned int pol_length;        // polynomial degree
 
+    bool is_battery_dead;
     double batt_discharge;          // how much charge in the battery [mAh]
     double batt_temperature;        // temperature of batteries
 
@@ -141,7 +142,12 @@ double SimEPS_GetBatteryVoltage(){
     return volt;
 }
 
-
+double SimEPS_GetDOD(){
+    pthread_mutex_lock(&mutex_eps_mngr);
+        double batt_charge = epsMngr.batt_discharge;
+    pthread_mutex_unlock(&mutex_eps_mngr);
+    return (batt_charge/EPS_MAX_BATTERY_CHARGE_mAh);
+}
 
 // ----------------------------------   THREADS
 void* EpsThread(void *param){
@@ -154,14 +160,24 @@ void* EpsThread(void *param){
         curr_time = SimRTC_GetSimulationTime();
         dt = curr_time - prev_time;
         prev_time = curr_time;
+        current_consumption_mA = SimEPS_GetCurrentConsumption() - SimSolar_GetSolarCurrentProduction();
 
-        current_consumption_mA =   SimEPS_GetCurrentConsumption() - SimSolar_GetSolarCurrentProduction() ;
-        epsMngr.batt_discharge += mAsec_to_mAh(dt * current_consumption_mA);
-        if(epsMngr.batt_discharge >= EPS_MAX_BATTERY_CHARGE_mAh){
-            TRACE_ERROR(negative batt_charge in eps,-666);
-            epsMngr.batt_discharge = 0;
+        if(SimEPS_GetDOD() > EPS_MAX_DoD_PERCENT){
+            TRACE_ERROR(EPS: reached max DoD,-666);
+            epsMngr.is_battery_dead = true;
+            epsMngr.batt_discharge = EPS_DISCHARGE_AT_0VOLT_mAh;
         }
 
+        if (!epsMngr.is_battery_dead){
+            epsMngr.batt_discharge += mAsec_to_mAh(dt * current_consumption_mA);
+        }else{ // battery is dead
+            if(current_consumption_mA > 0){ // consuming more than produced in solar panels
+                for (ChannelIndex index = 0; index < EPS_CHANNEL_NUM_OF_CHANNELS; ++index) {
+                    SimEPS_SetChannel(index,false);
+                }
+                TRACE_ERROR(EPS: over current consumption with dead battery,-3);
+            }
+        }
         SimThreadSleep(1000);//TODO: change this to somthing real
     }
 }
@@ -228,9 +244,11 @@ int SimEPS_StartEps(){
 
     // set all channels off
     memset(epsMngr.is_channel_on,false,EPS_CHANNEL_NUM_OF_CHANNELS*sizeof(*epsMngr.is_channel_on));
+    epsMngr.is_battery_dead = false;    // starts at normal function of battery
 
     err = pthread_create(&eps_thread_id,NULL,EpsThread,NULL);
     TRACE_ERROR(pthread_create in SimEPS_StartEps,err);
+
     return 0;
 }
 

@@ -500,6 +500,60 @@ SimFiles/SimThermodynamics.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimThermodynamics.c.s
 .PHONY : SimFiles/SimThermodynamics.c.s
 
+SimulatorCommandLine/CommandDictionary.obj: SimulatorCommandLine/CommandDictionary.c.obj
+
+.PHONY : SimulatorCommandLine/CommandDictionary.obj
+
+# target to build an object file
+SimulatorCommandLine/CommandDictionary.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj
+.PHONY : SimulatorCommandLine/CommandDictionary.c.obj
+
+SimulatorCommandLine/CommandDictionary.i: SimulatorCommandLine/CommandDictionary.c.i
+
+.PHONY : SimulatorCommandLine/CommandDictionary.i
+
+# target to preprocess a source file
+SimulatorCommandLine/CommandDictionary.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.i
+.PHONY : SimulatorCommandLine/CommandDictionary.c.i
+
+SimulatorCommandLine/CommandDictionary.s: SimulatorCommandLine/CommandDictionary.c.s
+
+.PHONY : SimulatorCommandLine/CommandDictionary.s
+
+# target to generate assembly for a file
+SimulatorCommandLine/CommandDictionary.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.s
+.PHONY : SimulatorCommandLine/CommandDictionary.c.s
+
+SimulatorCommandLine/SimCmdLine.obj: SimulatorCommandLine/SimCmdLine.c.obj
+
+.PHONY : SimulatorCommandLine/SimCmdLine.obj
+
+# target to build an object file
+SimulatorCommandLine/SimCmdLine.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj
+.PHONY : SimulatorCommandLine/SimCmdLine.c.obj
+
+SimulatorCommandLine/SimCmdLine.i: SimulatorCommandLine/SimCmdLine.c.i
+
+.PHONY : SimulatorCommandLine/SimCmdLine.i
+
+# target to preprocess a source file
+SimulatorCommandLine/SimCmdLine.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.i
+.PHONY : SimulatorCommandLine/SimCmdLine.c.i
+
+SimulatorCommandLine/SimCmdLine.s: SimulatorCommandLine/SimCmdLine.c.s
+
+.PHONY : SimulatorCommandLine/SimCmdLine.s
+
+# target to generate assembly for a file
+SimulatorCommandLine/SimCmdLine.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.s
+.PHONY : SimulatorCommandLine/SimCmdLine.c.s
+
 SubsystemModules/FRAM.obj: SubsystemModules/FRAM.c.obj
 
 .PHONY : SubsystemModules/FRAM.obj
@@ -740,6 +794,12 @@ help:
 	@echo ... SimFiles/SimThermodynamics.obj
 	@echo ... SimFiles/SimThermodynamics.i
 	@echo ... SimFiles/SimThermodynamics.s
+	@echo ... SimulatorCommandLine/CommandDictionary.obj
+	@echo ... SimulatorCommandLine/CommandDictionary.i
+	@echo ... SimulatorCommandLine/CommandDictionary.s
+	@echo ... SimulatorCommandLine/SimCmdLine.obj
+	@echo ... SimulatorCommandLine/SimCmdLine.i
+	@echo ... SimulatorCommandLine/SimCmdLine.s
 	@echo ... SubsystemModules/FRAM.obj
 	@echo ... SubsystemModules/FRAM.i
 	@echo ... SubsystemModules/FRAM.s

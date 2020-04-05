@@ -4,8 +4,12 @@ def InitSockets(port):
     host = socket.gethostname()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s_ack = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host, port))
-    s_ack.connect((host, port + 1))
+    try:
+        s.connect((host, port))
+        s_ack.connect((host, port + 1))
+    except Exception as e:
+        raise e
+        return
     return s, s_ack
 
 def GetDataFromPort(s):

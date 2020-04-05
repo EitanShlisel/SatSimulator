@@ -39,6 +39,8 @@ double SimEPS_GetCurrentConsumption();
 
 double SimEPS_GetBatteryVoltage();
 
+//return percentage of discharge in the battery
+double SimEPS_GetDOD();
 // state at index 0 MUST be the idle system on state, where the system is just on.
 // For example, a transmitter NOT transmitting
 int SimEPS_AddConsumptionStates(SatSubsystem subsys,

@@ -23,6 +23,11 @@ namespace ExecPython
             start.RedirectStandardError = true; // Any error in standard output will be redirected back (for example exceptions)
             start.LoadUserProfile = true;
             System.Diagnostics.Process process = System.Diagnostics.Process.Start(start);
+            while (true)
+            {
+                Console.Beep(440,1000);
+                System.Threading.Thread.Sleep(1000);
+            }
         }
     }
 }

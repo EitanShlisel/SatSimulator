@@ -120,3 +120,4 @@ int GPS_getAtomicTime(atomic_time_t *tm){
     }
     return GPS_ERR_SUCCESS;
 }
+

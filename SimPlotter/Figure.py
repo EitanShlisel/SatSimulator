@@ -1,30 +1,14 @@
 import matplotlib
+matplotlib.use("TkAgg")
 from matplotlib import pyplot as plt
 import numpy as np
 from xml.etree import ElementTree
-from xml.etree.ElementTree import Element, SubElement, Comment
+from xml.etree.ElementTree import Element, SubElement
 from xml.dom import minidom
 import datetime
 
+
 plt.style.use('ggplot')
-
-#   <figure id = "42" title = "first figure" Yaxis = "Ytitle" Xaxis = "Xtitle">
-#       <data>
-#           <point X="1" Y = "1"/>
-#           <point X="2" Y = "2"/>
-#           <point X="3" Y = "3"/>
-#           <point X="4" Y = "4"/>
-#           <point X="5" Y = "5"/>
-#       </data>
-#   </figure>
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-# use ggplot style for more sophisticated visuals
-plt.style.use('ggplot')
-matplotlib.use('TkAgg')
-
 
 class FigureData:
 
@@ -71,12 +55,9 @@ class FigureData:
                 self.x_data[sub_id].append(float(x))
                 self.y_data[sub_id].append(float(y))
                 self.dataPoints[sub_id].append((float(x), float(y)))
-            # x, y = map(list, zip(*self.dataPoints))
-            # self.x_data[sub_id] = (list(np.asfarray(x)))
-            # self.y_data[sub_id] = (list(np.asfarray(y)))
 
-    def __prettify__(elem):
-        rough_string = ElementTree.tostring(elem, 'utf-8')
+    def __prettify__(self):
+        rough_string = ElementTree.tostring(self, 'utf-8')
         re_parsed = minidom.parseString(rough_string)
         return re_parsed.toprettyxml(indent="  ")
 
@@ -118,7 +99,7 @@ class FigureData:
 
             path = filepath + self.title + str(datetime.datetime.now()).replace(":", "_") + '.xml'
             f = open(path, "w+")
-            f.write(__prettify__(top))
+            f.write(self.__prettify__())
             f.close()
 
     def plot_figure(self):
@@ -133,23 +114,45 @@ class FigureData:
         plt.show()
         return line
 
+    def __update_plot_limits__(self, line1):
+        if line1 is None:
+            return
+        glob_x_min = min([min(v) for _, v in self.x_data.items()])
+        glob_x_max = max([max(v) for _, v in self.x_data.items()])
+        glob_y_min = min([min(v) for _, v in self.y_data.items()])
+        glob_y_max = max([max(v) for _, v in self.y_data.items()])
+
+        line_xlim_min = min([v[0].axes.get_xlim()[0] for k, v in line1.items()])
+        line_xlim_max = max([v[0].axes.get_xlim()[1] for k, v in line1.items()])
+        line_ylim_min = min([v[0].axes.get_ylim()[0] for k, v in line1.items()])
+        line_ylim_max = max([v[0].axes.get_ylim()[1] for k, v in line1.items()])
+
+        # adjust limits if new data goes beyond bounds
+        if glob_y_min <= line_ylim_min or glob_y_max >= line_ylim_max:
+            yl_lim = np.min([np.min(v) - np.std(v)/2 for k, v in self.y_data.items()])
+            yr_lim = np.max([np.max(v) + np.std(v)/2 for k, v in self.y_data.items()])
+            print("yl_lim = " + str(yl_lim) + " yr_lim = " + str(yr_lim))
+            plt.ylim([yl_lim, yr_lim])
+
+        if glob_x_min <= line_xlim_min or glob_x_max >= line_xlim_max:
+            xl_lim = np.min([np.min(v) - np.std(v)/2 for k, v in self.x_data.items()])
+            xr_lim = np.max([np.max(v) + np.std(v)/2 for k, v in self.x_data.items()])
+            print("xl_lim = " + str(xl_lim) + " xr_lim = " + str(xr_lim))
+            plt.xlim([xl_lim, xr_lim])
+
     def live_plotter(self, line1, identifier='', pause_time=0.1):
         self: FigureData
         if line1 is None:
             line1 = {}
             plt.ion()  # this is the call to matplotlib that allows dynamic plotting
-            fig = plt.figure(figsize=(6, 3))
+            fig = plt.figure(figsize=(8, 3))
             self.__ax = fig.add_subplot(111)
-
-            # line1, = ax.plot(figment.x_data, figment.y_data, alpha=0.8)
-            # for keyx, keyy in zip(figment.x_data, figment.y_data):
-            #     line1[keyx] = ax.plot(figment.x_data[keyx], figment.y_data[keyy], alpha=0.8)  # keyx always equals to keyy
 
             plt.xlabel(self.x_label)
             plt.ylabel(self.y_label)
             plt.title(self.title.format(identifier))
             plt.show()
-        # after the figure, axis, and line are created, we only need to update the y-data
+
         for keyx, keyy in zip(self.x_data, self.y_data):
             if keyx not in line1:
                 line1[keyx] = self.__ax.plot(self.x_data[keyx], self.y_data[keyy],
@@ -157,20 +160,8 @@ class FigureData:
             line1[keyx][0].set_ydata(self.y_data[keyy])
             line1[keyx][0].set_xdata(self.x_data[keyx])
 
-            xl_lim = np.min(self.x_data[keyx]) - np.std(self.x_data[keyx])
-            xr_lim = np.max(self.x_data[keyx]) + np.std(self.x_data[keyx])
-            yl_lim = np.min(self.x_data[keyx]) - np.std(self.x_data[keyx])
-            yr_lim = np.max(self.x_data[keyx]) + np.std(self.x_data[keyx])
+            self.__update_plot_limits__(line1)
 
-            # adjust limits if new data goes beyond bounds
-            if np.min(self.y_data[keyy]) <= line1[keyx][0].axes.get_ylim()[0] \
-                    or np.max(self.y_data[keyy]) >= line1[keyx][0].axes.get_ylim()[1]:
-                plt.ylim([yl_lim, yr_lim])
-
-            if np.min(self.x_data[keyx]) <= line1[keyx][0].axes.get_xlim()[0] \
-                    or np.max(self.x_data[keyx]) >= line1[keyx][0].axes.get_xlim()[1]:
-                plt.xlim([xl_lim, xr_lim])
-            # this pauses the data so the figure/axis can catch up - the amount of pause can be altered above
-            plt.pause(pause_time)
+        plt.pause(pause_time)
 
         return line1

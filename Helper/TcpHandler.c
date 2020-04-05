@@ -1,5 +1,3 @@
-
-
 #undef UNICODE
 
 #define WIN32_LEAN_AND_MEAN
@@ -16,9 +14,6 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include "TcpHandler.h"
-
-
-
 
 #define MAX_NUM_OF_TCP_THREADS 255
 thread_id thread_ids[MAX_NUM_OF_TCP_THREADS] = {0};
@@ -56,7 +51,9 @@ int InitSocket(SOCKET *sock,char *port){
 
     iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
     if (iResult != 0) {
+#if(TCP_USE_PRINTS == 1)
         printf("WSAStartup failed with error: %d\n", iResult);
+#endif
         return iResult;
     }
 
@@ -70,7 +67,9 @@ int InitSocket(SOCKET *sock,char *port){
     // Resolve the server address and port
     iResult = getaddrinfo(NULL, port, &hints, &result);
     if ( iResult != 0 ) {
+#if(TCP_USE_PRINTS == 1)
         printf("getaddrinfo failed with error: %d\n", iResult);
+#endif
         WSACleanup();
         return iResult;
     }
@@ -79,7 +78,9 @@ int InitSocket(SOCKET *sock,char *port){
     ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
     if (ListenSocket == INVALID_SOCKET) {
         iResult = WSAGetLastError();
+#if(TCP_USE_PRINTS == 1)
         printf("socket failed with error: %ld\n", iResult);
+#endif
         freeaddrinfo(result);
         WSACleanup();
         return iResult;
@@ -89,7 +90,9 @@ int InitSocket(SOCKET *sock,char *port){
     iResult = bind( ListenSocket, result->ai_addr, (int)result->ai_addrlen);
     if (iResult == SOCKET_ERROR) {
         iResult = WSAGetLastError();
+#if(TCP_USE_PRINTS == 1)
         printf("bind failed with error: %d\n", iResult);
+#endif
         freeaddrinfo(result);
         closesocket(ListenSocket);
         WSACleanup();
@@ -101,7 +104,9 @@ int InitSocket(SOCKET *sock,char *port){
     iResult = listen(ListenSocket, SOMAXCONN);
     if (iResult == SOCKET_ERROR) {
         iResult = WSAGetLastError();
+    #if(TCP_USE_PRINTS == 1)
         printf("listen failed with error: %d\n", iResult);
+    #endif
         closesocket(ListenSocket);
         WSACleanup();
         return iResult;
@@ -111,7 +116,9 @@ int InitSocket(SOCKET *sock,char *port){
     *sock = accept(ListenSocket, NULL, NULL);
     if (*sock == INVALID_SOCKET) {
         iResult = WSAGetLastError();
+    #if(TCP_USE_PRINTS == 1)
         printf("accept failed with error: %d\n", WSAGetLastError());
+    #endif
         closesocket(ListenSocket);
         WSACleanup();
         return iResult;
@@ -140,9 +147,10 @@ void* tcpThread(void *param){
     char ack_port[6] = {0};
     itoa(GetClientPortFromThreadId(tid), client_port, 10);
     itoa(GetAckPortFromThreadId(tid),ack_port,10);
+#if(TCP_USE_PRINTS == 1)
     printf("tid = %d;\tClient port = %s\n",tid,client_port);
     printf("tid = %d;\tack port = %s\n",tid,ack_port);
-
+#endif
     SOCKET ClientSocket = INVALID_SOCKET;
     SOCKET AckSocket = INVALID_SOCKET;
     unsigned char data_buffer[DEFAULT_BUFLEN] = {0};
@@ -161,17 +169,23 @@ void* tcpThread(void *param){
         pthread_exit(&err);
         return NULL;
     }
+#if(TCP_USE_PRINTS == 1)
     printf("TCP: initialised sockets\n");
+#endif
     unsigned int counter = 0;
     do {
         sem_wait(&sem_data_in_buffer[tid]);
+    #if(TCP_USE_PRINTS == 1)
         printf("TCP: got data to send\n");
+    #endif
         iResult = send( ClientSocket, data_buffer, DEFAULT_BUFLEN, 0 );
         sem_post(&sem_done_sending[tid]);
         if(iResult < 0){
             goto CLEANUP;
         }
+    #if(TCP_USE_PRINTS == 1)
         printf("TCP: sent %d bytes\n",iResult);
+    #endif
         if(iResult != DEFAULT_BUFLEN){
             counter++;
             if(counter > 10){
@@ -182,8 +196,10 @@ void* tcpThread(void *param){
         }else{
             counter = 0;
         }
-        iResult = recv( AckSocket, ack_buffer, 10, 0 );
+        iResult = recv( AckSocket, (char*)ack_buffer, 10, 0 );
+    #if(TCP_USE_PRINTS == 1)
         printf("TCP: got ack\n");
+    #endif
     } while (1);
 
     iResult = shutdown(ClientSocket, SD_SEND);
