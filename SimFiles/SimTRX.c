@@ -9,7 +9,7 @@
 #include "../Helper/GenericHelpFunctions.h"
 #include "../Helper/TimeHelperFunctions.h"
 
-#include <pthread.h>
+#include "SimConfigFiles/threads.h"
 #include <semaphore.h>
 #include <math.h>
 ECEF_location_t gs_locations[] = TRX_GROUND_STATION_LOCATION_ECEF;
@@ -18,10 +18,10 @@ list_t *lst_uplink_buffer = NULL;       // uplink command buffer
 list_t *lst_downlink_buffer = NULL;     // downlink telemetry buffer
 
 sem_t  sem_downlink_buff= NULL;         // signal to the thread that new packets are to be sent
-pthread_mutex_t mutex_downlink = NULL;  // mutex on downlink buffer
+thread_mutex_t mutex_downlink = NULL;  // mutex on downlink buffer
 
 sem_t  sem_uplink_buff = NULL;          // signal to the thread that new packets are sent to the TRX
-pthread_mutex_t mutex_uplink = NULL;    // mutex on uplink buffer
+thread_mutex_t mutex_uplink = NULL;    // mutex on uplink buffer
 
 #if(TRX_TRANSMIT_TO_FILE == 1)
     FILE *fp_trx_downlink = NULL;
@@ -29,13 +29,13 @@ pthread_mutex_t mutex_uplink = NULL;    // mutex on uplink buffer
 #endif
 int SimTRX_InitSimTRX(){
     int err = 0;
-    err = pthread_mutex_init(&mutex_downlink,NULL);
-    TRACE_ERROR(SimTRX_InitSimTRX -> pthread_mutex_init,err);
+    err = thread_mutex_init(&mutex_downlink,NULL);
+    TRACE_ERROR(SimTRX_InitSimTRX -> thread_mutex_init,err);
     if(0 != err){
         return err;
     }
-    err = pthread_mutex_init(&mutex_uplink,NULL);
-    TRACE_ERROR(SimTRX_InitSimTRX -> pthread_mutex_init,err);
+    err = thread_mutex_init(&mutex_uplink,NULL);
+    TRACE_ERROR(SimTRX_InitSimTRX -> thread_mutex_init,err);
     if(0 != err){
         return err;
     }
@@ -66,7 +66,7 @@ int SimTRX_AddPacketToDownlinkBuffer(unsigned char *data, unsigned int length){
         return -1;
     }
     int err = 0;
-    pthread_mutex_lock(&mutex_downlink);
+    thread_mutex_lock(&mutex_downlink);
         lst_downlink_buffer = ListHelper_Add(lst_downlink_buffer,node);
         if(NULL == lst_downlink_buffer){
             TRACE_ERROR(SimTRX_AddPacketToDownlinkBuffer -> ListHelper_Add, -2);
@@ -75,7 +75,7 @@ int SimTRX_AddPacketToDownlinkBuffer(unsigned char *data, unsigned int length){
         }else{
             sem_post(&sem_downlink_buff);
         }
-    pthread_mutex_unlock(&mutex_downlink);
+    thread_mutex_unlock(&mutex_downlink);
     return err;
 }
 
@@ -86,7 +86,7 @@ int SimTRX_AddPacketToUplinkBuffer(unsigned char *data, unsigned int length){
         return -1;
     }
     int err = 0;
-    pthread_mutex_lock(&mutex_uplink);
+    thread_mutex_lock(&mutex_uplink);
     lst_downlink_buffer = ListHelper_Add(lst_downlink_buffer,node);
     if(NULL == lst_uplink_buffer){
         TRACE_ERROR(SimTRX_AddPacketToDownlinkBuffer -> ListHelper_Add, -2);
@@ -95,18 +95,18 @@ int SimTRX_AddPacketToUplinkBuffer(unsigned char *data, unsigned int length){
     }else{
         sem_post(&sem_uplink_buff);
     }
-    pthread_mutex_unlock(&mutex_uplink);
+    thread_mutex_unlock(&mutex_uplink);
     return 0;
 }
 
 // transmits a packet from the downlink buffer
 int SimTRX_TransmitFromBuffer(){
     list_t *node;
-    pthread_mutex_lock(&mutex_downlink);
+    thread_mutex_lock(&mutex_downlink);
     node = ListHelper_Pop(&lst_downlink_buffer);
     if(NULL == node){
         TRACE_ERROR(SimTRX_TransmitFromBuffer->ListHelper_Pop: Null list,-1);
-        pthread_mutex_unlock(&mutex_downlink);
+        thread_mutex_unlock(&mutex_downlink);
         return 0;
     }
     #if(TRX_TRANSMIT_TO_PRINT == 1)
@@ -120,7 +120,7 @@ int SimTRX_TransmitFromBuffer(){
     #if(TRX_TRANSMIT_TO_TCP == 1)
         //TODO: complete TCP
     #endif
-    pthread_mutex_unlock(&mutex_downlink);
+    thread_mutex_unlock(&mutex_downlink);
     return 0;
 }
 
@@ -135,11 +135,11 @@ int SimTRX_ReadFromBuffer(unsigned char *data, unsigned int *length){
         TRACE_ERROR(SimTRX_ReadFromBuffer ->ListHelper_Pop,-2);
         return -2;
     }
-    pthread_mutex_lock(&mutex_uplink);
+    thread_mutex_lock(&mutex_uplink);
         *length = node->data_length;
         memcpy(data,node->data,*length);
         ListHelper_DestroyNode(node);
-    pthread_mutex_unlock(&mutex_uplink);
+    thread_mutex_unlock(&mutex_uplink);
     return 0;
 }
 
@@ -147,14 +147,14 @@ unsigned int SimTRX_GetNumberOfPacketsInBuffer(TrxPacketBuffer buff){
     unsigned int num = 0;
     switch(buff){
         case BUFFER_DOWNLINK:
-            pthread_mutex_lock(mutex_downlink);
+            thread_mutex_lock(mutex_downlink);
                 num = ListHelper_GetLength(lst_downlink_buffer);
-            pthread_mutex_unlock(mutex_downlink);
+            thread_mutex_unlock(mutex_downlink);
             break;
         case BUFFER_UPLINK:
-            pthread_mutex_lock(mutex_uplink);
+            thread_mutex_lock(mutex_uplink);
                 num = ListHelper_GetLength(lst_uplink_buffer);
-            pthread_mutex_unlock(mutex_uplink);
+            thread_mutex_unlock(mutex_uplink);
             break;
         default:
             return 0;
@@ -182,8 +182,8 @@ double SimTRX_CalcTransmissionTime(unsigned int baud_bit_sec,unsigned int num_of
 double SimTRX_CalcAtmosphereAttenuation_dB(unsigned int gs_index){
     return 0;
 }
-// free space loss
-double SimTRX_CalcFSL_dB(unsigned int gs_index){
+// free space path loss
+double SimTRX_CalcFSPL_dB(unsigned int gs_index){
     ECEF_location_t gs_loc,sat_loc;
     gps_record_t rec;
     SimSTK_GetCurrentStkSatPosition(&rec);
@@ -191,7 +191,7 @@ double SimTRX_CalcFSL_dB(unsigned int gs_index){
     memcpy(&gs_loc,&gs_locations[gs_index],sizeof(gs_loc));
 
     double dist_km = GnrHelper_CalcDistance(*(point_t*)&sat_loc, *(point_t*)&gs_loc);
-    double fsl = 20*log10(4*M_PI/SPEED_OF_LIGHT_m_sec) + 20*log10(1000*dist_km) + 20 * log10(TRX_UPLINK_CENTER_FREQUANCY_Hz) ;
+    double fsl = 20*log10(4*M_PI*dist_km*1000*SPEED_OF_LIGHT_m_sec/TRX_UPLINK_CENTER_FREQUANCY_Hz);//20*log10(4*M_PI/SPEED_OF_LIGHT_m_sec) + 20*log10(1000*dist_km) + 20 * log10(TRX_UPLINK_CENTER_FREQUANCY_Hz) ;
     return fsl;
 }
 // caused by the lossed of the system
@@ -213,18 +213,23 @@ double SimTRX_CalcNoiseFloorLevel(){
     return noise_dB;
 }
 // calculates the link budget according to Fris's formula
-double SimTRX_CalcRSSI(unsigned int gs_index,double gs_transmit_power_dBm){
+double SimTRX_CalcRSSI(unsigned int gs_index, double gs_transmit_power_dBm){
     ECEF_location_t gs_loc,sat_loc;
     gps_record_t rec;
     SimSTK_GetCurrentStkSatPosition(&rec);
+    #if(1 == TRX_USE_PRINTS)
+    printf("Current Time: = %f\n",SimRTC_GetSimulationTime());
+    SimSTK_PrintfSatPos(&rec);
+    #endif
+
     memcpy(&sat_loc,&rec.position,sizeof(sat_loc));
     memcpy(&gs_loc,&gs_locations[gs_index],sizeof(gs_loc));
 
-    double dist = GnrHelper_CalcDistance(*(point_t*)&sat_loc,*(point_t*)&gs_loc);
+    //double dist = GnrHelper_CalcDistance(*(point_t*)&sat_loc,*(point_t*)&gs_loc);
 
     double attenuation_dB = 0;
     attenuation_dB += SimTRX_CalcAtmosphereAttenuation_dB(gs_index);
-    attenuation_dB += SimTRX_CalcFSL_dB(gs_index);
+    attenuation_dB += SimTRX_CalcFSPL_dB(gs_index);
     attenuation_dB += SimTRX_CalcSystemLosses_dB();
 
     double gain_dB = 0;
@@ -233,10 +238,13 @@ double SimTRX_CalcRSSI(unsigned int gs_index,double gs_transmit_power_dBm){
     if(rssi_dB < SimTRX_CalcNoiseFloorLevel()){
         rssi_dB = SimTRX_CalcNoiseFloorLevel();
     }
+    if(!SimTRX_CheckLOS(gs_index)){
+        rssi_dB = SimTRX_CalcNoiseFloorLevel();
+    }
     return rssi_dB;
 }
-// assumes GS is on earths surface and that the earth is a sphere
-bool SimTRX_CheckIfLinkExists(unsigned int ground_station_index, double gs_transmit_power_dBm){
+// check if there is a line of sight(LOS) between the satellite and the GS
+bool SimTRX_CheckLOS(unsigned int ground_station_index){
     int err = 0;
     gps_record_t rec;
     err = SimSTK_GetCurrentStkSatPosition(&rec);
@@ -246,31 +254,29 @@ bool SimTRX_CheckIfLinkExists(unsigned int ground_station_index, double gs_trans
     }
 
     ECEF_location_t sat_loc;
-    memcpy(&sat_loc,&rec.position,sizeof(sat_loc));
+    memcpy(&sat_loc, &rec.position, sizeof(sat_loc));
 
     ECEF_location_t earth_center = STK_EARTH_COORDINATE_CARTESIAN;
     ECEF_location_t gs_loc;
-    memcpy(&gs_loc,&gs_locations[ground_station_index],sizeof(gs_loc));
+    memcpy(&gs_loc, &gs_locations[ground_station_index], sizeof(gs_loc));
 
-    vector_t v1 = GnrHelper_VecMinus(*(vector_t*)&earth_center,*(vector_t*)&gs_loc);
+    vector_t v1 = GnrHelper_VecMinus(*(vector_t*)&gs_loc,*(vector_t*)&earth_center);
     vector_t v2 = GnrHelper_VecMinus(*(vector_t*)&sat_loc,*(vector_t*)&gs_loc);
-    v1 = GnrHelper_GetUnitVector(v1);
-    v2 = GnrHelper_GetUnitVector(v2);
+    double deg = GnrHelper_AngleBetweenVectors(v1,v2);
 
-    double deg = 0;
-    deg = GnrHelper_VecMult(v1,v2);
-    deg = acos(deg) * 180 / M_PI;
     double mag = GnrHelper_CalcMagnitude(*(vector_t*)&gs_loc);
     double crit_ang = asin(STK_EARTH_RADIUS_km/ mag) * 180 / M_PI;
 
-    bool geometric_condition = false;
-    if(deg >= crit_ang && deg <= 180) {
-        geometric_condition = true;
-    }
+    return ((deg >= crit_ang) && (deg <= 180));
+}
+
+// assumes GS is on earths surface and that the earth is a sphere
+bool SimTRX_CheckIfLinkExists(unsigned int ground_station_index, double gs_transmit_power_dBm){
+
     bool link_condition = false;
     double rssi = SimTRX_CalcRSSI(ground_station_index, gs_transmit_power_dBm);
     if(rssi < TRX_MIN_SAT_LINK_POWER_dBm){
         link_condition = false;
     }
-    return geometric_condition && link_condition;
+    return SimTRX_CheckLOS(ground_station_index) && link_condition;
 }

@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
-#include <pthread.h>
+#include "SimConfigFiles/threads.h"
 #include <signal.h>
 #include <stdlib.h>
 #include <errno.h>
 
 #include "SimConfigFiles/SimulationConfigurations.h"
 
-pthread_t rtc_thread_id;
+thread_handle_t rtc_thread_id;
 _sigset_t sig = SIG_DFL;
-pthread_mutex_t lock;   // for synchronisations on 'clock_cycles'
+thread_mutex_t lock;   // for synchronisations on 'clock_cycles'
 bool rtc_started = false;
 #if(1 ==  RTC_USE_PRINTS)
     clock_t begin_time;  // time at start of RTC;
@@ -45,12 +45,12 @@ void* SimRtcThread(void* a){
     rtc_started = true;
     while(1){
     if(SIGTERM == sig){
-        pthread_exit((void*)(1));
+        thread_terminate((void*)(1));
         return NULL;
     }
-        pthread_mutex_lock(&lock);
+        thread_mutex_lock(&lock);
             clock_cycles++;
-        pthread_mutex_unlock(&lock);
+        thread_mutex_unlock(&lock);
         usleep(RTC_TICK_TIME_PERIOD);
 
 #if(1 == RTC_USE_PRINTS)
@@ -66,30 +66,28 @@ int SimRTC_Init(){
     printf("RTC INIT\n");
 #endif
     clock_cycles = 0;
-    if(0 != pthread_mutex_init(&lock,NULL)){
+    if(0 != thread_mutex_init(&lock,NULL)){
         return -1;
     }
-    if(0 != pthread_create(&rtc_thread_id, NULL, SimRtcThread, NULL)){
+    if(0 != thread_create(&rtc_thread_id, NULL, SimRtcThread, NULL)){
         return -2;
     }
     rtc_started = true;
     return 0;
 }
 int SimRTC_StopRTC(){
-    pthread_mutex_destroy(&lock);
-    int err = pthread_cancel(rtc_thread_id);
-    TRACE_ERROR(pthread_cancel,err);
-    err = pthread_kill(rtc_thread_id,SIGTERM);
-    TRACE_ERROR(pthread_kill,err);
+    thread_mutex_destroy(&lock);
+    int err = thread_terminate(rtc_thread_id);
+    TRACE_ERROR(thread_terminate,err);
     sig = SIGTERM;
     rtc_started = false;
     return err;
 
 }
 int SimRTC_SetSatTime(atomic_time_t time){
-    pthread_mutex_lock(&lock);
+    thread_mutex_lock(&lock);
         sat_time = time;
-    pthread_mutex_unlock(&lock);
+    thread_mutex_unlock(&lock);
 }
 
 bool SimRTC_RtcStarted(){

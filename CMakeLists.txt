@@ -59,7 +59,7 @@ add_executable(SImProject
         Helper/TcpHandler.h
         Helper/TcpPlotter.c
         Helper/TcpPlotter.h
-        ConsumptionStates/ConsumptionStates.h ConsumptionStates/ConsumptionStates.c SimulatorCommandLine/SimCmdLine.c SimulatorCommandLine/SimCmdLine.h SimulatorCommandLine/CommandDictionary.h SimulatorCommandLine/CommandDictionary.c SimulatorCommandLine/CmdTypes.h)
+        ConsumptionStates/ConsumptionStates.h ConsumptionStates/ConsumptionStates.c SimulatorCommandLine/SimCmdLine.c SimulatorCommandLine/SimCmdLine.h SimulatorCommandLine/CommandDictionary.h SimulatorCommandLine/CommandDictionary.c SimulatorCommandLine/CmdTypes.h SimFiles/SimConfigFiles/threads.h SimFiles/SimConfigFiles/threads.c)
 
 if(MINGW)
     target_link_libraries(SImProject ws2_32)

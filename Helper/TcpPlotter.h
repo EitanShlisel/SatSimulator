@@ -9,7 +9,7 @@ typedef struct{
     double y;
 }data_point_t;
 
-#define MAX_ATTR_LENGTH 20
+#define MAX_ATTR_LENGTH 100
 typedef struct{
     unsigned int figure_id;
     unsigned int sub_figure_id;

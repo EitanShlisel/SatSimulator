@@ -13,8 +13,8 @@ char plot_params[][MAX_PLOT_PARAM_LENGTH]= {
         "eps_channel_current"
 };
 cmd_t command_dictionary[] = {
-        {.opcode = "plot_graph",.args =(cmd_param_t*){.};}
+//        {.opcode = "plot_graph",.args =(cmd_param_t*){.};}
 };
 int GetCmdByName(cmd_t cmd, user_input_t *input){
-
+    return 0;
 }

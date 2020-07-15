@@ -32,6 +32,8 @@ vector_t GnrHelper_VecPlus(vector_t a, vector_t b);
 
 double GnrHelper_VecMult(vector_t a, vector_t b);
 
+double GnrHelper_AngleBetweenVectors(vector_t a, vector_t b);
+
 // ------------------------------   Geometry
 int GnrHelper_LineSphereIntersection(point_t l1, point_t l2, point_t center, double radius);
 

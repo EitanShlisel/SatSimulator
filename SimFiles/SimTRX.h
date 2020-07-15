@@ -21,6 +21,7 @@ int SimTRX_TransmitFromBuffer();
 
 // reads a packet from the uplink buffer
 int SimTRX_ReadFromBuffer(unsigned char *data, unsigned int *length);
+
 // ------------------------------- CHANNEL PROPERTIES
 //delay between sending packet from the ground sation to the satellite and vice versa
 double SimTRX_CalcTransmissionDelay(unsigned int gs_index);
@@ -29,12 +30,15 @@ double SimTRX_CalcTransmissionTime(unsigned int baud_bit_sec,unsigned int num_of
 
 // ---------------------------- LINK BUDGET
 double SimTRX_CalcAtmosphereAttenuation_dB(unsigned int gs_index);
-double SimTRX_CalcFSL_dB(unsigned int gs_index);
+double SimTRX_CalcFSPL_dB(unsigned int gs_index);
 double SimTRX_CalcSystemLosses_dB();
 double SimTRX_CalcAntennaGain_dB(unsigned int gs_index);
 double SimTRX_CalcNoiseFloorLevel();
 double SimTRX_CalcRSSI(unsigned int gs_index, double gs_transmit_power_dBm);
 
+// check if there is a line of sight(LOS) between the satellite and the GS
+bool SimTRX_CheckLOS(unsigned int ground_station_index);
 // checks if a link whith the satellites is possible
 bool SimTRX_CheckIfLinkExists(unsigned int ground_station_index, double gs_transmit_power_dBm);
+
 #endif //SIMPROJECT_SIMTRX_H

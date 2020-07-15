@@ -1,6 +1,8 @@
 #ifndef SIMPROJECT_SIMCONFIGTRX_H
 #define SIMPROJECT_SIMCONFIGTRX_H
 
+#define TRX_USE_PRINTS             0
+
 #define TRX_TRANSMIT_TO_PRINT      1    // all downlink packets will be printed to console
 
 #define TRX_TRANSMIT_TO_TCP        0      // all downlink packets will be sent through TCP port
@@ -14,9 +16,9 @@
 #define TRX_RX_ANTENNA_BANDWIDTH_Hz         (50000)
 #define TRX_MIN_SAT_LINK_POWER_dBm          (-100.0)
 
-#define TRX_NUMBER_OF_GROUND_STATIONS   2
+#define TRX_NUMBER_OF_GROUND_STATIONS   3
 #define TRX_GROUND_STATION_LOCATION_ECEF    {\
                                             {4436.224, 3086.573,3375.916},  \
-                                            {4400.155,3086.241,3371.081}    \
-                                            };    // in km
+                                            {4400.155,3086.241,3371.081},    \
+                                            { 0, 6378.1000, 0}};    // in km
 #endif //SIMPROJECT_SIMCONFIGTRX_H

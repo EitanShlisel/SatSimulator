@@ -51,7 +51,8 @@ int monthToInt(char *month){
     }
     char* month_arr[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
     for (int i = 0; i < (int)(sizeof(month_arr)/ sizeof(month_arr[0])); ++i) {
-        if(0 == strcmp(month,month_arr[i])){
+        if( (0 == strcmp(month,month_arr[i])) ||
+            (i == atoi(month))){
             return i;
         }
     }
@@ -62,7 +63,7 @@ double parseTime(char *line){
     double unix_time = 0;
     double milli_sec = 0;
     struct tm tim;
-    char split_char[] = " ,:.";
+    char split_char[] = " ,:./";
 
     char *ptr = strtok(line, split_char); // day of the month(0-31)
     tim.tm_mday = atoi(ptr);

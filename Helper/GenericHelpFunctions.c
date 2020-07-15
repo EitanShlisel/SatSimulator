@@ -96,7 +96,14 @@ vector_t GnrHelper_VecPlus(vector_t a, vector_t b){
 double GnrHelper_VecMult(vector_t a, vector_t b){
     return (a.x*b.x + a.y*b.y + a.z*b.z);
 }
+double GnrHelper_AngleBetweenVectors(vector_t a, vector_t b){
+   double deg = 0;
+   double mag_a = GnrHelper_CalcMagnitude(a);
+   double mag_b = GnrHelper_CalcMagnitude(b);
 
+   deg = acos(GnrHelper_VecMult(a,b)/(mag_a*mag_b)) * 180 / M_PI;
+   return deg;
+}
 int GnrHelper_LineSphereIntersection(point_t l1, point_t l2, point_t center, double radius){
     double res = 0;
     point_t unit = GnrHelper_GetUnitVectorFromPoints(l1, l2);

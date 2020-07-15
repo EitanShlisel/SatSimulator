@@ -1,7 +1,7 @@
 #pragma clang diagnostic push
 #include <stdlib.h>
 
-#include <pthread.h>
+#include "SimConfigFiles/threads.h"
 #include <semaphore.h>
 #include <string.h>
 
@@ -14,12 +14,12 @@
 
 bool i2c_bus_initialised = false;   // states whether the bus is initialised or not
 
-pthread_t slave_threads_id[SUBSYS_NUM_OF_SUBSYSTEMS];
+thread_handle_t slave_threads_id[SUBSYS_NUM_OF_SUBSYSTEMS];
 
 bool finished_reading_data = false;
-pthread_mutex_t mutex_sda_taken = NULL;
-pthread_mutex_t mutex_handshake = NULL;
-pthread_mutex_t mutex_operation_running = NULL; // if there is already an operation running(read/write command)
+thread_mutex_t mutex_sda_taken = NULL;
+thread_mutex_t mutex_handshake = NULL;
+thread_mutex_t mutex_operation_running = NULL; // if there is already an operation running(read/write command)
 sem_t sem_scl = NULL;   // SCL clock is running
 sem_t sem_ack = NULL;   // ack messenger
 char sda_data; // the data written on the SDA will be stored here
@@ -30,20 +30,20 @@ I2cSubsystemData_t i2cSubsystems[SUBSYS_NUM_OF_SUBSYSTEMS];     // saves all sub
 char buffer[I2C_MAX_SDA_BUFFER_SIZE] = {0};                     // local buffer for i2c commands
 
 static void SDA_ReadByte(char *byte){
-    pthread_mutex_lock(&mutex_sda_taken);
+    thread_mutex_lock(&mutex_sda_taken);
         *byte = sda_data;
 #if(I2C_USE_PRINTS ==1)
     printf("r_%c\n",*byte);
 #endif
-    pthread_mutex_unlock(&mutex_sda_taken);
+    thread_mutex_unlock(&mutex_sda_taken);
 }
 static void SDA_WriteByte(char byte){
-    pthread_mutex_lock(&mutex_sda_taken);
+    thread_mutex_lock(&mutex_sda_taken);
         sda_data = byte;
 #if(I2C_USE_PRINTS==1)
     printf("w_%c\t",byte);
 #endif
-    pthread_mutex_unlock(&mutex_sda_taken);
+    thread_mutex_unlock(&mutex_sda_taken);
 }
 static int WaitForAck(){
     int err = 0;    // 0 = ACK
@@ -58,39 +58,39 @@ static void SendAck(){
 
 // ---------------------------------------Master Side
 int SimI2C_read(SatSubsystem subsys_dest, char *msg, unsigned int length){
-    pthread_mutex_lock(&mutex_operation_running);
+    thread_mutex_lock(&mutex_operation_running);
     sem_post(&sem_scl); // raise clock signal on the SCL
-    pthread_mutex_lock(&mutex_handshake);
+    thread_mutex_lock(&mutex_handshake);
     char byte = GET_7BIT_ADDR(i2cSubsystems[subsys_dest].i2c_addr) | 0x80; // Set MSB to 1 and write to SDA
 
     SDA_WriteByte(byte);    // write i2c subsys addr
     WaitForAck();
     finished_reading_data = false;
     for (unsigned int i = 0; i < length; ++i) {
-        pthread_mutex_unlock(&mutex_handshake);
+        thread_mutex_unlock(&mutex_handshake);
         WaitForAck();
         SDA_ReadByte(&msg[i]);
     }
     finished_reading_data = true;
-    pthread_mutex_unlock(&mutex_operation_running);
+    thread_mutex_unlock(&mutex_operation_running);
     return 0;
 }
 
 int SimI2C_write(SatSubsystem subsys_dest, char *msg, unsigned int length){
-    pthread_mutex_lock(&mutex_operation_running);
+    thread_mutex_lock(&mutex_operation_running);
     sem_post(&sem_scl); // raise clock signal on the SCL
-    pthread_mutex_lock(&mutex_handshake);
+    thread_mutex_lock(&mutex_handshake);
     char byte = GET_7BIT_ADDR(i2cSubsystems[subsys_dest].i2c_addr) & 0x7F;
     SDA_WriteByte(byte); // Set MSB to 0 and write to SDA
     WaitForAck();
 
     for (unsigned int i = 0; i < length; ++i) {
-        pthread_mutex_unlock(&mutex_handshake);
+        thread_mutex_unlock(&mutex_handshake);
         SDA_WriteByte(msg[i]);
         WaitForAck();
     }
-    pthread_mutex_unlock(&mutex_handshake);
-    pthread_mutex_unlock(&mutex_operation_running);
+    thread_mutex_unlock(&mutex_handshake);
+    thread_mutex_unlock(&mutex_operation_running);
     return 0;
 }
 // ---------------------------------------Slave Side
@@ -129,13 +129,13 @@ static void* I2cSlaveThread(void *param){
         sem_wait(&sem_scl);                     // stop from other sub-systems from interrupting
         SendAck();
 
-        pthread_mutex_lock(&mutex_handshake);
+        thread_mutex_lock(&mutex_handshake);
         SDA_ReadByte(&byte);                    // command opcode
         SendAck();
 
         if(IsReadCommand(subsys_i2c_addr)){
             while(!finished_reading_data) {
-                pthread_mutex_lock(&mutex_handshake);
+                thread_mutex_lock(&mutex_handshake);
                 SDA_WriteByte(subsys_data.i2c_data_buffer[index]);
                 index++;
                 SendAck();   // TODO: Check if Slaves care about timeout
@@ -145,7 +145,7 @@ static void* I2cSlaveThread(void *param){
         }else{  // Write command
             subsys_data.p_buffer_length_function(byte,&length); // get length of buffer of command with opcode 'byte'
             for (unsigned int i = 0; i < length; ++i) {
-                pthread_mutex_lock(&mutex_handshake);
+                thread_mutex_lock(&mutex_handshake);
                 SDA_ReadByte(&subsys_data.i2c_data_buffer[i]);
                 SendAck();
             }
@@ -187,8 +187,8 @@ I2C_ERR SimI2C_AddSubSys(SatSubsystem subsys,I2cSubsystemData_t *i2c_subsys_data
 I2C_ERR SimI2C_StartI2C(){
 
     int err = 0;
-    err = pthread_mutex_init(&mutex_sda_taken,NULL);
-    TRACE_ERROR(pthread_mutex_init mutex_sda_taken,err);
+    err = thread_mutex_init(&mutex_sda_taken,NULL);
+    TRACE_ERROR(thread_mutex_init mutex_sda_taken,err);
 
     err = sem_init(&sem_scl,0,0);
     TRACE_ERROR(sem_init sem_scl,err);
@@ -196,16 +196,16 @@ I2C_ERR SimI2C_StartI2C(){
     err = sem_init(&sem_ack,0,0);
     TRACE_ERROR(sem_init sem_ack,err)
 
-    err = pthread_mutex_init(&mutex_operation_running,NULL);
-    TRACE_ERROR(pthread_mutex_init mutex_operation_running,err)
+    err = thread_mutex_init(&mutex_operation_running,NULL);
+    TRACE_ERROR(thread_mutex_init mutex_operation_running,err)
 
-    err = pthread_mutex_init(&mutex_handshake,NULL);
-    TRACE_ERROR(pthread_mutex_init mutex_handshake,err)
+    err = thread_mutex_init(&mutex_handshake,NULL);
+    TRACE_ERROR(thread_mutex_init mutex_handshake,err)
 
     for (int i = 0; i < SUBSYS_NUM_OF_SUBSYSTEMS; ++i) {
         if(i2cSubsystems[i].exists && I2C_SLAVE == i2cSubsystems[i].status){
-            err = pthread_create(&slave_threads_id[i], NULL, I2cSlaveThread, (void*)&i2cSubsystems[i]);
-            TRACE_ERROR(pthread_create,err)
+            err = thread_create(&slave_threads_id[i], NULL, I2cSlaveThread, (void*)&i2cSubsystems[i]);
+            TRACE_ERROR(thread_create,err)
         }
     }
     i2c_bus_initialised = true;
@@ -214,8 +214,8 @@ I2C_ERR SimI2C_StartI2C(){
 
 I2C_ERR SimI2C_StopI2C(){
     int err = 0;
-    err = pthread_mutex_destroy(&mutex_sda_taken);
-    TRACE_ERROR(pthread_mutex_destroy mutex_sda_taken,err);
+    err = thread_mutex_destroy(&mutex_sda_taken);
+    TRACE_ERROR(thread_mutex_destroy mutex_sda_taken,err);
 
     err = sem_destroy(&sem_scl);
     TRACE_ERROR(sem_destroy sem_scl,err);
@@ -223,16 +223,16 @@ I2C_ERR SimI2C_StopI2C(){
     err = sem_destroy(&sem_ack);
     TRACE_ERROR(sem_destroy sem_ack,err)
 
-    err = pthread_mutex_destroy(&mutex_operation_running);
-    TRACE_ERROR(pthread_mutex_destroy mutex_operation_running,err)
+    err = thread_mutex_destroy(&mutex_operation_running);
+    TRACE_ERROR(thread_mutex_destroy mutex_operation_running,err)
 
-    err = pthread_mutex_destroy(&mutex_handshake);
-    TRACE_ERROR(pthread_mutex_destroy mutex_handshake,err)
+    err = thread_mutex_destroy(&mutex_handshake);
+    TRACE_ERROR(thread_mutex_destroy mutex_handshake,err)
 
     for (int i = 0; i < SUBSYS_NUM_OF_SUBSYSTEMS; ++i) {
         if(i2cSubsystems[i].exists && I2C_SLAVE == i2cSubsystems[i].status){
-            err = pthread_cancel(slave_threads_id[i]);
-            TRACE_ERROR(pthread_cancel,err)
+            err = thread_terminate(slave_threads_id[i]);
+            TRACE_ERROR(thread_cancel,err)
         }
     }
     i2c_bus_initialised = false;

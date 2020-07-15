@@ -4,7 +4,7 @@
 #include "../SimFiles/SimConfigFiles/SimulationConfigurations.h"
 #include "../SimFiles/SimEPS.h"
 
-#include <pthread.h>
+#include "../SimFiles/SimConfigFiles/threads.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -13,13 +13,13 @@ unsigned char fram_buffer[FRAM_MAX_ADDRESS] = {0};
 FRAMblockProtect protected_blocks;
 
 bool has_fram_started = false;
-pthread_mutex_t mutex_fram_lock;
+thread_mutex_t mutex_fram_lock;
 
 int FRAM_start(void){
     if(has_fram_started){
        return 0;
     }
-    int err = pthread_mutex_init(&mutex_fram_lock,NULL);
+    int err = thread_mutex_init(&mutex_fram_lock,NULL);
     if(0 != err){
         return -1;
     }
@@ -33,7 +33,7 @@ void FRAM_stop(void){
         return;
     }
     SimEPS_SetSubsysState(SUBSYS_OBC,OBC_CONSMP_FRAM_CONSUMPTION, false);
-    pthread_mutex_destroy(&mutex_fram_lock);
+    thread_mutex_destroy(&mutex_fram_lock);
     has_fram_started = false;
 }
 
@@ -63,9 +63,9 @@ int FRAM_write(unsigned char *data, unsigned int address, unsigned int size){
 
    }
 
-    pthread_mutex_lock(&mutex_fram_lock);
+    thread_mutex_lock(&mutex_fram_lock);
         memcpy(fram_buffer+address,data,size);
-    pthread_mutex_unlock(&mutex_fram_lock);
+    thread_mutex_unlock(&mutex_fram_lock);
     return 0;
 }
 
@@ -76,9 +76,9 @@ int FRAM_read(unsigned char *data, unsigned int address, unsigned int size){
     if(address + size > FRAM_MAX_ADDRESS){
         return -2;
     }
-    pthread_mutex_lock(&mutex_fram_lock);
+    thread_mutex_lock(&mutex_fram_lock);
         memcpy(data,fram_buffer + address,size);
-    pthread_mutex_unlock(&mutex_fram_lock);
+    thread_mutex_unlock(&mutex_fram_lock);
     return 0;
 }
 
@@ -101,16 +101,16 @@ int FRAM_writeAndVerify(unsigned char *data, unsigned int address, unsigned int 
 }
 
 int FRAM_protectBlocks(FRAMblockProtect blocks){
-    pthread_mutex_lock(&mutex_fram_lock);
+    thread_mutex_lock(&mutex_fram_lock);
         protected_blocks = blocks;
-    pthread_mutex_unlock(&mutex_fram_lock);
+    thread_mutex_unlock(&mutex_fram_lock);
     return 0;
 }
 
 int FRAM_getProtectedBlocks(FRAMblockProtect* blocks){
-    pthread_mutex_lock(&mutex_fram_lock);
+    thread_mutex_lock(&mutex_fram_lock);
         *blocks = protected_blocks;
-    pthread_mutex_unlock(&mutex_fram_lock);
+    thread_mutex_unlock(&mutex_fram_lock);
     return 0;
 }
 

@@ -24,5 +24,5 @@ atomic_time_t SimSTK_GetOrbitTime();
 int SimSTK_Test(unsigned int num_of_lines_in_test_file);
 
 int SimSTK_PrintSunVec(sun_vec_t *vec);
-int SimSTK_PrintfSatPos(gps_record_t *vec);
+int SimSTK_PrintSatPos(gps_record_t *vec);
 #endif //SIMPROJECT_SIMSTK_H

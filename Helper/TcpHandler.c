@@ -11,13 +11,13 @@
 #pragma comment (lib, "Ws2_32.lib")
 
 #include <unistd.h>
-#include <pthread.h>
+#include "../SimFiles/SimConfigFiles/threads.h"
 #include <semaphore.h>
 #include "TcpHandler.h"
 
 #define MAX_NUM_OF_TCP_THREADS 255
 thread_id thread_ids[MAX_NUM_OF_TCP_THREADS] = {0};
-pthread_t thread_handle[MAX_NUM_OF_TCP_THREADS];
+thread_handle_t thread_handle[MAX_NUM_OF_TCP_THREADS];
 sem_t sem_data_in_buffer[MAX_NUM_OF_TCP_THREADS];
 sem_t sem_done_sending[MAX_NUM_OF_TCP_THREADS];
 unsigned char *thread_buffers[MAX_NUM_OF_TCP_THREADS];
@@ -160,13 +160,13 @@ void* tcpThread(void *param){
     err = InitSocket(&ClientSocket, client_port);
     if(0 != err){
         thread_ids[tid] = 0;
-        pthread_exit(&err);
+        thread_exit(&err);
         return NULL;
     }
     err = InitSocket(&AckSocket,ack_port);
     if(0 != err){
         thread_ids[tid] = 0;
-        pthread_exit(&err);
+        thread_exit(&err);
         return NULL;
     }
 #if(TCP_USE_PRINTS == 1)
@@ -214,7 +214,7 @@ void* tcpThread(void *param){
     closesocket(AckSocket);
     WSACleanup();
     thread_ids[tid] = 0;
-    pthread_exit(&iResult);
+    thread_exit(&iResult);
     return NULL;
 }
 
@@ -236,7 +236,7 @@ thread_id StartTcp(){
         thread_ids[*tid] = 0;
         return MAX_NUM_OF_TCP_THREADS;
     }
-    err = pthread_create(&thread_handle[*tid],NULL, tcpThread, tid);
+    err = thread_create(&thread_handle[*tid],NULL, tcpThread, tid);
     if(0 != err){
         thread_ids[*tid] = 0;
         return MAX_NUM_OF_TCP_THREADS;

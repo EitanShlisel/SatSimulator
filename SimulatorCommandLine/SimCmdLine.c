@@ -1,5 +1,5 @@
 #include "SimCmdLine.h"
-#include <pthread.h>
+#include "../SimFiles/SimConfigFiles/threads.h"
 #include <string.h>
 #include <limits.h>
 #include <ctype.h>
@@ -220,8 +220,8 @@ void* cmdLineThread(void* args){
     return NULL;
 }
 void CmdLineStart(){
-    pthread_t thread_cmd;
-    pthread_create(&thread_cmd,NULL,cmdLineThread,NULL);
+    thread_handle_t thread_cmd;
+    thread_create(&thread_cmd,NULL,cmdLineThread,NULL);
 }
 
 void CmdTest(){

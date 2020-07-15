@@ -5,12 +5,12 @@
 
 #include <stdlib.h>
 #include <math.h>
-#include <pthread.h>
+#include "SimConfigFiles/threads.h"
 #include <semaphore.h>
 #include <stdbool.h>
 
-pthread_mutex_t mutex_eps_mngr = NULL;
-pthread_t eps_thread_id;
+thread_mutex_t mutex_eps_mngr = NULL;
+thread_handle_t eps_thread_id;
 
 typedef struct EpsMngr_t{
     double *polynom_coeff;          // the interpolation polynomial of the batteries voltage vs discharge capacity [V] vs [mAh]
@@ -77,9 +77,9 @@ int SimEPS_AddConsumptionStates(SatSubsystem subsys,EpsConsumptionState_t *state
 }
 
 int SimEPS_SetSubsysState(SatSubsystem subsys,unsigned int state_index, bool onOff){
-    pthread_mutex_lock(&mutex_eps_mngr);
+    thread_mutex_lock(&mutex_eps_mngr);
         epsMngr.subsys_consumption_states[subsys][state_index].is_state_on = onOff;
-    pthread_mutex_unlock(&mutex_eps_mngr);
+    thread_mutex_unlock(&mutex_eps_mngr);
     return 0;
 }
 int SimEPS_GetChannel(ChannelIndex chnl){
@@ -87,9 +87,9 @@ int SimEPS_GetChannel(ChannelIndex chnl){
 }
 
 int SimEPS_SetChannel(ChannelIndex chnl, bool onOff){
-    pthread_mutex_lock(&mutex_eps_mngr);
+    thread_mutex_lock(&mutex_eps_mngr);
         epsMngr.is_channel_on[chnl] = onOff;
-    pthread_mutex_unlock(&mutex_eps_mngr);
+    thread_mutex_unlock(&mutex_eps_mngr);
     return 0;
 }
 
@@ -128,7 +128,7 @@ double SimEPS_GetCurrentConsumption(){
 }
 
 double SimEPS_GetBatteryVoltage(){
-    pthread_mutex_lock(&mutex_eps_mngr);
+    thread_mutex_lock(&mutex_eps_mngr);
         double batt_charge = epsMngr.batt_discharge;
         double volt = 0;
         for (unsigned int i = 0; i < epsMngr.pol_length; ++i) {
@@ -138,14 +138,14 @@ double SimEPS_GetBatteryVoltage(){
     printf("EPS battery voltage = %lf\n",volt);
     printf("EPS battery discharge = %lf\n",epsMngr.batt_discharge);
 #endif
-    pthread_mutex_unlock(&mutex_eps_mngr);
+    thread_mutex_unlock(&mutex_eps_mngr);
     return volt;
 }
 
 double SimEPS_GetDOD(){
-    pthread_mutex_lock(&mutex_eps_mngr);
+    thread_mutex_lock(&mutex_eps_mngr);
         double batt_charge = epsMngr.batt_discharge;
-    pthread_mutex_unlock(&mutex_eps_mngr);
+    thread_mutex_unlock(&mutex_eps_mngr);
     return (batt_charge/EPS_MAX_BATTERY_CHARGE_mAh);
 }
 
@@ -193,16 +193,16 @@ int SetBatteryChargeFunction(double range_start, double range_end,
         TRACE_ERROR(SimEps_SetBatteryChargeFunction,-4);
         return -4;
     }
-    pthread_mutex_lock(&mutex_eps_mngr);
+    thread_mutex_lock(&mutex_eps_mngr);
     epsMngr.polynom_coeff = malloc(length * sizeof(*pol_coef));
     if(NULL ==  epsMngr.polynom_coeff){
         TRACE_ERROR(EpsMngr_InitMngr -> malloc error,-1);
-        pthread_mutex_unlock(&mutex_eps_mngr);
+        thread_mutex_unlock(&mutex_eps_mngr);
         return -1;
     }
     memcpy(epsMngr.polynom_coeff, pol_coef, sizeof(*pol_coef) * length);
     epsMngr.pol_length = length;
-    pthread_mutex_unlock(&mutex_eps_mngr);
+    thread_mutex_unlock(&mutex_eps_mngr);
     return 0;
 }
 
@@ -225,8 +225,8 @@ int SimEPS_StartEps(){
     double pol[] = EPS_BATTERY_CHARGE_POLYNOMIAL;
     unsigned char length = sizeof(pol)/sizeof(*pol);
 
-    err =  pthread_mutex_init(&mutex_eps_mngr,NULL);
-    TRACE_ERROR(pthread_mutex_init in SimEPS_StartEps,err);
+    err =  thread_mutex_init(&mutex_eps_mngr,NULL);
+    TRACE_ERROR(thread_mutex_init in SimEPS_StartEps,err);
 
     for (unsigned int i = 0; i < EPS_CHANNEL_NUM_OF_CHANNELS; ++i) {
         err = sem_init(&(epsMngr.sem_channel_voltage_rise[i]),0,0);
@@ -246,8 +246,8 @@ int SimEPS_StartEps(){
     memset(epsMngr.is_channel_on,false,EPS_CHANNEL_NUM_OF_CHANNELS*sizeof(*epsMngr.is_channel_on));
     epsMngr.is_battery_dead = false;    // starts at normal function of battery
 
-    err = pthread_create(&eps_thread_id,NULL,EpsThread,NULL);
-    TRACE_ERROR(pthread_create in SimEPS_StartEps,err);
+    err = thread_create(&eps_thread_id,NULL,EpsThread,NULL);
+    TRACE_ERROR(thread_create in SimEPS_StartEps,err);
 
     return 0;
 }

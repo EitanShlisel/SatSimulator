@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj"
   "CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj"
   "CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj"
+  "CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
   "CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"

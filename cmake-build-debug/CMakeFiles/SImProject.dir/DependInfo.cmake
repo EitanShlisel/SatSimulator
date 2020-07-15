@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpHandler.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TcpPlotter.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj"
+  "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/threads.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimI2C.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj"
   "C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimRTC.c" "C:/Users/97250/Documents/GitHub/SatSimulator/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj"

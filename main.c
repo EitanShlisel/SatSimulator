@@ -14,9 +14,9 @@
 #include "SimFiles/SimThermodynamics.h"
 #include "SimFiles/SimSTK.h"
 #include "SimFiles/SimRTC.h"
-#include "SimFiles/SimSTK.h"
 #include "SimFiles/SimI2C.h"
 #include "SimFiles/SimEPS.h"
+#include "SimFiles/SimTRX.h"
 
 #include "ConsumptionStates/ConsumptionStates.h"
 
@@ -27,8 +27,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include <pthread.h>
-#include <pthread_time.h>
+#include "SimFiles/SimConfigFiles/threads.h"
 #include <stdbool.h>
 #include <math.h>
 #include <ctype.h>
@@ -224,9 +223,9 @@ void Plot_EPS_Vbatt_Test(){
     unsigned int i = 0;
     data_point_t points[1];
 
-    figure_t fig = {.x_label = "Xlabel",
-            .y_label="Ylabel",
-            .title="I'm the best",
+    figure_t fig = {.x_label = "Time[Sec]",
+            .y_label="Voltage[mV]",
+            .title="EPS Battery Voltage Over Time",
             .figure_id = 42,
             .sub_figure_id = 0,
             .dataPoints = points,
@@ -238,11 +237,11 @@ void Plot_EPS_Vbatt_Test(){
     char buff[10] = {0};
     itoa(GetClientPortFromThreadId(tid) ,buff,10);
     RunPythonScript(script_path,buff);
-    sleep(5);
+    //sleep(5);
     EpsConsumptionState_t fake_subsys_states[] = {
             {0,10000, false},
-            {1,1000, false},
-            {2,420, false}
+            {0,-10000, false},
+            {0,1000, false},
     };
 
     int err = 0;
@@ -255,28 +254,131 @@ void Plot_EPS_Vbatt_Test(){
     SimEPS_SetChannel(0,true);
     SimEPS_SetSubsysState(SUBSYS_FAKE,0,true);
 
-    SimEPS_SetChannel(1,true);
-    SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
 
-    SimEPS_SetChannel(2,true);
-    SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
-
+    atomic_time_t start_time = SimRTC_GetSimulationTime();
     while(1) {
-
         fig.sub_figure_id = 0;
 
         points->x = SimRTC_GetSimulationTime();
-        points->y = SimEPS_GetBatteryVoltage();
+        points->y = SimEPS_GetBatteryVoltage() + GnrHelper_GenerateGaussianNoise(0,20);
         memcpy(fig.dataPoints,points, sizeof(points));
         SendFigureToPlotter(tid, &fig);
         if(points->y  < 3000){
-            printf("SIM: DoD = %f%%\n",SimEPS_GetDOD());
+            printf("SIM: DoD = %f\n",SimEPS_GetDOD());
+            break;
         }
-        usleep(1000);
+//        if(SimRTC_GetSimulationTime() - start_time > 5000){
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,0,false);
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
+//        }
+//        if(SimRTC_GetSimulationTime() - start_time > 10000){
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,0,true);
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,1,false);
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,2,false);
+//        }
+//        if(SimRTC_GetSimulationTime() - start_time > 15000){
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,0,false);
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
+//            SimEPS_SetSubsysState(SUBSYS_FAKE,2,false);
+//        }
+        usleep(100);
+    }
+    while(1){
+        usleep(100);
     }
 }
 
+void Plot_RSSI(){
+    unsigned int i = 0;
+    data_point_t points[1];
+
+    figure_t fig = {.x_label = "Time[Sec]",
+            .y_label="RSSI[dBm]",
+            .title="Simulated TRX RSSI",
+            .figure_id = 42,
+            .sub_figure_id = 0,
+            .dataPoints = points,
+            .num_of_data_points = 1};
+
+
+    thread_id tid = StartTcp();
+    char *script_path = PLOTTER_PATH_PY;
+    char buff[10] = {0};
+    itoa(GetClientPortFromThreadId(tid) ,buff,10);
+    RunPythonScript(script_path,buff);
+
+    int err = 0;
+    err = SimRTC_Init();
+    TRACE_ERROR(SimRTC_Init,err);
+    err = SimSTK_initStkRecords();
+    TRACE_ERROR(SimRTC_Init,err);
+    atomic_time_t start_time = SimRTC_GetSimulationTime();
+    atomic_time_t current_time=0,last=SimRTC_GetSimulationTime();
+    gps_record_t rec;
+    double rssi = 0;
+    double dist = 0;
+    gps_record_t ground_stations[]  = TRX_GROUND_STATION_LOCATION_ECEF;
+    while(1) {
+        fig.sub_figure_id = 0;
+
+        points->x = SimRTC_GetSimulationTime();
+        current_time = SimRTC_GetSimulationTime();
+
+        rssi = SimTRX_CalcRSSI(2,30);
+
+        dist = GnrHelper_CalcDistance(*(point_t*)&rec.position,*(point_t*)&ground_stations[1].position);
+        points->y = dist;
+        fig.sub_figure_id = 0;
+        SendFigureToPlotter(tid, &fig);
+
+        dist = GnrHelper_CalcDistance(*(point_t*)&rec.position,*(point_t*)&ground_stations[2].position);
+        points->y = dist;
+        fig.sub_figure_id = 1;
+        SendFigureToPlotter(tid, &fig);
+        memcpy(fig.dataPoints,points, sizeof(points));
+
+        if(current_time-last >= 60){
+//            printf("FSL: %lf\n", SimTRX_CalcFSPL_dB(2));
+            printf("sim time = %lf\n",SimRTC_GetSimulationTime());
+            SimSTK_GetCurrentStkSatPosition(&rec);
+            SimSTK_PrintSatPos(&rec);
+            last = current_time;
+            printf("gs distance  = %lf\n",dist);
+       }
+        usleep(100000);
+    }
+}
+
+void StkTest(){
+    int err = 0;
+    err = SimRTC_Init();
+    TRACE_ERROR(SimRTC_Init,err);
+    err = SimSTK_initStkRecords();
+    TRACE_ERROR(SimSTK_initStkRecords,err);
+    gps_record_t rec;
+    atomic_time_t last = SimRTC_GetSimulationTime();
+    atomic_time_t current_time = 0;
+    SimSTK_GetStkDataRecordAtIndex(&rec,0);
+    SimSTK_PrintSatPos(&rec);
+
+    while(1){
+        SimSTK_GetCurrentStkSatPosition(&rec);
+        current_time = SimRTC_GetSimulationTime();
+        printf("Sim time = %lf\n",current_time);
+        printf("time diff = %lf\n",current_time-last);
+        last = current_time;
+        SimSTK_PrintSatPos(&rec);
+        SimThreadSleep(5500000);
+    }
+
+
+}
+
 int main(){
-    CmdTest();
+    //Plot_RSSI();
+    //Plot_EPS_Vbatt_Test();
+    //StkTest();
+    PlotFigureOverTCP_Test();
     return 0;
 }

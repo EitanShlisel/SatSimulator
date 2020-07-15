@@ -15,7 +15,7 @@ atomic_time_t SimRTC_GetSatTime();
 
 int SimRTC_Init();
 
-int SimRTC_StopRTC();//    pthread_mutex_destroy(&lock);
+int SimRTC_StopRTC();//    thread_mutex_destroy(&lock);
 
 int SimRTC_SetSatTime(atomic_time_t time);
 

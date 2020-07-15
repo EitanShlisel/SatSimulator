@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <pthread.h>
+#include "../SimFiles/SimConfigFiles/threads.h"
 
 #include "boolean.h"
 #include "Time.h"
