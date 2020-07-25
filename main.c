@@ -27,7 +27,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <string.h>
-#include "SimFiles/SimConfigFiles/threads.h"
+#include "Helper/threads.h"
 #include <stdbool.h>
 #include <math.h>
 #include <ctype.h>

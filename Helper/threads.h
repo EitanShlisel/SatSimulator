@@ -1,6 +1,7 @@
 #ifndef SIMPROJECT_THREADS_H
 #define SIMPROJECT_THREADS_H
 
+#include "../Helper/sem.h"
 
 typedef void* thread_mutex_t;
 typedef void* thread_handle_t;

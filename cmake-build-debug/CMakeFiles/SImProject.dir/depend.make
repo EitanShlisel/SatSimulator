@@ -23,7 +23,8 @@ CMakeFiles/SImProject.dir/Helper/RunPython.c.obj: ../Helper/RunPython.h
 
 CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/TcpHandler.c
 CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/TcpHandler.h
-CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../SimFiles/SimConfigFiles/threads.h
+CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj: ../Helper/threads.h
 
 CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: ../Helper/TcpHandler.h
 CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj: ../Helper/TcpPlotter.c
@@ -34,10 +35,16 @@ CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../Helper/TimeHelper
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../SubsystemModules/Time.h
 CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj: ../SubsystemModules/boolean.h
 
-CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj: ../SimFiles/SimConfigFiles/threads.c
-CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj: ../SimFiles/SimConfigFiles/threads.h
+CMakeFiles/SImProject.dir/Helper/sem.c.obj: ../Helper/sem.c
+CMakeFiles/SImProject.dir/Helper/sem.c.obj: ../Helper/sem.h
+
+CMakeFiles/SImProject.dir/Helper/threads.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/Helper/threads.c.obj: ../Helper/threads.c
+CMakeFiles/SImProject.dir/Helper/threads.c.obj: ../Helper/threads.h
 
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../Helper/GenericHelpFunctions.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
@@ -45,13 +52,14 @@ CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimC
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
-CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimConfigFiles/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.c
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SimFiles/SimSolar.h
 CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj: ../SubsystemModules/GPS_types.h
 
+CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
@@ -59,11 +67,12 @@ CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimC
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
-CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimConfigFiles/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimI2C.c
 CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj: ../SimFiles/SimI2C.h
 
+CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
@@ -71,13 +80,14 @@ CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimC
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
-CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimConfigFiles/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimRTC.c
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj: ../SubsystemModules/GPS_types.h
 
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../Helper/GenericHelpFunctions.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../Helper/TimeHelperFunctions.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
@@ -85,7 +95,6 @@ CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimC
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
-CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimConfigFiles/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimSTK.c
 CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj: ../SimFiles/SimSTK.h
@@ -110,6 +119,8 @@ CMakeFiles/SImProject.dir/SimFiles/SimSolar.c.obj: ../SubsystemModules/GPS_types
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../Helper/GenericHelpFunctions.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../Helper/List.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../Helper/TimeHelperFunctions.h
+CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
@@ -117,7 +128,6 @@ CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimC
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
-CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimConfigFiles/threads.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimSTK.h
 CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj: ../SimFiles/SimTRX.c
@@ -141,12 +151,15 @@ CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj: ../Simul
 CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj: ../SimulatorCommandLine/CommandDictionary.c
 CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj: ../SimulatorCommandLine/CommandDictionary.h
 
-CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimFiles/SimConfigFiles/threads.h
+CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimulatorCommandLine/CmdTypes.h
 CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimulatorCommandLine/SimCmdLine.c
 CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj: ../SimulatorCommandLine/SimCmdLine.h
 
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../ConsumptionStates/ConsumptionStates.h
+CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigEPS.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigGPS.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigI2C.h
@@ -154,7 +167,6 @@ CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFile
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigTRX.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimConfigThermodynamics.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/SimulationConfigurations.h
-CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimConfigFiles/threads.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SimFiles/SimEPS.h
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SubsystemModules/FRAM.c
 CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj: ../SubsystemModules/FRAM.h
@@ -189,7 +201,8 @@ CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SubsystemModules/I2C.c
 CMakeFiles/SImProject.dir/SubsystemModules/I2C.c.obj: ../SubsystemModules/I2C.h
 
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../Helper/TimeHelperFunctions.h
-CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../SimFiles/SimConfigFiles/threads.h
+CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../Helper/sem.h
+CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../Helper/threads.h
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../SimFiles/SimRTC.h
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../SubsystemModules/GPS_types.h
 CMakeFiles/SImProject.dir/SubsystemModules/RTC.c.obj: ../SubsystemModules/RTC.c

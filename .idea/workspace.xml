@@ -12,27 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f3f33-91f8-46a8-aadd-64543e930c7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/threads.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/threads.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Helper/sem.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Helper/sem.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/GenericHelpFunctions.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/GenericHelpFunctions.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/GenericHelpFunctions.h" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/GenericHelpFunctions.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper/TcpHandler.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/TcpHandler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/TcpPlotter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/TcpPlotter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/TimeHelperFunctions.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/TimeHelperFunctions.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigGPS.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigGPS.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigTRX.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimConfigTRX.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimConfigFiles/SimulationConfigurations.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/threads.c" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/threads.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimFiles/SimConfigFiles/threads.h" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/threads.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimEPS.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimEPS.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimI2C.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimI2C.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimRTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimRTC.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimRTC.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimRTC.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimSTK.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSTK.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimSTK.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimSTK.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimFiles/SimTRX.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimTRX.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimFiles/SimTRX.h" beforeDir="false" afterPath="$PROJECT_DIR$/SimFiles/SimTRX.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimulatorCommandLine/CommandDictionary.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimulatorCommandLine/CommandDictionary.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimulatorCommandLine/SimCmdLine.c" beforeDir="false" afterPath="$PROJECT_DIR$/SimulatorCommandLine/SimCmdLine.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SubsystemModules/FRAM.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/FRAM.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SubsystemModules/RTC.c" beforeDir="false" afterPath="$PROJECT_DIR$/SubsystemModules/RTC.c" afterDir="false" />
@@ -40,19 +31,19 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/GenericHelpFunctions.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/Helper/TcpHandler.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimEPS.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimI2C.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimRTC.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimSTK.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimFiles/SimTRX.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/SubsystemModules/FRAM.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/objects1.rsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SImProject.dir/progress.make" afterDir="false" />
@@ -100,15 +91,15 @@
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimConfigFiles" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\Helper" />
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimConfigFiles" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\SubsystemModules" />
       <recent name="C:\Users\97250\Documents\GitHub\SatSimulator" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -196,6 +187,7 @@
       <workItem from="1594471898518" duration="15442000" />
       <workItem from="1594646591709" duration="7078000" />
       <workItem from="1594839884359" duration="1251000" />
+      <workItem from="1595660893599" duration="1892000" />
     </task>
     <servers />
   </component>

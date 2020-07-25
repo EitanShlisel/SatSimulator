@@ -1,5 +1,5 @@
 #include "SimCmdLine.h"
-#include "../SimFiles/SimConfigFiles/threads.h"
+#include "../Helper/threads.h"
 #include <string.h>
 #include <limits.h>
 #include <ctype.h>

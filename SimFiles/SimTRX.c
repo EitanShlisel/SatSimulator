@@ -9,18 +9,18 @@
 #include "../Helper/GenericHelpFunctions.h"
 #include "../Helper/TimeHelperFunctions.h"
 
-#include "SimConfigFiles/threads.h"
-#include <semaphore.h>
+#include "../Helper/threads.h"
+#include "../Helper/sem.h"
 #include <math.h>
 ECEF_location_t gs_locations[] = TRX_GROUND_STATION_LOCATION_ECEF;
 
 list_t *lst_uplink_buffer = NULL;       // uplink command buffer
 list_t *lst_downlink_buffer = NULL;     // downlink telemetry buffer
 
-sem_t  sem_downlink_buff= NULL;         // signal to the thread that new packets are to be sent
+semaphore_t  sem_downlink_buff= NULL;         // signal to the thread that new packets are to be sent
 thread_mutex_t mutex_downlink = NULL;  // mutex on downlink buffer
 
-sem_t  sem_uplink_buff = NULL;          // signal to the thread that new packets are sent to the TRX
+semaphore_t  sem_uplink_buff = NULL;          // signal to the thread that new packets are sent to the TRX
 thread_mutex_t mutex_uplink = NULL;    // mutex on uplink buffer
 
 #if(TRX_TRANSMIT_TO_FILE == 1)
@@ -39,13 +39,13 @@ int SimTRX_InitSimTRX(){
     if(0 != err){
         return err;
     }
-    err = sem_init(&sem_downlink_buff,0,0);
-    TRACE_ERROR(SimTRX_InitSimTRX -> sem_init,err);
+    err = semaphore_init(&sem_downlink_buff,0,0);
+    TRACE_ERROR(SimTRX_InitSimTRX -> semaphore_init,err);
     if(0 != err){
         return err;
     }
-    err = sem_init(&sem_uplink_buff,0,0);
-    TRACE_ERROR(SimTRX_InitSimTRX -> sem_init,err);
+    err = semaphore_init(&sem_uplink_buff,0,0);
+    TRACE_ERROR(SimTRX_InitSimTRX -> semaphore_init,err);
     if(0 != err){
         return err;
     }
@@ -73,7 +73,7 @@ int SimTRX_AddPacketToDownlinkBuffer(unsigned char *data, unsigned int length){
             ListHelper_DestroyNode(node);
             err = -2;
         }else{
-            sem_post(&sem_downlink_buff);
+            semaphore_post(&sem_downlink_buff);
         }
     thread_mutex_unlock(&mutex_downlink);
     return err;
@@ -93,7 +93,7 @@ int SimTRX_AddPacketToUplinkBuffer(unsigned char *data, unsigned int length){
         ListHelper_DestroyNode(node);
         err = -2;
     }else{
-        sem_post(&sem_uplink_buff);
+        semaphore_post(&sem_uplink_buff);
     }
     thread_mutex_unlock(&mutex_uplink);
     return 0;

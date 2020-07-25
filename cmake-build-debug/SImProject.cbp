@@ -122,6 +122,18 @@
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/TimeHelperFunctions.h">
 			<Option target="SImProject"/>
 		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/sem.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/sem.h">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/threads.c">
+			<Option target="SImProject"/>
+		</Unit>
+		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/Helper/threads.h">
+			<Option target="SImProject"/>
+		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigEPS.h">
 			<Option target="SImProject"/>
 		</Unit>
@@ -138,12 +150,6 @@
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/SimConfigThermodynamics.h">
-			<Option target="SImProject"/>
-		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/threads.c">
-			<Option target="SImProject"/>
-		</Unit>
-		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimConfigFiles/threads.h">
 			<Option target="SImProject"/>
 		</Unit>
 		<Unit filename="C:/Users/97250/Documents/GitHub/SatSimulator/SimFiles/SimEPS.c">

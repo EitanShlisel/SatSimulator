@@ -355,18 +355,31 @@ CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.s"
 	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\SimulatorCommandLine\CommandDictionary.c -o CMakeFiles\SImProject.dir\SimulatorCommandLine\CommandDictionary.c.s
 
-CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj: CMakeFiles/SImProject.dir/flags.make
-CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj: ../SimFiles/SimConfigFiles/threads.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj"
-	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\SimFiles\SimConfigFiles\threads.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimConfigFiles\threads.c
+CMakeFiles/SImProject.dir/Helper/threads.c.obj: CMakeFiles/SImProject.dir/flags.make
+CMakeFiles/SImProject.dir/Helper/threads.c.obj: ../Helper/threads.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/SImProject.dir/Helper/threads.c.obj"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\threads.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\threads.c
 
-CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.i"
-	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimConfigFiles\threads.c > CMakeFiles\SImProject.dir\SimFiles\SimConfigFiles\threads.c.i
+CMakeFiles/SImProject.dir/Helper/threads.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SImProject.dir/Helper/threads.c.i"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\97250\Documents\GitHub\SatSimulator\Helper\threads.c > CMakeFiles\SImProject.dir\Helper\threads.c.i
 
-CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.s"
-	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\SimFiles\SimConfigFiles\threads.c -o CMakeFiles\SImProject.dir\SimFiles\SimConfigFiles\threads.c.s
+CMakeFiles/SImProject.dir/Helper/threads.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/Helper/threads.c.s"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\Helper\threads.c -o CMakeFiles\SImProject.dir\Helper\threads.c.s
+
+CMakeFiles/SImProject.dir/Helper/sem.c.obj: CMakeFiles/SImProject.dir/flags.make
+CMakeFiles/SImProject.dir/Helper/sem.c.obj: ../Helper/sem.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/SImProject.dir/Helper/sem.c.obj"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\SImProject.dir\Helper\sem.c.obj   -c C:\Users\97250\Documents\GitHub\SatSimulator\Helper\sem.c
+
+CMakeFiles/SImProject.dir/Helper/sem.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SImProject.dir/Helper/sem.c.i"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\97250\Documents\GitHub\SatSimulator\Helper\sem.c > CMakeFiles\SImProject.dir\Helper\sem.c.i
+
+CMakeFiles/SImProject.dir/Helper/sem.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SImProject.dir/Helper/sem.c.s"
+	C:\MinGW\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\97250\Documents\GitHub\SatSimulator\Helper\sem.c -o CMakeFiles\SImProject.dir\Helper\sem.c.s
 
 # Object files for target SImProject
 SImProject_OBJECTS = \
@@ -393,7 +406,8 @@ SImProject_OBJECTS = \
 "CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj" \
 "CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj" \
 "CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj" \
-"CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj"
+"CMakeFiles/SImProject.dir/Helper/threads.c.obj" \
+"CMakeFiles/SImProject.dir/Helper/sem.c.obj"
 
 # External object files for target SImProject
 SImProject_EXTERNAL_OBJECTS =
@@ -421,12 +435,13 @@ SImProject.exe: CMakeFiles/SImProject.dir/Helper/TcpPlotter.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/ConsumptionStates/ConsumptionStates.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SimulatorCommandLine/SimCmdLine.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/SimulatorCommandLine/CommandDictionary.c.obj
-SImProject.exe: CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj
+SImProject.exe: CMakeFiles/SImProject.dir/Helper/threads.c.obj
+SImProject.exe: CMakeFiles/SImProject.dir/Helper/sem.c.obj
 SImProject.exe: CMakeFiles/SImProject.dir/build.make
 SImProject.exe: CMakeFiles/SImProject.dir/linklibs.rsp
 SImProject.exe: CMakeFiles/SImProject.dir/objects1.rsp
 SImProject.exe: CMakeFiles/SImProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Linking C executable SImProject.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\97250\Documents\GitHub\SatSimulator\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking C executable SImProject.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\SImProject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

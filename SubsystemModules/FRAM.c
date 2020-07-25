@@ -4,7 +4,7 @@
 #include "../SimFiles/SimConfigFiles/SimulationConfigurations.h"
 #include "../SimFiles/SimEPS.h"
 
-#include "../SimFiles/SimConfigFiles/threads.h"
+#include "../Helper/threads.h"
 #include <stdlib.h>
 #include <stdbool.h>
 

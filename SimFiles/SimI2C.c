@@ -1,8 +1,8 @@
 #pragma clang diagnostic push
 #include <stdlib.h>
 
-#include "SimConfigFiles/threads.h"
-#include <semaphore.h>
+#include "../Helper/threads.h"
+#include "../Helper/sem.h"
 #include <string.h>
 
 #include "SimI2C.h"
@@ -20,8 +20,8 @@ bool finished_reading_data = false;
 thread_mutex_t mutex_sda_taken = NULL;
 thread_mutex_t mutex_handshake = NULL;
 thread_mutex_t mutex_operation_running = NULL; // if there is already an operation running(read/write command)
-sem_t sem_scl = NULL;   // SCL clock is running
-sem_t sem_ack = NULL;   // ack messenger
+semaphore_t sem_scl = NULL;   // SCL clock is running
+semaphore_t sem_ack = NULL;   // ack messenger
 char sda_data; // the data written on the SDA will be stored here
 
 bool master_exists = false;                                     // noting if there is already a master. only one can rule them all
@@ -48,18 +48,18 @@ static void SDA_WriteByte(char byte){
 static int WaitForAck(){
     int err = 0;    // 0 = ACK
     //const struct timespec tm = {.tv_sec = 10,.tv_nsec = 1000000000};// TODO: timeout should be depended on RTC
-    //err = sem_timedwait(&sem_ack,&tm);
-    err = sem_wait(&sem_ack);
+    //err = semaphore_timedwait(&sem_ack,&tm);
+    err = semaphore_wait(&sem_ack);
     return err;
 }
 static void SendAck(){
-    sem_post(&sem_ack);
+    semaphore_post(&sem_ack);
 }
 
 // ---------------------------------------Master Side
 int SimI2C_read(SatSubsystem subsys_dest, char *msg, unsigned int length){
     thread_mutex_lock(&mutex_operation_running);
-    sem_post(&sem_scl); // raise clock signal on the SCL
+    semaphore_post(&sem_scl); // raise clock signal on the SCL
     thread_mutex_lock(&mutex_handshake);
     char byte = GET_7BIT_ADDR(i2cSubsystems[subsys_dest].i2c_addr) | 0x80; // Set MSB to 1 and write to SDA
 
@@ -78,7 +78,7 @@ int SimI2C_read(SatSubsystem subsys_dest, char *msg, unsigned int length){
 
 int SimI2C_write(SatSubsystem subsys_dest, char *msg, unsigned int length){
     thread_mutex_lock(&mutex_operation_running);
-    sem_post(&sem_scl); // raise clock signal on the SCL
+    semaphore_post(&sem_scl); // raise clock signal on the SCL
     thread_mutex_lock(&mutex_handshake);
     char byte = GET_7BIT_ADDR(i2cSubsystems[subsys_dest].i2c_addr) & 0x7F;
     SDA_WriteByte(byte); // Set MSB to 0 and write to SDA
@@ -107,8 +107,8 @@ static void* I2cSlaveThread(void *param){
     memcpy(&subsys_data, param, sizeof(subsys_data));
 
     while(true) {
-        sem_wait(&sem_scl); // wait for clock signal to start
-        sem_post(&sem_scl); // turnstile
+        semaphore_wait(&sem_scl); // wait for clock signal to start
+        semaphore_post(&sem_scl); // turnstile
 
         if(!SimEPS_IsSubSystemOn(subsys_data.sub_system)){
             SimThreadSleep(100);
@@ -126,7 +126,7 @@ static void* I2cSlaveThread(void *param){
             continue;
         }
 
-        sem_wait(&sem_scl);                     // stop from other sub-systems from interrupting
+        semaphore_wait(&sem_scl);                     // stop from other sub-systems from interrupting
         SendAck();
 
         thread_mutex_lock(&mutex_handshake);
@@ -190,11 +190,11 @@ I2C_ERR SimI2C_StartI2C(){
     err = thread_mutex_init(&mutex_sda_taken,NULL);
     TRACE_ERROR(thread_mutex_init mutex_sda_taken,err);
 
-    err = sem_init(&sem_scl,0,0);
-    TRACE_ERROR(sem_init sem_scl,err);
+    err = semaphore_init(&sem_scl,0,0);
+    TRACE_ERROR(semaphore_init sem_scl,err);
 
-    err = sem_init(&sem_ack,0,0);
-    TRACE_ERROR(sem_init sem_ack,err)
+    err = semaphore_init(&sem_ack,0,0);
+    TRACE_ERROR(semaphore_init sem_ack,err)
 
     err = thread_mutex_init(&mutex_operation_running,NULL);
     TRACE_ERROR(thread_mutex_init mutex_operation_running,err)
@@ -217,11 +217,11 @@ I2C_ERR SimI2C_StopI2C(){
     err = thread_mutex_destroy(&mutex_sda_taken);
     TRACE_ERROR(thread_mutex_destroy mutex_sda_taken,err);
 
-    err = sem_destroy(&sem_scl);
-    TRACE_ERROR(sem_destroy sem_scl,err);
+    err = semaphore_destroy(&sem_scl);
+    TRACE_ERROR(semaphore_destroy sem_scl,err);
 
-    err = sem_destroy(&sem_ack);
-    TRACE_ERROR(sem_destroy sem_ack,err)
+    err = semaphore_destroy(&sem_ack);
+    TRACE_ERROR(semaphore_destroy sem_ack,err)
 
     err = thread_mutex_destroy(&mutex_operation_running);
     TRACE_ERROR(thread_mutex_destroy mutex_operation_running,err)

@@ -7,7 +7,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "SimConfigFiles/threads.h"
+#include "../Helper/threads.h"
 
 #include "SimSTK.h"
 #include "SimRTC.h"

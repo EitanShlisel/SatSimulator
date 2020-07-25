@@ -11,15 +11,15 @@
 #pragma comment (lib, "Ws2_32.lib")
 
 #include <unistd.h>
-#include "../SimFiles/SimConfigFiles/threads.h"
-#include <semaphore.h>
+#include "threads.h"
+#include "../Helper/sem.h"
 #include "TcpHandler.h"
 
 #define MAX_NUM_OF_TCP_THREADS 255
 thread_id thread_ids[MAX_NUM_OF_TCP_THREADS] = {0};
 thread_handle_t thread_handle[MAX_NUM_OF_TCP_THREADS];
-sem_t sem_data_in_buffer[MAX_NUM_OF_TCP_THREADS];
-sem_t sem_done_sending[MAX_NUM_OF_TCP_THREADS];
+semaphore_t sem_data_in_buffer[MAX_NUM_OF_TCP_THREADS];
+semaphore_t sem_done_sending[MAX_NUM_OF_TCP_THREADS];
 unsigned char *thread_buffers[MAX_NUM_OF_TCP_THREADS];
 
 int  GetClientPortFromThreadId(thread_id tid){
@@ -131,8 +131,8 @@ int AddDataToSendQueue(thread_id tid, char *data){
         return -1;
     }
     memcpy(thread_buffers[tid], data, DEFAULT_BUFLEN);
-    sem_post(&sem_data_in_buffer[tid]);
-    sem_wait(&sem_done_sending[tid]);
+    semaphore_post(&sem_data_in_buffer[tid]);
+    semaphore_wait(&sem_done_sending[tid]);
 }
 
 void* tcpThread(void *param){
@@ -174,12 +174,12 @@ void* tcpThread(void *param){
 #endif
     unsigned int counter = 0;
     do {
-        sem_wait(&sem_data_in_buffer[tid]);
+        semaphore_wait(&sem_data_in_buffer[tid]);
     #if(TCP_USE_PRINTS == 1)
         printf("TCP: got data to send\n");
     #endif
         iResult = send( ClientSocket, data_buffer, DEFAULT_BUFLEN, 0 );
-        sem_post(&sem_done_sending[tid]);
+        semaphore_post(&sem_done_sending[tid]);
         if(iResult < 0){
             goto CLEANUP;
         }
@@ -226,12 +226,12 @@ thread_id StartTcp(){
         return MAX_NUM_OF_TCP_THREADS;
     }
     thread_ids[*tid] = 0xFF; // id is taken
-    err = sem_init(&sem_data_in_buffer[*tid],0,0);
+    err = semaphore_init(&sem_data_in_buffer[*tid],0,0);
     if(0 != err){
         thread_ids[*tid] = 0;
         return MAX_NUM_OF_TCP_THREADS;
     }
-    err = sem_init(&sem_done_sending[*tid],0,0);
+    err = semaphore_init(&sem_done_sending[*tid],0,0);
     if(0 != err){
         thread_ids[*tid] = 0;
         return MAX_NUM_OF_TCP_THREADS;

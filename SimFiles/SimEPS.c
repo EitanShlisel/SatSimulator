@@ -5,8 +5,8 @@
 
 #include <stdlib.h>
 #include <math.h>
-#include "SimConfigFiles/threads.h"
-#include <semaphore.h>
+#include "../Helper/threads.h"
+#include "../Helper/sem.h"
 #include <stdbool.h>
 
 thread_mutex_t mutex_eps_mngr = NULL;
@@ -20,7 +20,7 @@ typedef struct EpsMngr_t{
     double batt_discharge;          // how much charge in the battery [mAh]
     double batt_temperature;        // temperature of batteries
 
-    sem_t sem_channel_voltage_rise[EPS_CHANNEL_NUM_OF_CHANNELS];   // signal if a sub-system turned on
+    semaphore_t sem_channel_voltage_rise[EPS_CHANNEL_NUM_OF_CHANNELS];   // signal if a sub-system turned on
 
     EpsConsumptionState_t *subsys_consumption_states[SUBSYS_NUM_OF_SUBSYSTEMS];
     unsigned int num_of_states_per_subsys[SUBSYS_NUM_OF_SUBSYSTEMS];
@@ -229,8 +229,8 @@ int SimEPS_StartEps(){
     TRACE_ERROR(thread_mutex_init in SimEPS_StartEps,err);
 
     for (unsigned int i = 0; i < EPS_CHANNEL_NUM_OF_CHANNELS; ++i) {
-        err = sem_init(&(epsMngr.sem_channel_voltage_rise[i]),0,0);
-        TRACE_ERROR(SimEPS_StartEps sem_init,err);
+        err = semaphore_init(&(epsMngr.sem_channel_voltage_rise[i]),0,0);
+        TRACE_ERROR(SimEPS_StartEps semaphore_init,err);
     }
     err = SetBatteryChargeFunction(EPS_BATTERY_CHARGE_RANGE_START
             ,EPS_BATTERY_CHARGE_RANGE_END_mV,pol,length);
@@ -254,8 +254,8 @@ int SimEPS_StartEps(){
 
 //----------------------------------    EVENTS
 void SimEPS_WaitForSubsysWakeup(ChannelIndex index){
-    sem_wait(&epsMngr.sem_channel_voltage_rise[index]);
-    sem_post(&epsMngr.sem_channel_voltage_rise[index]);    //turnstile
+    semaphore_wait(&epsMngr.sem_channel_voltage_rise[index]);
+    semaphore_post(&epsMngr.sem_channel_voltage_rise[index]);    //turnstile
 }
 
 //-------------- TESTS

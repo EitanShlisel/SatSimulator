@@ -311,32 +311,59 @@ Helper/TimeHelperFunctions.c.s:
 	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/TimeHelperFunctions.c.s
 .PHONY : Helper/TimeHelperFunctions.c.s
 
-SimFiles/SimConfigFiles/threads.obj: SimFiles/SimConfigFiles/threads.c.obj
+Helper/sem.obj: Helper/sem.c.obj
 
-.PHONY : SimFiles/SimConfigFiles/threads.obj
+.PHONY : Helper/sem.obj
 
 # target to build an object file
-SimFiles/SimConfigFiles/threads.c.obj:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.obj
-.PHONY : SimFiles/SimConfigFiles/threads.c.obj
+Helper/sem.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/sem.c.obj
+.PHONY : Helper/sem.c.obj
 
-SimFiles/SimConfigFiles/threads.i: SimFiles/SimConfigFiles/threads.c.i
+Helper/sem.i: Helper/sem.c.i
 
-.PHONY : SimFiles/SimConfigFiles/threads.i
+.PHONY : Helper/sem.i
 
 # target to preprocess a source file
-SimFiles/SimConfigFiles/threads.c.i:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.i
-.PHONY : SimFiles/SimConfigFiles/threads.c.i
+Helper/sem.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/sem.c.i
+.PHONY : Helper/sem.c.i
 
-SimFiles/SimConfigFiles/threads.s: SimFiles/SimConfigFiles/threads.c.s
+Helper/sem.s: Helper/sem.c.s
 
-.PHONY : SimFiles/SimConfigFiles/threads.s
+.PHONY : Helper/sem.s
 
 # target to generate assembly for a file
-SimFiles/SimConfigFiles/threads.c.s:
-	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/SimFiles/SimConfigFiles/threads.c.s
-.PHONY : SimFiles/SimConfigFiles/threads.c.s
+Helper/sem.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/sem.c.s
+.PHONY : Helper/sem.c.s
+
+Helper/threads.obj: Helper/threads.c.obj
+
+.PHONY : Helper/threads.obj
+
+# target to build an object file
+Helper/threads.c.obj:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/threads.c.obj
+.PHONY : Helper/threads.c.obj
+
+Helper/threads.i: Helper/threads.c.i
+
+.PHONY : Helper/threads.i
+
+# target to preprocess a source file
+Helper/threads.c.i:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/threads.c.i
+.PHONY : Helper/threads.c.i
+
+Helper/threads.s: Helper/threads.c.s
+
+.PHONY : Helper/threads.s
+
+# target to generate assembly for a file
+Helper/threads.c.s:
+	$(MAKE) -f CMakeFiles\SImProject.dir\build.make CMakeFiles/SImProject.dir/Helper/threads.c.s
+.PHONY : Helper/threads.c.s
 
 SimFiles/SimEPS.obj: SimFiles/SimEPS.c.obj
 
@@ -800,9 +827,12 @@ help:
 	@echo ... Helper/TimeHelperFunctions.obj
 	@echo ... Helper/TimeHelperFunctions.i
 	@echo ... Helper/TimeHelperFunctions.s
-	@echo ... SimFiles/SimConfigFiles/threads.obj
-	@echo ... SimFiles/SimConfigFiles/threads.i
-	@echo ... SimFiles/SimConfigFiles/threads.s
+	@echo ... Helper/sem.obj
+	@echo ... Helper/sem.i
+	@echo ... Helper/sem.s
+	@echo ... Helper/threads.obj
+	@echo ... Helper/threads.i
+	@echo ... Helper/threads.s
 	@echo ... SimFiles/SimEPS.obj
 	@echo ... SimFiles/SimEPS.i
 	@echo ... SimFiles/SimEPS.s

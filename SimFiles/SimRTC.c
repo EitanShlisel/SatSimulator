@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
-#include "SimConfigFiles/threads.h"
+#include "../Helper/threads.h"
 #include <signal.h>
 #include <stdlib.h>
 #include <errno.h>
