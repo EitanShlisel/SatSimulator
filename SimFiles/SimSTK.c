@@ -65,7 +65,6 @@ static int SimSTK_ParseCsv(gps_record_t *point, char *line)
     char *ptr = strtok(temp, split_char);
     point->time = parseTime(temp);   //time
 
-
     // parse position
     ptr = strtok(line, split_char);
     ptr = strtok(NULL, split_char);
@@ -314,6 +313,15 @@ int SimSTK_PrintSatPos(gps_record_t *vec){
     printf("velx = %lf\n",vec->velocity.velx);
     printf("vely = %lf\n",vec->velocity.vely);
     printf("velz = %lf\n\n",vec->velocity.velz);
+}
+int SimSTK_PrintECEF(ECEF_location_t *vec){
+    if(NULL == vec){
+        return -1;
+    }
+    printf("satellite ECEF position:\n");
+    printf("posx = %lf\n",vec->posx);
+    printf("posy = %lf\n",vec->posy);
+    printf("posz = %lf\n",vec->posz);
 }
 int SimSTK_Test(unsigned int num_of_lines_in_test_file){
     int err = 0;

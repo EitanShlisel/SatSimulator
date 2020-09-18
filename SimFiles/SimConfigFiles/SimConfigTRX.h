@@ -12,13 +12,16 @@
 #define TRX_DOWNLINK_FILE_PATH  ("\\Users\\97250\\Desktop\\downlink_transmissions")
 
 
-#define TRX_UPLINK_CENTER_FREQUANCY_Hz      (500000)
-#define TRX_RX_ANTENNA_BANDWIDTH_Hz         (50000)
+#define TRX_UPLINK_CENTER_FREQUENCY_Hz      (400000000)
+#define TRX_RX_ANTENNA_BANDWIDTH_Hz         (10000000)
 #define TRX_MIN_SAT_LINK_POWER_dBm          (-100.0)
 
-#define TRX_NUMBER_OF_GROUND_STATIONS   3
+//{4436.49115, 3086.20630, 3375.89996} = HSL
+//904431.10, -5536764.94, 3024132.14
+//{9232.8415, -5535.13082, 3021.42020} = Cape Canaveral
+//{0.00, 0.00, 6356.75231} = North Pole
 #define TRX_GROUND_STATION_LOCATION_ECEF    {\
                                             {4436.224, 3086.573,3375.916},  \
-                                            {4400.155,3086.241,3371.081},    \
-                                            { 0, 6378.1000, 0}};    // in km
+                                            {9232.8415, -5535.13082, 3021.42020},    \
+                                            { 0, 0, 6378.1000}};    // in km
 #endif //SIMPROJECT_SIMCONFIGTRX_H

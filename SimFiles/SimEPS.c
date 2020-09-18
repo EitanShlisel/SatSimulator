@@ -82,6 +82,15 @@ int SimEPS_SetSubsysState(SatSubsystem subsys,unsigned int state_index, bool onO
     thread_mutex_unlock(&mutex_eps_mngr);
     return 0;
 }
+
+int SimEPS_SetStateConsumptionPwr(SatSubsystem subsys,unsigned int state_index, double pwr){
+    thread_mutex_lock(&mutex_eps_mngr);
+        epsMngr.subsys_consumption_states[subsys][state_index].avg_power_consumption_mW = pwr;
+    thread_mutex_unlock(&mutex_eps_mngr);
+    return 0;
+}
+
+
 int SimEPS_GetChannel(ChannelIndex chnl){
     return epsMngr.is_channel_on[chnl];
 }

@@ -49,6 +49,8 @@ int SimEPS_AddConsumptionStates(SatSubsystem subsys,
 
 int SimEPS_SetSubsysState(SatSubsystem subsys,unsigned int state_index, bool onOff);
 
+int SimEPS_SetStateConsumptionPwr(SatSubsystem subsys,unsigned int state_index, double pwr);
+
 void SimEPS_WaitForSubsysWakeup(ChannelIndex index);
 
 bool SimEPS_IsSubSystemOn(SatSubsystem system);

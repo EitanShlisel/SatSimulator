@@ -30,7 +30,7 @@ typedef enum { // to add a subsystem to the simulation add an element to this en
 }SatSubsystem;
 
 #define SPEED_OF_LIGHT_m_sec 299792458
-#define K_BOLTZMAN_CONSTANT_dB (10 * log10(1.380649)-200)
+#define K_BOLTZMAN_CONSTANT_dB (10 * log10(1.380649)-230)
 //--------------------------------------------------------------------------------------
 //------------------------------------------- MACROS------------------------------------
 //--------------------------------------------------------------------------------------
@@ -55,11 +55,11 @@ typedef enum { // to add a subsystem to the simulation add an element to this en
 #define STK_USE_PRINTS    0
 
 #define RTC_TICK_TIME_PERIOD  ((double)(1))                         // Time measure for a clock single cycle[uSec]
-#define RTC_TICKS_PER_SECOND  (10000)                              // How many ticks does the simulated RTC have in a simulated second
+#define RTC_TICKS_PER_SECOND  (1000)                              // How many ticks does the simulated RTC have in a simulated second
 
-#define RTC_DEFAULT_START_TIME (1548496800)// (1577836800.0)        // Default time after reset (1577836800 = 1/1/2020 00:00:00) for the satellite
+#define RTC_DEFAULT_START_TIME (1577354400)// (1577836800.0)        // Default time after reset (1577836800 = 1/1/2020 00:00:00) for the satellite
 // Time at which the simulation starts
-#define RTC_SIMULATION_START_TIME (1548496800)//((1577836800.0))    // THIS IS ALSO THE START TIME OF THE STK SIMULATION
+#define RTC_SIMULATION_START_TIME (1577354400)//((1577836800.0))    // THIS IS ALSO THE START TIME OF THE STK SIMULATION
 
 //TODO: translate real usec to simulated usec
 #define SimThreadSleep(sim_time_us)  (usleep(sim_time_us))    // send thread to sleep for micro-seconds (simulation time) //TODO: fix to be correct

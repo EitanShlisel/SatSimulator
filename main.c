@@ -17,6 +17,7 @@
 #include "SimFiles/SimI2C.h"
 #include "SimFiles/SimEPS.h"
 #include "SimFiles/SimTRX.h"
+#include "SimFiles/SimSolar.h"
 
 #include "ConsumptionStates/ConsumptionStates.h"
 
@@ -252,7 +253,7 @@ void Plot_EPS_Vbatt_Test(){
     err = SimEPS_StartEps();
     TRACE_ERROR(SimEPS_StartEps,err);
     SimEPS_SetChannel(0,true);
-    SimEPS_SetSubsysState(SUBSYS_FAKE,0,true);
+    SimEPS_SetSubsysState(SUBSYS_FAKE,2,true);
 
 
     atomic_time_t start_time = SimRTC_GetSimulationTime();
@@ -267,6 +268,13 @@ void Plot_EPS_Vbatt_Test(){
             printf("SIM: DoD = %f\n",SimEPS_GetDOD());
             break;
         }
+        SimEPS_SetStateConsumptionPwr(SUBSYS_FAKE,2,
+                5000.0 + 5000.0*sin(fmod(points->x,M_PI*2) / 1000));
+       if(SimRTC_GetSimulationTime() - start_time > 2000){
+            SimSolar_DisableSolarCharge();
+            printf("solar charge = %lf\n",SimSolar_GetSolarCurrentProduction());
+       }
+
 //        if(SimRTC_GetSimulationTime() - start_time > 5000){
 //            SimEPS_SetSubsysState(SUBSYS_FAKE,0,false);
 //            SimEPS_SetSubsysState(SUBSYS_FAKE,1,true);
@@ -311,45 +319,105 @@ void Plot_RSSI(){
     int err = 0;
     err = SimRTC_Init();
     TRACE_ERROR(SimRTC_Init,err);
+
     err = SimSTK_initStkRecords();
     TRACE_ERROR(SimRTC_Init,err);
     atomic_time_t start_time = SimRTC_GetSimulationTime();
-    atomic_time_t current_time=0,last=SimRTC_GetSimulationTime();
+    atomic_time_t current_time = 0;
+    atomic_time_t last = SimRTC_GetSimulationTime();
     gps_record_t rec;
+    SimSTK_GetCurrentStkSatPosition(&rec);
     double rssi = 0;
     double dist = 0;
-    gps_record_t ground_stations[]  = TRX_GROUND_STATION_LOCATION_ECEF;
+    ECEF_location_t ground_stations[]  = TRX_GROUND_STATION_LOCATION_ECEF;
+    size_t len = sizeof(ground_stations)/ sizeof(ground_stations[0]);
+    usleep(500000);
     while(1) {
         fig.sub_figure_id = 0;
-
         points->x = SimRTC_GetSimulationTime();
         current_time = SimRTC_GetSimulationTime();
+        for (size_t j = 0; j < 3; ++j) {
+            //dist = GnrHelper_CalcDistance(*(point_t*)&rec.position,*(point_t*)&ground_stations[j]);
+            points->y = SimTRX_CalcRSSI(j,80) + GnrHelper_GenerateGaussianNoise(0,0.51);
+            fig.sub_figure_id = j;
+            SendFigureToPlotter(tid, &fig);
+        }
 
-        rssi = SimTRX_CalcRSSI(2,30);
-
-        dist = GnrHelper_CalcDistance(*(point_t*)&rec.position,*(point_t*)&ground_stations[1].position);
-        points->y = dist;
-        fig.sub_figure_id = 0;
-        SendFigureToPlotter(tid, &fig);
-
-        dist = GnrHelper_CalcDistance(*(point_t*)&rec.position,*(point_t*)&ground_stations[2].position);
-        points->y = dist;
-        fig.sub_figure_id = 1;
-        SendFigureToPlotter(tid, &fig);
         memcpy(fig.dataPoints,points, sizeof(points));
 
         if(current_time-last >= 60){
-//            printf("FSL: %lf\n", SimTRX_CalcFSPL_dB(2));
             printf("sim time = %lf\n",SimRTC_GetSimulationTime());
             SimSTK_GetCurrentStkSatPosition(&rec);
             SimSTK_PrintSatPos(&rec);
             last = current_time;
             printf("gs distance  = %lf\n",dist);
-       }
+        }
         usleep(100000);
     }
 }
 
+void Plot_DistFromGS(){
+    unsigned int i = 0;
+    data_point_t points[1];
+
+    figure_t fig = {.x_label = "Time[Sec]",
+            .y_label="Distance[km]",
+            .title="Simulated satellite distance from ground-station",
+            .figure_id = 42,
+            .sub_figure_id = 0,
+            .dataPoints = points,
+            .num_of_data_points = 1};
+
+
+    thread_id tid = StartTcp();
+    char *script_path = PLOTTER_PATH_PY;
+    char buff[10] = {0};
+    itoa(GetClientPortFromThreadId(tid) ,buff,10);
+    RunPythonScript(script_path,buff);
+
+    int err = 0;
+    err = SimRTC_Init();
+    TRACE_ERROR(SimRTC_Init,err);
+
+    err = SimSTK_initStkRecords();
+    TRACE_ERROR(SimRTC_Init,err);
+    atomic_time_t start_time = SimRTC_GetSimulationTime();
+    atomic_time_t current_time = 0;
+    atomic_time_t last = SimRTC_GetSimulationTime();
+    gps_record_t rec;
+    SimSTK_GetCurrentStkSatPosition(&rec);
+    double rssi = 0;
+    double dist = 0;
+    ECEF_location_t ground_stations[]  = TRX_GROUND_STATION_LOCATION_ECEF;
+    size_t len = sizeof(ground_stations)/ sizeof(ground_stations[0]);
+    for (size_t k = 0; k < len; ++k) {
+        SimSTK_PrintECEF(&ground_stations[k]);
+    }
+    bool b = true;
+    usleep(500000);
+    while(1) {
+        fig.sub_figure_id = 0;
+        points->x = SimRTC_GetSimulationTime();
+        current_time = SimRTC_GetSimulationTime();
+        for (size_t j = 0; j < len; ++j) {
+            dist = GnrHelper_CalcDistance(*(point_t*)&rec.position,*(point_t*)&ground_stations[j]);
+            points->y = dist;
+            fig.sub_figure_id = j;
+            SendFigureToPlotter(tid, &fig);
+        }
+
+        memcpy(fig.dataPoints,points, sizeof(points));
+
+        if(current_time-last >= 60){
+            printf("sim time = %lf\n",SimRTC_GetSimulationTime());
+            SimSTK_GetCurrentStkSatPosition(&rec);
+            SimSTK_PrintSatPos(&rec);
+            last = current_time;
+            printf("gs distance  = %lf\n",dist);
+        }
+        usleep(100000);
+    }
+}
 void StkTest(){
     int err = 0;
     err = SimRTC_Init();
@@ -376,9 +444,10 @@ void StkTest(){
 }
 
 int main(){
+    Plot_DistFromGS();
     //Plot_RSSI();
     //Plot_EPS_Vbatt_Test();
     //StkTest();
-    PlotFigureOverTCP_Test();
+    //PlotFigureOverTCP_Test();
     return 0;
 }

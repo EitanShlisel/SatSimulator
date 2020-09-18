@@ -5,8 +5,20 @@
 #include <math.h>
 
 // production of current with MPP @ 2.275[V] and 6 solar panels of 30.18[cm^2] with 26.8%
+bool solar_enabled = true;
+
+void SimSolar_EnableSolarCharge(){
+    solar_enabled = true;
+}
+void SimSolar_DisableSolarCharge(){
+    solar_enabled = false;
+}
+
 double SimSolar_GetSolarCurrentProduction(){
     double current = 0;
+    if(!solar_enabled){
+        return 0;
+    }
 #if(SOLAR_TEST_USE_ETERNAL_DARKNESS == 1)
     current = 0;
 #elif(SOLAR_TEST_USE_ETERNAL_SUNSHINE == 1)

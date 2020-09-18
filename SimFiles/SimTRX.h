@@ -30,7 +30,7 @@ double SimTRX_CalcTransmissionTime(unsigned int baud_bit_sec,unsigned int num_of
 
 // ---------------------------- LINK BUDGET
 double SimTRX_CalcAtmosphereAttenuation_dB(unsigned int gs_index);
-double SimTRX_CalcFSPL_dB(unsigned int gs_index);
+double SimTRX_CalcFSPL_dB(unsigned int gs_index, double dist_km);
 double SimTRX_CalcSystemLosses_dB();
 double SimTRX_CalcAntennaGain_dB(unsigned int gs_index);
 double SimTRX_CalcNoiseFloorLevel();

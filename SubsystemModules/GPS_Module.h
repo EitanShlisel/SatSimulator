@@ -3,7 +3,6 @@
 
 #include "GPS_types.h"
 
-
 int GPS_Init();
 
 int GPS_getLocation(ECEF_location_t *loc);

@@ -183,15 +183,12 @@ double SimTRX_CalcAtmosphereAttenuation_dB(unsigned int gs_index){
     return 0;
 }
 // free space path loss
-double SimTRX_CalcFSPL_dB(unsigned int gs_index){
-    ECEF_location_t gs_loc,sat_loc;
-    gps_record_t rec;
-    SimSTK_GetCurrentStkSatPosition(&rec);
-    memcpy(&sat_loc,&rec.position,sizeof(sat_loc));
-    memcpy(&gs_loc,&gs_locations[gs_index],sizeof(gs_loc));
-
-    double dist_km = GnrHelper_CalcDistance(*(point_t*)&sat_loc, *(point_t*)&gs_loc);
-    double fsl = 20*log10(4*M_PI*dist_km*1000*SPEED_OF_LIGHT_m_sec/TRX_UPLINK_CENTER_FREQUANCY_Hz);//20*log10(4*M_PI/SPEED_OF_LIGHT_m_sec) + 20*log10(1000*dist_km) + 20 * log10(TRX_UPLINK_CENTER_FREQUANCY_Hz) ;
+double SimTRX_CalcFSPL_dB(unsigned int gs_index,double dist_km){
+    //double fsl = 20*log10(4 * M_PI * dist_km * 1000 * SPEED_OF_LIGHT_m_sec / TRX_UPLINK_CENTER_FREQUENCY_Hz);//20*log10(4*M_PI/SPEED_OF_LIGHT_m_sec) + 20*log10(1000*dist_km) + 20 * log10(TRX_UPLINK_CENTER_FREQUENCY_Hz) ;
+    double fsl = 0;
+    fsl += 20*log10(dist_km);
+    fsl += 20*log10(TRX_UPLINK_CENTER_FREQUENCY_Hz);
+    fsl += 20*log10(4 * M_PI) - 20*log10(SPEED_OF_LIGHT_m_sec/1000.0);
     return fsl;
 }
 // caused by the lossed of the system
@@ -209,7 +206,7 @@ double SimTRX_CalcNoiseFloorLevel(){
     double noise_dB = 0;
     noise_dB = K_BOLTZMAN_CONSTANT_dB +
                10*log10(CELSIUS_TO_KELVIN(temp)) +
-               10*log10(TRX_RX_ANTENNA_BANDWIDTH_Hz);;
+               10*log10(TRX_RX_ANTENNA_BANDWIDTH_Hz);
     return noise_dB;
 }
 // calculates the link budget according to Fris's formula
@@ -225,11 +222,11 @@ double SimTRX_CalcRSSI(unsigned int gs_index, double gs_transmit_power_dBm){
     memcpy(&sat_loc,&rec.position,sizeof(sat_loc));
     memcpy(&gs_loc,&gs_locations[gs_index],sizeof(gs_loc));
 
-    //double dist = GnrHelper_CalcDistance(*(point_t*)&sat_loc,*(point_t*)&gs_loc);
+    double dist = GnrHelper_CalcDistance(*(point_t*)&sat_loc,*(point_t*)&gs_loc);
 
     double attenuation_dB = 0;
     attenuation_dB += SimTRX_CalcAtmosphereAttenuation_dB(gs_index);
-    attenuation_dB += SimTRX_CalcFSPL_dB(gs_index);
+    attenuation_dB += SimTRX_CalcFSPL_dB(gs_index, dist);
     attenuation_dB += SimTRX_CalcSystemLosses_dB();
 
     double gain_dB = 0;
